@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_172644) do
+ActiveRecord::Schema.define(version: 2021_08_23_182107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_172644) do
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "husband_id"
-    t.bigint "wife_id"
+    t.bigint "husband_id", null: false
+    t.bigint "wife_id", null: false
     t.index ["husband_id"], name: "index_marriages_on_husband_id"
     t.index ["wife_id"], name: "index_marriages_on_wife_id"
   end

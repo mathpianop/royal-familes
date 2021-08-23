@@ -10,20 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_221435) do
+ActiveRecord::Schema.define(version: 2021_08_23_010925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "marriages", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string "sex"
     t.integer "father_id"
     t.integer "mother_id"
-    t.integer "birth_date"
-    t.integer "death_date"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "birth_date"
+    t.date "death_date"
     t.index ["father_id", "mother_id"], name: "index_people_on_father_id_and_mother_id"
     t.index ["father_id"], name: "index_people_on_father_id"
     t.index ["mother_id", "father_id"], name: "index_people_on_mother_id_and_father_id"

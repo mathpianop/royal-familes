@@ -1,7 +1,3 @@
-
-
-
-
 class Person < ApplicationRecord
   has_parents ineligibility: :pedigree_and_dates
   has_many :husbanded_marriages, foreign_key: :husband_id, class_name: "Marriage"
@@ -11,6 +7,61 @@ class Person < ApplicationRecord
   validate :birth_must_be_before_death
 
   def birth_must_be_before_death
-    errors.add(:base, "Birth date must be before death date") if birth_date > death_date
+    if birth_date && death_date 
+      errors.add(:base, "Birth date must be before death date") unless birth_date < death_date
+    end
+  end
+
+
+  #   parent_ids_temp = people.map{|person| [person.id]}
+  #   parent_ids_store = parent_ids_temp.clone
+
+  #   generation_count = 1
+
+  #   while parent_ids_temp.select{|array_of_ids| array_of_ids.length > 0}.length > 0
+  #     next_gen_ids = parent_ids_temp.map{|ids| gclass.where(id: ids).select([:father_id, :mother_id]).map{|result| [result.father_id, result.mother_id]}.flatten.compact}
+
+  #     next_gen_ids.each_with_index do |ids, index|
+  #       parent_ids_store[index] += ids
+  #       parent_ids_temp[index]   = ids
+  #     end
+
+  #     if parent_ids_store.reduce(:&).length > 0
+  #       return gclass.where(id: (parent_ids_store.reduce(:&)))
+  #     else
+  #       generation_count += 1
+  #     end
+  #   end
+  #   gclass.where(id: nil)
+  # end
+
+  #These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
+  #https://github.com/masciugo/genealogy
+
+  
+  def ancestors
+    ancestors_store = []
+    ancestors_temp = self.parents.compact
+    
+    while ancestors_temp.length > 0
+      ancestors_store << ancestors_temp
+      next_gen_ids = ancestors_temp.map{|ancestor| [ancestor.father_id, ancestor.mother_id]}.flatten.compact
+      ancestors_temp = self.class.where(id: next_gen_ids).select(:id, :name, :father_id, :mother_id)
+    end
+    ancestors_store
+  end
+
+  #This is also nonsense
+  def descendents
+    descendents_store = []
+    descendents_temp = self.children
+    
+    while descendents_temp.length > 0
+      descendents_store << descendents_temp
+      current_gen_ids = descendents_temp.map(&:id)
+      next_gen = self.class.where(father_id: current_gen_ids).or(self.class.where(mother_id: current_gen_ids))
+      descendents_temp = next_gen.select(:id, :name, :father_id, :mother_id)
+    end
+    descendents_store
   end
 end

@@ -51,17 +51,17 @@ class Person < ApplicationRecord
     ancestors_store
   end
 
-  #This is also nonsense
-  def descendents
-    descendents_store = []
-    descendents_temp = self.children
+
+  def descendants
+    descendants_store = []
+    descendants_temp = self.children
     
-    while descendents_temp.length > 0
-      descendents_store << descendents_temp
-      current_gen_ids = descendents_temp.map(&:id)
+    while descendants_temp.length > 0
+      descendants_store << descendants_temp
+      current_gen_ids = descendants_temp.map(&:id)
       next_gen = self.class.where(father_id: current_gen_ids).or(self.class.where(mother_id: current_gen_ids))
-      descendents_temp = next_gen.select(:id, :name, :father_id, :mother_id)
+      descendants_temp = next_gen.select(:id, :name, :father_id, :mother_id)
     end
-    descendents_store
+    descendants_store
   end
 end

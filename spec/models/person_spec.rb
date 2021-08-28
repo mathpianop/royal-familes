@@ -40,10 +40,101 @@ RSpec.describe Person, type: :model do
     end
 
     it "works for a sister" do
-      relationship_information = people(:joan_beaufort).relationship_info(people(:john_beaufort))
+      relationship_information = people(:john_beaufort).relationship_info(people(:joan_beaufort))
       expect(relationship_information[:relationship]).to eq("sister")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("John of Gaunt")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("John of Gaunt", "Katherine Swynford")
     end
+
+    it "works for a brother" do
+      relationship_information = people(:joan_beaufort).relationship_info(people(:john_beaufort))
+      expect(relationship_information[:relationship]).to eq("brother")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("John of Gaunt", "Katherine Swynford")
+    end
+
+    it "works for a nephew" do
+      relationship_information = people(:thomas_of_woodstock).relationship_info(people(:richard_ii))
+      expect(relationship_information[:relationship]).to eq("nephew")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Philippa of Hainult", "Edward III")
+    end
+
+    it "works for a neice" do
+      relationship_information = people(:john_beaufort).relationship_info(people(:cecily_neville))
+      expect(relationship_information[:relationship]).to eq("neice")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("John of Gaunt", "Katherine Swynford")
+    end
+
+    it "works for an aunt" do
+      relationship_information = people(:somerset).relationship_info(people(:joan_beaufort))
+      expect(relationship_information[:relationship]).to eq("aunt")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("John of Gaunt", "Katherine Swynford")
+    end
+
+    it "works for an uncle" do
+      relationship_information = people(:edward_iv).relationship_info(people(:warwick))
+      expect(relationship_information[:relationship]).to eq("uncle")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Ralph Neville", "Joan Beaufort")
+    end
+
+    it "works for a great plus auntcle" do
+      relationship_information = people(:edward_iv).relationship_info(people(:lionel))
+      expect(relationship_information[:relationship]).to eq("great-great-uncle")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Philippa of Hainult", "Edward III")
+    end
+
+    it "works for a great plus neicphew" do
+      relationship_information = people(:lionel).relationship_info(people(:richard_of_york))
+      expect(relationship_information[:relationship]).to eq("great-nephew")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Philippa of Hainult", "Edward III")
+    end
+
+    it "works for a father" do
+      relationship_information = people(:edward_iv).relationship_info(people(:richard_of_york))
+      expect(relationship_information[:relationship]).to eq("father")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Richard, Duke of York")
+    end
+
+    it "works for a mother" do
+      relationship_information = people(:edward_iv).relationship_info(people(:cecily_neville))
+      expect(relationship_information[:relationship]).to eq("mother")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Cecily Neville")
+    end
+
+    it "works for a son" do
+      relationship_information = people(:cecily_neville).relationship_info(people(:edward_iv))
+      expect(relationship_information[:relationship]).to eq("son")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Cecily Neville")
+    end
+
+    it "works for a daughter" do
+      relationship_information = people(:ralph_neville).relationship_info(people(:cecily_neville))
+      expect(relationship_information[:relationship]).to eq("daughter")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Ralph Neville")
+    end
+
+    it "works for a grandparent" do
+      relationship_information = people(:edward_iv).relationship_info(people(:ralph_neville))
+      expect(relationship_information[:relationship]).to eq("grandfather")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Ralph Neville")
+    end
+
+    it "works for a grandchild" do
+      relationship_information = people(:edward_iii).relationship_info(people(:richard_ii))
+      expect(relationship_information[:relationship]).to eq("grandson")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Edward III")
+    end
+
+    it "works for extreme ancestor" do
+      relationship_information = people(:edward_v).relationship_info(people(:joan_beaufort))
+      expect(relationship_information[:relationship]).to eq("great-grandmother")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Joan Beaufort")
+    end
+
+    it "works for extreme descendant" do
+      relationship_information = people(:edward_iii).relationship_info(people(:henry_vii))
+      expect(relationship_information[:relationship]).to eq("great-great-great-grandson")
+      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Edward III")
+    end
+
   end
 
   describe "#ancestors" do

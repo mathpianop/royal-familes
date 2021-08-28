@@ -100,23 +100,14 @@ class Person < ApplicationRecord
       if possible_lowest_common_ancestors.length > 0
         return {
           striated_ancestor_ids: parent_ids_store, 
-          lowest_common_ancestors: possible_lowest_common_ancestors
+          lowest_common_ancestors: possible_lowest_common_ancestors,
+          sex: person_2.sex
         }
       end
     end
     nil
   end
 
-  
-
-  def blood_relationship(ancestry_connection)
-    #Build the root relationship, and add 'half' if necessary
-    if ancestry_connection[:lowest_common_ancestors].length == 1
-      return "half #{root_relationship(ancestry_connection)}"
-    else
-      return root_relationship(ancestry_connection)
-    end
-  end
 
   def generation_counts(ancestry_connection)
     ancestry_connection[:striated_ancestor_ids].map do |generations| 
@@ -124,26 +115,85 @@ class Person < ApplicationRecord
     end
   end
 
-  def root_relationship(generation_counts)
+  def blood_relationship(ancestry_connection)
     counts = generation_counts(ancestry_connection)
     if counts.min == 0
-      descendant_relationship(counts)
-    elsif counts.min == 1
-       #sibling, auntcle, great-auntcle, neicphew, great-neicphiew, etc....
-      neo_sibling_relationship(counts)
-    elsif counts.min > 1
-      cousin_relationship(counts)
+      direct_relationship(counts, ancestry_connection)
+    elsif counts.min > 0
+      indirect_relationship(counts, ancestry_connection)
     end
   end
 
-  def neo_sibling_relationship
-   
+  def direct_relationship(generation_counts, ancestry_connection)
+    sex = ancestry_connection[:sex]
+    if generation_counts[0] == 0
+      root_relationship = descendant_relationship((generation_counts[1] - generation_counts[0]), sex)
+    elsif generation_counts[1] == 0
+      root_relationship = ancestor_relationship((generation_counts[0] - generation_counts[1]), sex)
+    end
+    root_plus_greats(root_relationship, generation_counts)
+  end
+
+  def descendant_relationship(generation_gap, sex)
+    if generation_gap == 1
+      sex == "M" ? "son" : "daughter"
+    elsif generation_gap > 1
+      sex == "M" ? "grandson" : "daughter"
+    end
+  end
+
+  def ancestor_relationship(generation_gap, sex)
+    if generation_gap == 1
+      sex == "F" ? "mother" : "father"
+    elsif generation_gap > 1
+      sex == "F" ? "grandmother" : "grandfather"
+    end
+  end
+
+  def indirect_relationship(generation_counts, ancestry_connection)
+    sex = ancestry_connection[:sex]
+    if generation_counts.min == 1
+      #sibling, auntcle, great-auntcle, neicphew, great-neicphiew, etc....
+      root_relationship = neo_sibling_relationship(generation_counts, sex)
+    elsif generation_counts.min > 1
+      root_relationship = cousin_relationship(generation_counts)
+    end
+
+    if ancestry_connection[:lowest_common_ancestors].length == 1
+      return "half #{root_relationship}"
+    else
+      return root_relationship
+    end
+  end
+
+  def neo_sibling_relationship(generation_counts, sex)
+   if generation_counts.all?(1)
+    sibling_relationship(sex)
+   else
+    auntcle_relationship(generation_counts, sex)
+   end
+  end
+
+  def sibling_relationship(sex)
+    sex == "M" ? "brother" : "sister"
+  end
+
+  def auntcle_relationship(generation_counts, sex)
     if generation_counts[0] == 1
-      
+      root_relationship = (sex == "F" ? "neice" : "nephew")
+    elsif generation_counts[1] == 1
+      root_relationship = (sex == "F" ? "aunt" : "uncle")
     end
-    
+
+    root_plus_greats(root_relationship, generation_counts)
   end
 
+
+  def root_plus_greats(root, generation_counts)
+    num_of_greats = generation_counts.max - 2
+    num_of_greats > 0  ? "#{"great-"*num_of_greats}#{root}" : root
+  end
+  
 
   def cousin_relationship(generation_counts)
     number_of_times = ["once", "twice"]
@@ -151,13 +201,18 @@ class Person < ApplicationRecord
     root_relationship = "#{(generation_counts.min - 1).ordinalize} cousin"
     root_relationship += " #{number_of_times[removal - 1]} removed" if removal == 1 || removal == 2
     root_relationship += " #{removal} times removed" if removal > 2
+    root_relationship
   end
 
 
   def relationship_by_marriage(person_1, person_2)
-
+    if child_in_law_relationship?
+      person_2.sex == "M" ? "son-in-law" : "daughter-in-law"
+    end
   end
 
 
-  
+  def child_in_law_relationship(person_1, person_2)
+    child_in_law_ids = self.class.where()
+  end
 end

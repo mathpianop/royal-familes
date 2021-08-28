@@ -6,6 +6,7 @@ class Person < ApplicationRecord
   has_many :husbands, through: :wifed_marriages, source: :husband
   validate :birth_must_be_before_death
 
+  
   def birth_must_be_before_death
     if birth_date && death_date 
       errors.add(:base, "Birth date must be before death date") unless birth_date < death_date
@@ -13,40 +14,30 @@ class Person < ApplicationRecord
   end
 
 
-  #   parent_ids_temp = people.map{|person| [person.id]}
-  #   parent_ids_store = parent_ids_temp.clone
-
-  #   generation_count = 1
-
-  #   while parent_ids_temp.select{|array_of_ids| array_of_ids.length > 0}.length > 0
-  #     next_gen_ids = parent_ids_temp.map{|ids| gclass.where(id: ids).select([:father_id, :mother_id]).map{|result| [result.father_id, result.mother_id]}.flatten.compact}
-
-  #     next_gen_ids.each_with_index do |ids, index|
-  #       parent_ids_store[index] += ids
-  #       parent_ids_temp[index]   = ids
-  #     end
-
-  #     if parent_ids_store.reduce(:&).length > 0
-  #       return gclass.where(id: (parent_ids_store.reduce(:&)))
-  #     else
-  #       generation_count += 1
-  #     end
-  #   end
-  #   gclass.where(id: nil)
-  # end
-
-  #These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
-  #https://github.com/masciugo/genealogy
+  # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
+  # https://github.com/masciugo/genealogy
 
   
   def ancestors
     ancestors_store = []
-    ancestors_temp = self.parents.compact
+    ancestor_ids = []
+    current_gen_temp = self.parents.compact
     
-    while ancestors_temp.length > 0
-      ancestors_store << ancestors_temp
-      next_gen_ids = ancestors_temp.map{|ancestor| [ancestor.father_id, ancestor.mother_id]}.flatten.compact
-      ancestors_temp = self.class.where(id: next_gen_ids).select(:id, :name, :father_id, :mother_id)
+    while current_gen_temp.length > 0
+      # Add the current generation to the ancestors store
+      ancestors_store.concat(current_gen_temp)
+      # Add the current generation ids to the ids store,
+      # disregarding duplicates from cousins without removal
+      ancestor_ids.concat(current_gen_temp.map(&:id).uniq)
+      # Get the ids of the next generation up
+      next_gen_ids = current_gen_temp.map{|ancestor| [ancestor.father_id, ancestor.mother_id]}
+                                     .flatten
+                                     .compact
+      # Get the corresponding ancestors,
+      # not including duplicates from cousins with removal
+      current_gen_temp = self.class.where(id: next_gen_ids)
+                                   .where.not(id: ancestor_ids)
+                                   .select(:id, :name, :father_id, :mother_id)
     end
     ancestors_store
   end
@@ -54,14 +45,119 @@ class Person < ApplicationRecord
 
   def descendants
     descendants_store = []
-    descendants_temp = self.children
+    descendant_ids = []
+    current_gen_temp = self.children
     
-    while descendants_temp.length > 0
-      descendants_store << descendants_temp
-      current_gen_ids = descendants_temp.map(&:id)
-      next_gen = self.class.where(father_id: current_gen_ids).or(self.class.where(mother_id: current_gen_ids))
-      descendants_temp = next_gen.select(:id, :name, :father_id, :mother_id)
+    while current_gen_temp.length > 0 
+      # Add the current generation to the descendants store
+      descendants_store.concat(current_gen_temp)
+      # Add the current generation ids to the ids store
+      current_gen_ids = current_gen_temp.map(&:id)
+      descendant_ids.concat(current_gen_ids)
+      # Get the corresponding descendants,
+      # not including duplicates from cousins with removal
+      current_gen_temp = self.class.where(father_id: current_gen_ids)
+                                   .or(self.class.where(mother_id: current_gen_ids))
+                                   .where.not(id: descendant_ids)
+                                   .select(:id, :name, :father_id, :mother_id)
     end
     descendants_store
   end
+
+  def relationship_info(person)
+    ancestry_connection = ancestry_connection(self, person)
+    if (ancestry_connection)
+      return {
+        relationship: blood_relationship(ancestry_connection),
+        lowest_common_ancestors: self.class.where(id: ancestry_connection[:lowest_common_ancestors]).select(:name)
+      }
+    else
+      return {relationship: relationship_by_marriage(self, person)}
+    end
+  end
+
+  private 
+  def ancestry_connection(person_1, person_2)
+    parent_ids_store = [[[person_1.id]], [[person_2.id]]]
+    parent_ids_temp = [[person_1.id], [person_2.id]]
+    
+    while parent_ids_temp.any? {|ids| ids.length > 0}
+      
+      next_gen_ids = parent_ids_temp.map do |ids| 
+        self.class.where(id: ids)
+                  .select(:father_id, :mother_id)
+                  .map{|result| [result.father_id, result.mother_id]}
+                  .flatten
+                  .compact 
+      end
+
+      next_gen_ids.each_with_index do |ids, index|
+        parent_ids_store[index] << ids
+        parent_ids_temp[index] = ids
+      end
+          
+      possible_lowest_common_ancestors = parent_ids_store.map(&:flatten).reduce(:&)
+      if possible_lowest_common_ancestors.length > 0
+        return {
+          striated_ancestor_ids: parent_ids_store, 
+          lowest_common_ancestors: possible_lowest_common_ancestors
+        }
+      end
+    end
+    nil
+  end
+
+  
+
+  def blood_relationship(ancestry_connection)
+    #Build the root relationship, and add 'half' if necessary
+    if ancestry_connection[:lowest_common_ancestors].length == 1
+      return "half #{root_relationship(ancestry_connection)}"
+    else
+      return root_relationship(ancestry_connection)
+    end
+  end
+
+  def generation_counts(ancestry_connection)
+    ancestry_connection[:striated_ancestor_ids].map do |generations| 
+      generations.index {|generation| generation.include?(ancestry_connection[:lowest_common_ancestors][0])}
+    end
+  end
+
+  def root_relationship(generation_counts)
+    counts = generation_counts(ancestry_connection)
+    if counts.min == 0
+      descendant_relationship(counts)
+    elsif counts.min == 1
+       #sibling, auntcle, great-auntcle, neicphew, great-neicphiew, etc....
+      neo_sibling_relationship(counts)
+    elsif counts.min > 1
+      cousin_relationship(counts)
+    end
+  end
+
+  def neo_sibling_relationship
+   
+    if generation_counts[0] == 1
+      
+    end
+    
+  end
+
+
+  def cousin_relationship(generation_counts)
+    number_of_times = ["once", "twice"]
+    removal = generation_counts.max - generation_counts.min
+    root_relationship = "#{(generation_counts.min - 1).ordinalize} cousin"
+    root_relationship += " #{number_of_times[removal - 1]} removed" if removal == 1 || removal == 2
+    root_relationship += " #{removal} times removed" if removal > 2
+  end
+
+
+  def relationship_by_marriage(person_1, person_2)
+
+  end
+
+
+  
 end

@@ -1,0 +1,247 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+edward_iii:
+  sex: M
+  father_id: nil
+  mother_id: nil
+  birth_date: 1312-11-12
+  death_date: 1377-06-21
+  name: Edward III
+
+philippa:
+  sex: F
+  father_id: nil
+  mother_id: nil
+  birth_date: 1328-01-24
+  death_date: 1368-01-01
+  name: Philippa of Hainult
+
+black_prince: 
+  sex: M
+  father: edward_iii
+  mother: philippa
+  birth_date: 1330-01-01
+  death_date: 1376-01-01
+  name: The Black Prince
+
+joan_of_kent:
+  sex: F
+  birth_date: 1327-01-01
+  death_date: 1385-01-01
+  name: Joan, the Fair Maid of Kent
+
+richard_ii:
+  sex: M
+  father: black_prince
+  mother: joan_of_kent
+  name: Richard II
+  
+
+lionel:
+  sex: M
+  father: edward_iii
+  mother: philippa
+  birth_date: 1338-01-01
+  death_date: 1368-01-01
+  name: Lionel, Duke of Clarence
+
+philippa_of_clarence:
+  sex: F
+  father: lionel
+  name: Philippa of Clarence
+
+roger_mortimer:
+  sex: M
+  mother: philippa_of_clarence
+  name: Roger Mortimer
+
+anne_mortimer:
+  sex: F
+  father: roger_mortimer
+  name: Anne Mortimer
+
+
+john_gaunt:
+  sex: M
+  father: edward_iii
+  mother: philippa
+  birth_date: 1340-01-01
+  death_date: 1399-01-01
+  name: John of Gaunt
+
+blanche_of_lancaster:
+  sex: F
+  birth_date: 1350-01-01
+  death_date: 1368-01-01
+  name: Blanche of Lancaster
+
+henry_iv:
+  sex: M
+  father: john_gaunt
+  mother: blanche_of_lancaster
+  birth_date: 1367-01-01
+  death_date: 1413-01-01
+  name: Henry IV
+
+mary_de_bohun:
+  sex: F
+  name: Mary de Bohun
+
+henry_v:
+  sex: M
+  father: henry_iv
+  mother: mary_de_bohun
+  birth_date: 1386-01-01
+  death_date: 1422-01-01
+  name: Henry V
+
+catherine_of_valois:
+  sex: F
+  name: Catherine of Valois
+
+henry_vi:
+  sex: M
+  father: henry_v
+  mother: catherine_of_valois
+  name: Henry VI
+
+bedford:
+  sex: M
+  father: henry_iv
+  mother: mary_de_bohun
+  name: John, Duke of Bedford
+
+humphrey:
+  sex: M
+  father: henry_iv
+  mother: mary_de_bohun
+  name: Humphrey, Duke of Gloucester
+
+owen_tudor:
+  sex: M
+  name: Owen Tudor
+
+edmund_tudor:
+  sex: M
+  father: owen_tudor
+  mother: catherine_of_valois
+  name: Edmund Tudor
+
+jasper_tudor:
+  sex: M
+  father: owen_tudor
+  mother: catherine_of_valois
+  name: Jasper Tudor
+
+katherine_swynford:
+  sex: F
+  birth_date: 1360-01-01
+  death_date: 1403-01-01
+  name: Katherine Swynford
+
+john_beaufort:
+  sex: M
+  father: john_gaunt
+  mother: katherine_swynford
+  name: John Beaufort
+
+somerset:
+  sex: M
+  father: john_beaufort
+  name: John Beaufort, Duke of Somerset
+
+margaret_beaufort:
+  sex: F
+  father: somerset
+  name: Margaret Beaufort
+
+henry_vii:
+  sex: M
+  father: edmund_tudor
+  mother: margaret_beaufort
+  name: Henry VII
+
+joan_beaufort:
+  sex: F
+  father: john_gaunt
+  mother: katherine_swynford
+  name: Joan Beaufort
+
+fake_guy:
+  sex: M
+  father: philippa_of_clarence
+  mother: henry_iv
+  name: Fake Guy
+
+ralph_neville:
+  sex: M
+  name: Ralph Neville
+
+cecily_neville:
+  sex: F
+  father: ralph_neville
+  mother: joan_beaufort
+  name: Cecily Neville
+
+warwick:
+  sex: M
+  father: ralph_neville
+  mother: joan_beaufort
+  name: Richard Neville, Earl of Warwick
+
+
+
+edmund_of_york:
+  sex: M
+  father: edward_iii
+  mother: philippa
+  birth_date: 1341-01-01
+  death_date: 1402-01-01
+  name: Edmund, Duke of York
+
+richard_of_cambridge:
+  sex: M
+  father: edmund_of_york
+  name: Richard, Earl of Cambridge
+
+richard_of_york:
+  sex: M
+  father: richard_of_cambridge
+  mother: anne_mortimer
+  name: Richard, Duke of York
+
+edward_iv:
+  sex: M
+  father: richard_of_york
+  mother: cecily_neville
+  name: Edward IV
+
+elizabeth_woodville:
+  sex: F
+  name: Elizabeth Woodville
+
+edward_v:
+  sex: M
+  father: edward_iv
+  mother: elizabeth_woodville
+  name: Edward V
+
+
+richard_iii:
+  sex: M
+  father: richard_of_york
+  mother: cecily_neville
+  name: Richard III
+
+
+
+thomas_of_woodstock:
+  sex: M
+  father: edward_iii
+  mother: philippa
+  birth_date: 1355-01-01
+  death_date: 1397-01-01
+  name: Thomas of Woodstock, Duke of Gloucester
+
+
+

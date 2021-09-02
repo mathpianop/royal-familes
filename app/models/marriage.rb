@@ -14,8 +14,14 @@ class Marriage < ApplicationRecord
   end
 
   def lifespans_overlap?
-    self.husband.death_date > self.wife.birth_date &&
-    self.wife.death_date > self.husband.birth_date
+    spouses = Person.where(id: [self.husband_id, self.wife_id])
+    # Ensure that one spouse was born before the other died, unless there is a date missing
+    if spouses.all? {|spouse| spouse.birth_date && spouse.death_date}
+      p "Hellow"
+      self.husband.death_date > self.wife.birth_date && self.wife.death_date > self.husband.birth_date
+    else
+      true
+    end
   end
 
   def spouses_are_contemporary

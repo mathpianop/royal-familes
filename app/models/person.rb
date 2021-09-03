@@ -1,9 +1,8 @@
 class Person < ApplicationRecord
-  has_parents ineligibility: :pedigree_and_dates
-  has_many :husbanded_marriages, foreign_key: :husband_id, class_name: "Marriage"
-  has_many :wifed_marriages, foreign_key: :wife_id, class_name: "Marriage"
-  has_many :wives, through: :husbanded_marriages, source: :wife
-  has_many :husbands, through: :wifed_marriages, source: :husband
+  has_parents ineligibility: :pedigree_and_dates, current_spouse: true
+  has_many :marriages
+  has_many :consorts, through: :marriages, foreign_key: :consort_id
+
   validate :birth_must_be_before_death
 
   
@@ -13,9 +12,6 @@ class Person < ApplicationRecord
     end
   end
 
-  def spouses
-    self.sex == "F" ? self.husbands : self.wives
-  end
 
 
   # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
@@ -217,11 +213,8 @@ class Person < ApplicationRecord
 
 
   def child_in_law_relationship(person_1, person_2)
-    children_in_law = Person.joins(:husbands).where(husbands: {father_id: 1}).union(Person.joins(:wives).where(wives: {father_id: 1})).select(:id)
+    daughters_in_law_ids = Person.joins(:husbands).where(husbands: {father_id: person_1.id}).select(:id)
+    sons_in_law_ids = Person.joins(:wives).where(wives: {father_id: person_1.id}).select(:id)
+    daughters_in_law_ids.include?(person_2.id) || sons_in_law_ids.include?(person_2.id)
   end
 end
-
-Person.joins(:husbands).where(husbands: {father_id: 1})
-#Odin's daughters-in-law
-Person.joins(:wives).where(wives: {father_id: 1})
-#Odin's sons-in-law

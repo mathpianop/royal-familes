@@ -10,20 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_182107) do
+ActiveRecord::Schema.define(version: 2021_09_03_232128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "marriage_relationships", force: :cascade do |t|
+    t.bigint "person_id"
+    t.bigint "marriage_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["marriage_id"], name: "index_marriage_relationships_on_marriage_id"
+    t.index ["person_id"], name: "index_marriage_relationships_on_person_id"
+  end
 
   create_table "marriages", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "husband_id", null: false
-    t.bigint "wife_id", null: false
-    t.index ["husband_id"], name: "index_marriages_on_husband_id"
-    t.index ["wife_id"], name: "index_marriages_on_wife_id"
+    t.integer "person_id"
+    t.integer "consort_id"
+    t.index ["consort_id"], name: "index_marriages_on_consort_id"
+    t.index ["person_id"], name: "index_marriages_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -41,4 +50,5 @@ ActiveRecord::Schema.define(version: 2021_08_23_182107) do
     t.index ["mother_id"], name: "index_people_on_mother_id"
   end
 
+  add_foreign_key "marriages", "people"
 end

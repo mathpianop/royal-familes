@@ -217,9 +217,11 @@ class Person < ApplicationRecord
 
 
   def child_in_law_relationship(person_1, person_2)
-    child_in_law_ids = self.class.where()
+    children_in_law = Person.joins(:husbands).where(husbands: {father_id: 1}).union(Person.joins(:wives).where(wives: {father_id: 1})).select(:id)
   end
 end
 
 Person.joins(:husbands).where(husbands: {father_id: 1})
 #Odin's daughters-in-law
+Person.joins(:wives).where(wives: {father_id: 1})
+#Odin's sons-in-law

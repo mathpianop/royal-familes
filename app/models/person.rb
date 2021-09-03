@@ -13,6 +13,10 @@ class Person < ApplicationRecord
     end
   end
 
+  def spouses
+    self.sex == "F" ? self.husbands : self.wives
+  end
+
 
   # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
   # https://github.com/masciugo/genealogy
@@ -216,3 +220,6 @@ class Person < ApplicationRecord
     child_in_law_ids = self.class.where()
   end
 end
+
+Person.joins(:husbands).where(husbands: {father_id: 1})
+#Odin's daughters-in-law

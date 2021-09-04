@@ -1,9 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  start_date: 2021-08-22
-  end_date: 2021-08-22
+tudor_beaufort:
+  person: edmund_tudor
+  consort: margaret_beaufort
 
-two:
-  start_date: 2021-08-22
-  end_date: 2021-08-22
+beaufort_tudor:
+  person: margaret_beaufort
+  consort: edmund_tudor
+
+
+elizabeth_edward:
+  person: elizabeth_woodville
+  consort: edward_iv
+
+edward_elizabeth:
+  person: edward_iv
+  consort: elizabeth_woodville

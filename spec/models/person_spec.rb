@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Person, type: :model do
-  fixtures :people
+  fixtures :people, :marriages
 
   describe "#relationship_info" do
     it "returns nil for unrelated people" do
@@ -133,6 +133,16 @@ RSpec.describe Person, type: :model do
       relationship_information = people(:edward_iii).relationship_info(people(:henry_vii))
       expect(relationship_information[:relationship]).to eq("great-great-great-grandson")
       expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Edward III")
+    end
+
+    it "works for a son-in-law" do
+      relationship_information = people(:somerset).relationship_info(people(:edmund_tudor))
+      expect(relationship_information[:relationship]).to eq("son-in-law")
+    end
+
+    it "works for a daughter-in-law" do
+      relationship_information = people(:richard_of_york).relationship_info(people(:elizabeth_woodville))
+      expect(relationship_information[:relationship]).to eq("daughter-in-law")
     end
 
   end

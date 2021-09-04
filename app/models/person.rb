@@ -223,7 +223,7 @@ class Person < ApplicationRecord
 
   def child_in_law_relationship?(person_1, person_2)
     parent_id = (person_1.sex == "F" ? "mother_id" : "father_id")
-    children_in_law_ids = Person.joins(:consorts).where(consorts: {search_column: person_1.id})
-    children_in_law_ids.include?(person_2.id)
+    children_in_law = Person.joins(:consorts).where(consorts: {parent_id => person_1.id}).select(:id)
+    children_in_law.map(&:id).include?(person_2.id)
   end
 end

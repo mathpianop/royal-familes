@@ -215,6 +215,7 @@ edward_iv:
   father: richard_of_york
   mother: cecily_neville
   name: Edward IV
+  birth_date: 1442-01-01
 
 elizabeth_woodville:
   sex: F
@@ -225,6 +226,7 @@ edward_v:
   father: edward_iv
   mother: elizabeth_woodville
   name: Edward V
+  birth_date: 1470-01-01
 
 
 richard_iii:
@@ -232,6 +234,7 @@ richard_iii:
   father: richard_of_york
   mother: cecily_neville
   name: Richard III
+  birth_date: 1452-01-01
 
 
 

@@ -207,8 +207,25 @@ RSpec.describe Person, type: :model do
       )
     end
 
-    xit "gives the ancestors in birth order" do
+    it "gives the ancestors in birth order" do
+      expect(people(:richard_of_cambridge).ancestors).to eq([
+        people(:edward_iii),
+        people(:philippa),
+        people(:edmund_of_york)
+    ])
+    end
 
+    it "puts the ancestors without a specified birth date at the end" do
+      expect(people(:richard_of_york).ancestors).to eq([
+        people(:edward_iii),
+        people(:philippa),
+        people(:lionel),
+        people(:edmund_of_york),
+        people(:richard_of_cambridge),
+        people(:philippa_of_clarence),
+        people(:anne_mortimer),
+        people(:roger_mortimer)
+    ])
     end
   end
 
@@ -270,8 +287,21 @@ RSpec.describe Person, type: :model do
       )
     end
 
-    xit "gives the descendants in birth order" do
+    it "gives the descendants in birth order" do
+      expect(people(:richard_of_york).descendants).to eq([
+        people(:edward_iv),
+        people(:richard_iii),
+        people(:edward_v)
+      ])
+    end
 
+    it "puts the descendants without specified birth_date at the end" do
+      expect(people(:richard_of_cambridge).descendants).to eq([
+        people(:edward_iv),
+        people(:richard_iii),
+        people(:edward_v),
+        people(:richard_of_york)
+      ])
     end
   end
 end

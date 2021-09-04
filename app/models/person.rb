@@ -17,6 +17,13 @@ class Person < ApplicationRecord
   # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
   # https://github.com/masciugo/genealogy
 
+  def sort_by_birth_order(people)
+    # Return the people in birth order, putting those without a given birth_date at the end
+    people.sort do |a,b|
+      a.birth_date && b.birth_date ? a.birth_date <=> b.birth_date : a.birth_date ? -1 : 1 
+    end
+  end
+
   
   def ancestors
     ancestors_store = []
@@ -37,9 +44,10 @@ class Person < ApplicationRecord
       # not including duplicates from cousins with removal
       current_gen_temp = self.class.where(id: next_gen_ids)
                                    .where.not(id: ancestor_ids)
-                                   .select(:id, :name, :father_id, :mother_id)
+                                   .select(:id, :name, :father_id, :mother_id, :birth_date)
     end
-    ancestors_store
+    
+    sort_by_birth_order(ancestors_store)
   end
 
 
@@ -59,9 +67,9 @@ class Person < ApplicationRecord
       current_gen_temp = self.class.where(father_id: current_gen_ids)
                                    .or(self.class.where(mother_id: current_gen_ids))
                                    .where.not(id: descendant_ids)
-                                   .select(:id, :name, :father_id, :mother_id)
+                                   .select(:id, :name, :father_id, :mother_id, :birth_date)
     end
-    descendants_store
+    sort_by_birth_order(descendants_store)
   end
 
   def relationship_info(person)
@@ -77,6 +85,7 @@ class Person < ApplicationRecord
   end
 
   private 
+
   def ancestry_connection(person_1, person_2)
     parent_ids_store = [[[person_1.id]], [[person_2.id]]]
     parent_ids_temp = [[person_1.id], [person_2.id]]
@@ -206,15 +215,15 @@ class Person < ApplicationRecord
 
 
   def relationship_by_marriage(person_1, person_2)
-    if child_in_law_relationship?
+    if child_in_law_relationship?(person_1, person_2)
       person_2.sex == "M" ? "son-in-law" : "daughter-in-law"
     end
   end
 
 
-  def child_in_law_relationship(person_1, person_2)
-    daughters_in_law_ids = Person.joins(:husbands).where(husbands: {father_id: person_1.id}).select(:id)
-    sons_in_law_ids = Person.joins(:wives).where(wives: {father_id: person_1.id}).select(:id)
-    daughters_in_law_ids.include?(person_2.id) || sons_in_law_ids.include?(person_2.id)
+  def child_in_law_relationship?(person_1, person_2)
+    parent_id = (person_1.sex == "F" ? "mother_id" : "father_id")
+    children_in_law_ids = Person.joins(:consorts).where(consorts: {search_column: person_1.id})
+    children_in_law_ids.include?(person_2.id)
   end
 end

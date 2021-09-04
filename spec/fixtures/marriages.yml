@@ -16,3 +16,11 @@ elizabeth_edward:
 edward_elizabeth:
   person: edward_iv
   consort: elizabeth_woodville
+
+beaufort_neville:
+  person: joan_beaufort
+  consort: ralph_neville
+
+neville_beaufort:
+  person: ralph_neville
+  consort: joan_beaufort

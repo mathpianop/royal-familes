@@ -145,6 +145,52 @@ RSpec.describe Person, type: :model do
       expect(relationship_information[:relationship]).to eq("daughter-in-law")
     end
 
+    it "works for a father-in-law" do
+      relationship_information = people(:edmund_tudor).relationship_info(people(:somerset))
+      expect(relationship_information[:relationship]).to eq("father-in-law")
+    end
+
+    it "works for a mother-in-law" do
+      relationship_information = people(:elizabeth_woodville).relationship_info(people(:cecily_neville))
+      expect(relationship_information[:relationship]).to eq("mother-in-law")
+    end
+
+    it "works for a wife" do
+      relationship_information = people(:edward_iv).relationship_info(people(:elizabeth_woodville))
+      expect(relationship_information[:relationship]).to eq("wife")
+    end
+
+    it "works for a wife" do
+      relationship_information = people(:edward_iv).relationship_info(people(:elizabeth_woodville))
+      expect(relationship_information[:relationship]).to eq("wife")
+    end
+
+    it "works for a husband" do
+      relationship_information = people(:margaret_beaufort).relationship_info(people(:edmund_tudor))
+      expect(relationship_information[:relationship]).to eq("husband")
+    end
+    
+    it "works for a brother-in-law (brother of a spouse)" do
+      relationship_information = people(:elizabeth_woodville).relationship_info(people(:richard_iii))
+      expect(relationship_information[:relationship]).to eq("brother-in-law")
+    end
+
+    it "works for a sister-in-law (sister of a spouse)" do
+      relationship_information = people(:elizabeth_woodville).relationship_info(people(:margaret_of_york))
+      expect(relationship_information[:relationship]).to eq("sister-in-law")
+    end
+
+    it "works for a brother-in-law (husband of a sibling)" do
+      relationship_information = people(:john_beaufort).relationship_info(people(:ralph_neville))
+      expect(relationship_information[:relationship]).to eq("brother-in-law")
+    end
+
+    it "works for a sister-in-law (wife of a brother)" do
+      relationship_information = people(:richard_iii).relationship_info(people(:elizabeth_woodville))
+      expect(relationship_information[:relationship]).to eq("sister-in-law")
+    end
+
+    
   end
 
   describe "#ancestors" do
@@ -248,7 +294,8 @@ RSpec.describe Person, type: :model do
       expect(people(:richard_of_york).descendants).to contain_exactly(
         people(:edward_iv),
         people(:richard_iii),
-        people(:edward_v)
+        people(:edward_v),
+        people(:margaret_of_york)
       )
     end
 
@@ -257,7 +304,8 @@ RSpec.describe Person, type: :model do
         people(:richard_of_york),
         people(:edward_iv),
         people(:richard_iii),
-        people(:edward_v)
+        people(:edward_v),
+        people(:margaret_of_york)
       )
     end
 
@@ -269,6 +317,7 @@ RSpec.describe Person, type: :model do
       expect(people(:edward_iii).descendants).to contain_exactly(
         people(:richard_of_york),
         people(:edward_iv),
+        people(:margaret_of_york),
         people(:richard_iii),
         people(:edward_v),
         people(:cecily_neville),
@@ -301,7 +350,8 @@ RSpec.describe Person, type: :model do
       expect(people(:richard_of_york).descendants).to eq([
         people(:edward_iv),
         people(:richard_iii),
-        people(:edward_v)
+        people(:edward_v),
+        people(:margaret_of_york)
       ])
     end
 
@@ -310,7 +360,8 @@ RSpec.describe Person, type: :model do
         people(:edward_iv),
         people(:richard_iii),
         people(:edward_v),
-        people(:richard_of_york)
+        people(:margaret_of_york),
+        people(:richard_of_york),
       ])
     end
   end

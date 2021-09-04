@@ -2,17 +2,13 @@ class Person < ApplicationRecord
   has_parents ineligibility: :pedigree_and_dates, current_spouse: true
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
-
   validate :birth_must_be_before_death
 
-  
   def birth_must_be_before_death
     if birth_date && death_date 
       errors.add(:base, "Birth date must be before death date") unless birth_date < death_date
     end
   end
-
-
 
   # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
   # https://github.com/masciugo/genealogy
@@ -24,7 +20,6 @@ class Person < ApplicationRecord
     end
   end
 
-  
   def ancestors
     ancestors_store = []
     ancestor_ids = []
@@ -37,9 +32,7 @@ class Person < ApplicationRecord
       # disregarding duplicates from cousins without removal
       ancestor_ids.concat(current_gen_temp.map(&:id).uniq)
       # Get the ids of the next generation up
-      next_gen_ids = current_gen_temp.map{|ancestor| [ancestor.father_id, ancestor.mother_id]}
-                                     .flatten
-                                     .compact
+      next_gen_ids = current_gen_temp.map{|ancestor| [ancestor.father_id, ancestor.mother_id]}.flatten.compact
       # Get the corresponding ancestors,
       # not including duplicates from cousins with removal
       current_gen_temp = self.class.where(id: next_gen_ids)
@@ -49,7 +42,6 @@ class Person < ApplicationRecord
     
     sort_by_birth_order(ancestors_store)
   end
-
 
   def descendants
     descendants_store = []
@@ -213,17 +205,32 @@ class Person < ApplicationRecord
     root_relationship
   end
 
-
   def relationship_by_marriage(person_1, person_2)
-    if child_in_law_relationship?(person_1, person_2)
+    if spouse_relationship?(person_1, person_2)
+      person_2.sex == "M" ? "husband" : "wife"
+    elsif child_in_law_relationship?(person_1, person_2)
       person_2.sex == "M" ? "son-in-law" : "daughter-in-law"
+    elsif child_in_law_relationship?(person_2, person_1)
+      person_2.sex == "M" ? "father-in-law" : "mother-in-law"
+    elsif sibling_in_law_relationship?(person_1, person_2)
+      person_2.sex == "M" ? "brother-in-law" : "sister-in-law"
     end
   end
 
-
   def child_in_law_relationship?(person_1, person_2)
     parent_id = (person_1.sex == "F" ? "mother_id" : "father_id")
-    children_in_law = Person.joins(:consorts).where(consorts: {parent_id => person_1.id}).select(:id)
-    children_in_law.map(&:id).include?(person_2.id)
+    children_in_law_ids = Person.joins(:consorts).where(consorts: {parent_id => person_1.id}).pluck(:id)
+    children_in_law_ids.include?(person_2.id)
+  end
+
+  def spouse_relationship?(person_1, person_2)
+    person_1.consorts.pluck(:id).include?(person_2.id)
+  end
+
+  def sibling_in_law_relationship?(person_1, person_2)
+    siblings_of_spouses = Person.joins(:consorts).where(consorts: {father_id: person_2.father_id, mother_id: person_2.mother_id})
+    spouses_of_siblings = Person.joins(:consorts).where(consorts: {father_id: person_1.father_id, mother_id: person_1.mother_id})
+    sibling_in_law_ids = siblings_of_spouses.or(spouses_of_siblings).pluck(:id)
+    sibling_in_law_ids.include?(person_1.id) || sibling_in_law_ids.include?(person_2.id)
   end
 end

@@ -210,6 +210,12 @@ richard_of_york:
   mother: anne_mortimer
   name: Richard, Duke of York
 
+margaret_of_york:
+  sex: F
+  father: richard_of_york
+  mother: cecily_neville
+  name: Margaret of York
+
 edward_iv:
   sex: M
   father: richard_of_york

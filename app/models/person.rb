@@ -3,6 +3,7 @@ class Person < ApplicationRecord
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
   validate :birth_must_be_before_death
+  validates :name, presence: true
 
   def birth_must_be_before_death
     if birth_date && death_date 

@@ -1,6 +1,8 @@
 <%= form_with model: @person do |form| %>
   <%= form.label :name, "Name" %>
   <%= form.text_field :name%>
+  <%= form.label :title, "Title" %>
+  <%= form.text_field :title %>
   <%= form.label :sex_M, "M" %>
   <%= form.radio_button :sex, "M", required: true %>
   <%= form.label :sex_F, "F" %>
@@ -9,5 +11,9 @@
   <%= form.date_field :birth_date %>
   <%= form.label :death_date, "Death Date" %>
   <%= form.date_field :death_date %>
+  <%= form.label :father_name, "Father" %>
+  <%= form.text_field :father_name, value: (@father.name if @father)%>
+  <%= form.label :mother_name, "Mother" %>
+  <%= form.text_field :mother_name, value: (@mother.name if @mother) %>
   <%= form.submit %>
 <% end %>

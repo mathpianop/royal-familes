@@ -13,17 +13,20 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to person_path(@person)
     else
-      #Something else should be done here
-      redirect_to :new_person, notice: @person.errors.full_messages
+      redirect_to :new_person, notice: "Person could not be created"
     end
   end
 
   def show
     @person = Person.find(params[:id])
+    @parents = @person.parents
   end
 
   def edit
     @person = Person.find(params[:id])
+    p @person.parents
+    @mother = @person.parents[:female]
+    @father = @person.parents[:male]
   end
 
   def update
@@ -31,8 +34,7 @@ class PeopleController < ApplicationController
     if @person.update(person_params)
       redirect_to person_path(@person)
     else
-      #Something else should be done here
-      redirect_to :edit_person, notice: @person.errors.full_messages
+      redirect_to :edit_person, notice: "Person could not be updated"
     end
   end
 
@@ -41,22 +43,27 @@ class PeopleController < ApplicationController
     if @person.destroy
       redirect_to :people
     else
-      #Something else should be done here
-      redirect_to :back, notice: "Person could not be destroyed"
+      flash[:notice] = "Person could not be destroyed"
+      redirect_back(fallback_location: root_url)
     end
   end
 
 
   private
+
+  def parent_ids
+    ["mother", "father"].reduce({}) do |parent_ids_hash, parent_name|
+      parent = Person.find_by_name(params[:person]["#{parent_name}_name"])
+      parent_ids_hash["#{parent_name}_id"] = parent.id if parent
+      parent_ids_hash
+    end
+  end
+
   def person_params
-    params.require(:person).permit(
-      :name,
-      :sex,
-      :birth_date, 
-      :death_date, 
-      :mother_name, 
-      :father_name
-    )
+    p parent_ids
+    params.require(:person)
+          .permit(:name, :sex, :title, :birth_date, :death_date)
+          .merge(parent_ids)
   end
 
 

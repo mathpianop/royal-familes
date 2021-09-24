@@ -3,6 +3,49 @@ require 'rails_helper'
 RSpec.describe Person, type: :model do
   fixtures :people, :marriages
 
+  
+  describe "#confirm_no_children" do
+    it "prevents destruction if person is a father" do
+      people(:edward_iii).destroy
+      expect(people(:edward_iii)).not_to be_destroyed
+    end
+
+    it "prevents destruction if person is a mother" do
+      
+    end
+
+    it "allows destruction if person has no children" do
+      
+    end
+  end
+  
+  
+  describe "#parents" do
+    it "returns the parents of a person under the keys 'male' and 'female'" do
+      expect(people(:edward_iv).parents).to eq({
+        female: people(:cecily_neville),
+        male: people(:richard_of_york)
+    })
+    end
+
+    it "returns a nil value for a missing parent" do
+      expect(people(:richard_of_cambridge).parents).to eq({
+        female: nil,
+        male: people(:edmund_of_york)
+    })
+    end
+
+    it "returns nil values for two missing parents" do
+      expect(people(:edward_iii).parents).to eq({male: nil, female: nil})
+    end
+  end
+
+  describe "#grandparents" do
+    it "returns the two pairs grandparents of a person under the keys 'maternal' and 'paternal'" do
+      expect(people(:edward_iv).grandparents.to)
+    end
+  end
+
   describe "#relationship_info" do
     it "returns nil for unrelated people" do
       relationship_information = people(:catherine_of_valois).relationship_info(people(:cecily_neville))
@@ -198,7 +241,7 @@ RSpec.describe Person, type: :model do
       expect(people(:black_prince).ancestors).to contain_exactly(people(:edward_iii), people(:philippa))
     end
 
-    it "returns all four grandparents if specified specified" do
+    it "returns all four grandparents if specified" do
       expect(people(:edward_iv).ancestors).to include(
         people(:cecily_neville),
         people(:richard_of_york),
@@ -277,9 +320,9 @@ RSpec.describe Person, type: :model do
         people(:philippa),
         people(:lionel),
         people(:edmund_of_york),
-        people(:richard_of_cambridge),
-        people(:philippa_of_clarence),
         people(:anne_mortimer),
+        people(:philippa_of_clarence),
+        people(:richard_of_cambridge),
         people(:roger_mortimer)
     ])
     end
@@ -356,13 +399,16 @@ RSpec.describe Person, type: :model do
     end
 
     it "puts the descendants without specified birth_date at the end" do
+      
       expect(people(:richard_of_cambridge).descendants).to eq([
         people(:edward_iv),
         people(:richard_iii),
         people(:edward_v),
         people(:margaret_of_york),
-        people(:richard_of_york),
+        people(:richard_of_york)
       ])
     end
   end
+
+
 end

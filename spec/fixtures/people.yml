@@ -2,16 +2,12 @@
 
 edward_iii:
   sex: M
-  father_id: nil
-  mother_id: nil
   birth_date: 1312-11-12
   death_date: 1377-06-21
   name: Edward III
 
 philippa:
   sex: F
-  father_id: nil
-  mother_id: nil
   birth_date: 1328-01-24
   death_date: 1368-01-01
   name: Philippa of Hainult

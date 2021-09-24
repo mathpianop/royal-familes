@@ -1,15 +1,57 @@
 class Person < ApplicationRecord
+  before_destroy :confirm_no_children
   has_parents ineligibility: :pedigree_and_dates, current_spouse: true
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
   validate :birth_must_be_before_death
   validates :name, presence: true
+  validates :name, uniqueness: { scope: :title }
+
+  def confirm_no_children
+    if self.class.where(parent_id_name => self.id).exists?
+      errors.add(:base, "You cannot delete a person with children")
+      throw :abort
+    end
+  end
+
+  def parents
+    # This overrides the parents method from the 'genealogy' gem 
+    parent_records = self.class.where(id: [self.mother_id, self.father_id])
+    {
+      female: parent_records.find{ |parent| parent.sex == "F"}, 
+      male: parent_records.find{ |parent| parent.sex == "M"}
+    }
+  end
+
+  # This method needs to be private
+  def grandparents_on_side(gparent_records, gender)
+    gparent_records.select do |gparent| 
+      gparent.id == parents[gender].father_id || 
+      gparent.id == parents[gender].mother_id
+    end
+  end
+
+  def grandparents(parents)
+    # This overrides the grandparents method from the 'genealogy' gem 
+    gparent_ids = parents.values.compact.flat_map{|par| [par.mother_id, par.father_id]}
+    gparent_records = self.class.where(id: gparent_ids)
+    maternal_gparents = grandparents_on_side(gparent_records, :female)
+    paternal_gparents = grandparents_on_side(gparent_records, :male)
+    {maternal: maternal_gparents, paternal: paternal_gparents}
+  end
+
+
 
   def birth_must_be_before_death
     if birth_date && death_date 
       errors.add(:base, "Birth date must be before death date") unless birth_date < death_date
     end
   end
+
+  def parent_id_name
+    self.sex == "F" ? :mother_id : :father_id
+  end
+
 
   # These query methods are modeled after the lowest_common_ancestors method in the genealogy gem
   # https://github.com/masciugo/genealogy
@@ -24,7 +66,7 @@ class Person < ApplicationRecord
   def ancestors
     ancestors_store = []
     ancestor_ids = []
-    current_gen_temp = self.parents.compact
+    current_gen_temp = self.parents.values.compact
     
     while current_gen_temp.length > 0
       # Add the current generation to the ancestors store
@@ -219,7 +261,7 @@ class Person < ApplicationRecord
   end
 
   def child_in_law_relationship?(person_1, person_2)
-    parent_id = (person_1.sex == "F" ? "mother_id" : "father_id")
+    parent_id = person_1.parent_id_name
     children_in_law_ids = Person.joins(:consorts).where(consorts: {parent_id => person_1.id}).pluck(:id)
     children_in_law_ids.include?(person_2.id)
   end

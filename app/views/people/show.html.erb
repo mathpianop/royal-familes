@@ -1,12 +1,10 @@
 <h1><%= @person.name %></h1>
 
-<% if @person.birth_date%>
-  <p>Born: <%= @person.birth_date %></p>  
-<% end %>
-
-<% if @person.death_date%>
-  <p>Died: <%= @person.death_date %></p>  
-<% end %>
+<%= show_data("Sex", @person.sex) %>
+<%= show_data("Birth Date", @person.birth_date)%>
+<%= show_data("Father", @parents[:male].name) if @parents[:male] %>
+<%= show_data("Mother", @parents[:female].name) if @parents[:female]%>
 
 <%= link_to "Edit", edit_person_path(@person) %>
 <%= link_to "Delete", person_path(@person), method: :delete%>
+<%= link_to "People", people_path %>

@@ -43,7 +43,7 @@ class PeopleController < ApplicationController
     if @person.destroy
       redirect_to :people
     else
-      flash[:notice] = "Person could not be destroyed"
+      flash[:notice] = @person.errors.messages[:base][0]
       redirect_back(fallback_location: root_url)
     end
   end

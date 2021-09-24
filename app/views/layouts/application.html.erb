@@ -11,9 +11,11 @@
   </head>
 
   <body>
-    <p class="flash">
-      <%= flash.notice %>
-    </p>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

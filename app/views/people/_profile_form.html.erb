@@ -11,9 +11,13 @@
   <%= form.date_field :birth_date %>
   <%= form.label :death_date, "Death Date" %>
   <%= form.date_field :death_date %>
-  <%= form.label :father_name, "Father" %>
+  <%= form.label :father_name, "Father Name" %>
   <%= form.text_field :father_name, value: (@father.name if @father)%>
-  <%= form.label :mother_name, "Mother" %>
+  <%= form.label :father_title, "Father Title" %>
+  <%= form.text_field :father_title, value: (@father.title if @father)%>
+  <%= form.label :mother_name, "Mother Name" %>
   <%= form.text_field :mother_name, value: (@mother.name if @mother) %>
+  <%= form.label :mother_title, "Mother Title" %>
+  <%= form.text_field :mother_title, value: (@mother.title if @mother) %>
   <%= form.submit %>
 <% end %>

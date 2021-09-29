@@ -1,5 +1,5 @@
 <h1><%= @person.name %></h1>
-
+<h3><%= @person.title %></h3>
 <%= show_data("Sex", @person.sex) %>
 <%= show_data("Birth Date", @person.birth_date)%>
 <%= show_data("Father", @parents[:male].name) if @parents[:male] %>

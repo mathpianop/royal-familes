@@ -53,7 +53,10 @@ class PeopleController < ApplicationController
 
   def parent_ids
     ["mother", "father"].reduce({}) do |parent_ids_hash, parent_name|
-      parent = Person.find_by_name(params[:person]["#{parent_name}_name"])
+      parent = Person.find_by(
+        name: params[:person]["#{parent_name}_name"], 
+        title: params[:person]["#{parent_name}_title"]
+      )
       parent_ids_hash["#{parent_name}_id"] = parent.id if parent
       parent_ids_hash
     end

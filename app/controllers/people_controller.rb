@@ -27,6 +27,7 @@ class PeopleController < ApplicationController
     p @person.parents
     @mother = @person.parents[:female]
     @father = @person.parents[:male]
+    @suggestions = Person.all
   end
 
   def update

@@ -2,10 +2,15 @@
   "name": "royal-families",
   "private": true,
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.4.0",
+    "@algolia/autocomplete-theme-classic": "^1.4.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.2",
+    "@tarekraafat/autocomplete.js": "^10.2.6",
+    "autocompleter": "^6.1.2",
+    "javascript-autocomplete": "^1.0.5",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"

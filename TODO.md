@@ -3,7 +3,8 @@ Finish writing grandparents tests (consider making male and female divisions)
 
 
 2. Get search parents working
-  * Change person form to include title in parent query
+  * Figure out Algolia setQuery
+  * Get AJAX up and running
 3. Add Relationship, Ancestry, Descent (JSON, part of Person#show)
 4. Figure out how to elimate lowest common ancestor for direct descendant
 5. Add house

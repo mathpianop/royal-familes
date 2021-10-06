@@ -13,28 +13,24 @@ const formatSuggestion = function(person) {
 
 const input = document.getElementById("q");
 input.addEventListener("keyup", (e) => {
-  showMatches(e.target.value)
+  showPeople(e.target.value)
 })
 
-const filterMatches = function(query, possiblePeople) {
+const filterPeople = function(query, possiblePeople) {
   const text = query.toLowerCase();
-  console.log(possiblePeople)
   return possiblePeople.filter(possiblePerson => {
-    ~possiblePerson["name"].toLowerCase().indexOf(text)
+    return ~possiblePerson["name"].toLowerCase().indexOf(text)
   })
 }
 
-const showMatches = function(query) {
-  console.log("Hello")
+const showPeople = function(query) {
   results = document.getElementById("results");
   results.innerHTML = '';
-  let list = '';
-  let terms = filterMatches(query, suggestions);
-  console.log(terms)
-  for (i=0; i<terms.length; i++) {
-    list += '<li>' + terms[i] + '</li>';
-  }
-  results.innerHTML = '<ul>' + list + '</ul>';
+  const matches = filterPeople(query, suggestions);
+  const list = matches.reduce((acc, match) => {
+    return acc + `<li>${formatSuggestion(match)}</li>`;
+  }, "")
+  results.innerHTML = `<ul>${list}</ul>`;
 }
 
 

@@ -1,0 +1,20 @@
+.results {
+  position: absolute;
+  border: 1px dotted #ccc;
+  padding: 3px;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+.results ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.results ul li {
+  padding: 5px 0;
+}
+.results .active {
+  background: #eee;
+}

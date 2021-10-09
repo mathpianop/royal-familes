@@ -49,6 +49,12 @@ class PeopleController < ApplicationController
     end
   end
 
+  def autocomplete
+    p params
+    results = AutocompleteSearchService.new(params[:query], sex: params[:sex]).call
+    render json: results
+  end
+
 
   private
 

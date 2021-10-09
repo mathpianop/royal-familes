@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
+  include PgSearch::Model
   before_destroy :confirm_no_children
   has_parents ineligibility: :pedigree_and_dates, current_spouse: true
   has_many :marriages
@@ -6,6 +7,14 @@ class Person < ApplicationRecord
   validate :birth_must_be_before_death
   validates :name, presence: true
   validates :name, uniqueness: { scope: :title }
+  pg_search_scope :search_by_name_or_title, against: [:name, :title],
+    using: {
+        tsearch: {
+          prefix: true,
+          any_word: true
+        }
+      }
+
 
   def confirm_no_children
     if self.class.where(parent_id_name => self.id).exists?

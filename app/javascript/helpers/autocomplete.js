@@ -13,7 +13,7 @@ function autocomplete(params) {
 
   const container = params.container;
   const input = createInput(params.placeholder);
-  const getMatches = params.getMatches;
+  const onInput = params.onInput;
   const formatMatch = params.formatMatch;
   const clearBtnEnabled = params.clearBtn;
   const onClear = params.onClear;
@@ -87,8 +87,7 @@ function autocomplete(params) {
     })
   }
 
-  const showMatches = function(query) {
-    matches = getMatches(query);
+  const displayMatches = function(matches) {
     //If there are no matches for the query, remove the results panel
     if (matches.length === 0) return destroyResultsPanel();
     matchNodes = createMatchNodes(matches.map(formatMatch))
@@ -173,7 +172,7 @@ function autocomplete(params) {
   });
 
   const handleInput = function(e) {
-    showMatches(e.target.value);
+    onInput(e.target.value, displayMatches);
     if (clearBtnEnabled) ensureClearBtn();
   }
 

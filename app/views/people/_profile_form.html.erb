@@ -14,7 +14,7 @@
   <%= form.label :father_name, "Father Name" %>
   <%= form.hidden_field :father_id %>
   <div id="father-search" data-suggestions="<%= @suggestions.to_json %>">
-    <input autocomplete="off" type="text" name="q" id="q" placeholder="Search for father"/>
+    
   </div>
   <%= form.label :mother_name, "Mother Name" %>
   <%= form.text_field :mother_name, value: (@mother.name if @mother) %>

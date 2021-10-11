@@ -41,8 +41,8 @@ function autocomplete(params) {
   const selectMatch = function() {
     selectedText = matchNodes[activeMatchId].innerText;
     input.value = selectedText;
+    onSelect(matches[activeMatchId]);
     input.blur();
-    onSelect({selection: matches[activeMatchId]});
     destroyResultsPanel();
   }
 
@@ -87,7 +87,9 @@ function autocomplete(params) {
     })
   }
 
-  const displayMatches = function(matches) {
+  const displayMatches = function(matchesList) {
+    //Store the externally derived matchesList in the matches variable
+    matches = matchesList
     //If there are no matches for the query, remove the results panel
     if (matches.length === 0) return destroyResultsPanel();
     matchNodes = createMatchNodes(matches.map(formatMatch))
@@ -167,6 +169,7 @@ function autocomplete(params) {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      console.log(activeMatchId);
       selectMatch();
     }
   });

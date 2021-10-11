@@ -1,13 +1,19 @@
-import autocomplete from "./helpers/autocomplete"
+import autocomplete from "./autocomplete"
 import axios from "axios";
 
+function setPersonInfo (inputElId, value) {
+  const inputEl = document.getElementById(inputElId);
+  inputEl.value = value
 
+}
 
-function searchPeople({ container, placeholder, sex }) {
+function clearPersonInfo (inputElId) {
+  const inputEl = document.getElementById(inputElId);
+  inputEl.value = "";
+}
 
-  const setPersonInfo = function(selectedPerson) {
-    
-  }
+function searchPeople({ container, placeholder, sex, onSelect, onClear }) {
+
 
   const getPeople = function(query, display) {
     axios.get("/autocomplete", { params: {
@@ -28,13 +34,13 @@ function searchPeople({ container, placeholder, sex }) {
     onInput: getPeople,
     formatMatch: formatPerson,
     placeholder: placeholder,
-    onSelect: setPersonInfo,
+    onSelect: onSelect,
     clearBtn: true,
-    onClear: () => console.log("Delete")
+    onClear: onClear
   })
 }
 
-export default searchPeople;
+export { searchPeople, setPersonInfo, clearPersonInfo };
 
 
 

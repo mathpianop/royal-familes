@@ -12,9 +12,10 @@
   <%= form.label :death_date, "Death Date" %>
   <%= form.date_field :death_date %>
   <%= form.label :father_name, "Father Name" %>
-  <%= form.hidden_field :father_id %>
   <div id="father-search"></div>
+  <%= form.hidden_field :father_id %>
   <div id="mother-search"></div>
+  <%= form.hidden_field :mother_id %>
   <%= form.submit %>
 <% end %>
 

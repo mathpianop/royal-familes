@@ -58,22 +58,9 @@ class PeopleController < ApplicationController
 
   private
 
-  def parent_ids
-    ["mother", "father"].reduce({}) do |parent_ids_hash, parent_name|
-      parent = Person.find_by(
-        name: params[:person]["#{parent_name}_name"], 
-        title: params[:person]["#{parent_name}_title"]
-      )
-      parent_ids_hash["#{parent_name}_id"] = parent.id if parent
-      parent_ids_hash
-    end
-  end
-
   def person_params
-    p parent_ids
     params.require(:person)
-          .permit(:name, :sex, :title, :birth_date, :death_date)
-          .merge(parent_ids)
+          .permit(:name, :sex, :title, :birth_date, :death_date, :father_id, :mother_id)
   end
 
 

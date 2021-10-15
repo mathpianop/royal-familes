@@ -1,7 +1,8 @@
 class Person < ApplicationRecord
   include PgSearch::Model
   before_destroy :confirm_no_children
-  has_parents ineligibility: :pedigree_and_dates, current_spouse: true
+  belongs_to :father
+  belongs_to :mother
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
   validate :birth_must_be_before_death
@@ -41,14 +42,12 @@ class Person < ApplicationRecord
   end
 
   def grandparents(parents)
-    # This overrides the grandparents method from the 'genealogy' gem 
     gparent_ids = parents.values.compact.flat_map{|par| [par.mother_id, par.father_id]}
     gparent_records = self.class.where(id: gparent_ids)
     maternal_gparents = grandparents_on_side(gparent_records, :female)
     paternal_gparents = grandparents_on_side(gparent_records, :male)
     {maternal: maternal_gparents, paternal: paternal_gparents}
   end
-
 
 
   def birth_must_be_before_death
@@ -59,6 +58,10 @@ class Person < ApplicationRecord
 
   def parent_id_name
     self.sex == "F" ? :mother_id : :father_id
+  end
+
+  def children
+    self.class.where(mother_id: self.id).or(self.class.where(father_id: self.id))
   end
 
 

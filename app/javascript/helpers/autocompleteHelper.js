@@ -1,4 +1,6 @@
-import autocomplete from "./autocomplete"
+import autocomplete from "autocomplete-select";
+//import autocomplete from "../../../../autocomplete-select";
+import "autocomplete-select/autocomplete.css"
 import axios from "axios";
 
 function setPersonInfo (inputElId, value) {
@@ -12,10 +14,11 @@ function clearPersonInfo (inputElId) {
   inputEl.value = "";
 }
 
-function searchPeople({ container, placeholder, sex, onSelect, onClear }) {
+function searchPeople({ container, placeholder, sex, onSelect, onClear, personIdField }) {
 
+  
 
-  const getPeople = function(query, display) {
+  const getPeople = (query, display) => {
     axios.get("/autocomplete", { params: {
         query: query.toLowerCase(),
         sex: sex
@@ -24,10 +27,24 @@ function searchPeople({ container, placeholder, sex, onSelect, onClear }) {
       display(response.data.people)
     })
   }
-  
-  const formatPerson = function(person) {
-    return (person["title"] ? `${person["name"]}, ${person["title"]}` : person["name"])
+
+  const formatNameAndTitle = (name, title) => {
+    return (title ? `${name}, ${title}` : name)
   }
+  
+  const formatPerson = (person) => {
+    return formatNameAndTitle(person["name"], person["title"])
+  }
+
+  let initialValue;
+  
+  if (personIdField) {
+    initialValue = formatNameAndTitle(
+      personIdField.dataset.name, 
+      personIdField.dataset.title
+    )
+  }
+
   
   autocomplete({
     container: container,
@@ -36,7 +53,8 @@ function searchPeople({ container, placeholder, sex, onSelect, onClear }) {
     placeholder: placeholder,
     onSelect: onSelect,
     clearBtn: true,
-    onClear: onClear
+    onClear: onClear,
+    initialValue: initialValue
   })
 }
 

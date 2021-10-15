@@ -13,9 +13,19 @@
   <%= form.date_field :death_date %>
   <%= form.label :father_name, "Father Name" %>
   <div id="father-search"></div>
-  <%= form.hidden_field :father_id %>
+  <%= form.hidden_field(
+    :father_id, 
+    "data-name": (@father.name if @father), 
+    "data-title": (@father.title if @father)
+    )
+  %>
   <div id="mother-search"></div>
-  <%= form.hidden_field :mother_id %>
+  <%= form.hidden_field(
+    :mother_id, 
+    "data-name": (@mother.name if @mother), 
+    "data-title": (@mother.title if @mother)
+    )
+  %>
   <%= form.submit %>
 <% end %>
 

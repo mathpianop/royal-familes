@@ -6,18 +6,20 @@ function autocomplete(params) {
     const inputEl = document.createElement("INPUT");
     inputEl.type = "text";
     inputEl.classList.add("autocomplete-input");
-    inputEl.placeholder = placeholder;
+    if (placeholder) inputEl.placeholder = placeholder;
+    if (initialValue) inputEl.value = initialValue;
     container.appendChild(inputEl);
     return inputEl
   }
 
   const container = params.container;
-  const input = createInput(params.placeholder);
   const onInput = params.onInput;
   const formatMatch = params.formatMatch;
   const clearBtnEnabled = params.clearBtn;
   const onClear = params.onClear;
   const onSelect = params.onSelect;
+  const initialValue = params.initialValue;
+  const input = createInput(params.placeholder);
 
   let selectedText = "";
   let matches = [];
@@ -82,7 +84,7 @@ function autocomplete(params) {
           selectMatch();
         }
       })
-      typeof match === "string" ? item.textContent = match : item.appendChild(match);
+      typeof match === "Node" ? item.appendChild(match) : item.textContent = match ;
       return item;
     })
   }
@@ -169,7 +171,6 @@ function autocomplete(params) {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      console.log(activeMatchId);
       selectMatch();
     }
   });
@@ -189,7 +190,8 @@ function autocomplete(params) {
         break
       case "Enter" :
       case "Backspace" :
-        removeExtrasIfEmpty() 
+        removeExtrasIfEmpty(); 
+        handleInput(e);
         break
       default:
         handleInput(e);

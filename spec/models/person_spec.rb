@@ -41,7 +41,7 @@ RSpec.describe Person, type: :model do
   end
 
   describe "#grandparents" do
-    it "returns the two pairs grandparents of a person under the keys 'maternal' and 'paternal'" do
+    xit "returns the two pairs grandparents of a person under the keys 'maternal' and 'paternal'" do
       expect(people(:edward_iv).grandparents.to)
     end
   end

@@ -7,4 +7,8 @@ module PeopleHelper
       content_tag(:p, "#{data_name}: #{data_value}") if data_value
   end
 
+  def attribute(model, attribute)
+    model.attribute if model
+  end
+
 end

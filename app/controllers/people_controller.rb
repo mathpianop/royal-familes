@@ -6,6 +6,7 @@ class PeopleController < ApplicationController
   
   def new
     @person = Person.new
+    @family = @person.family
   end
 
   def create
@@ -19,14 +20,12 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
-    @parents = @person.parents
+    @family = @person.family
   end
 
   def edit
     @person = Person.find(params[:id])
-    p @person.parents
-    @mother = @person.parents[:female]
-    @father = @person.parents[:male]
+    @family = @person.family
     @suggestions = Person.all
   end
 

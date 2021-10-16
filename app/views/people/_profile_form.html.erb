@@ -15,15 +15,15 @@
   <div id="father-search"></div>
   <%= form.hidden_field(
     :father_id, 
-    "data-name": (@father.name if @father), 
-    "data-title": (@father.title if @father)
+    "data-name": (@family[:parents][:male].name if @family[:parents][:male]), 
+    "data-title": (@family[:parents][:male].title if @family[:parents][:male])
     )
   %>
   <div id="mother-search"></div>
   <%= form.hidden_field(
     :mother_id, 
-    "data-name": (@mother.name if @mother), 
-    "data-title": (@mother.title if @mother)
+    "data-name": (@family[:parents][:female].name if @family[:parents][:female]), 
+    "data-title": (@family[:parents][:female].title if @family[:parents][:female])
     )
   %>
   <%= form.submit %>

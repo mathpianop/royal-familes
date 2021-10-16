@@ -1,8 +1,9 @@
 class AutocompleteSearchService
   def initialize(query, options = {})
-    p options
     @query = query
     @sex = options[:sex]
+    # @relationship = options[:relationship]
+    # @subject = options[:subject]
   end
 
   def call
@@ -12,8 +13,13 @@ class AutocompleteSearchService
   private
 
   def people
-    p @sex
     @sex ? root_search.where(sex: @sex).take(10) : root_search.take(10)
+  end
+
+
+  def root_search_parentable
+    #Return the root search, minus those ineligble for parenthood
+
   end
 
   def root_search

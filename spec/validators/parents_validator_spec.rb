@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Person, type: :model do
+RSpec.describe ParentsValidator, type: :validator do
   fixtures :people, :marriages
 
-  describe "ParentsValidator" do
+  describe "#validate" do
 
     it "validates father can't be oneself" do
       person = people(:edward_iii)

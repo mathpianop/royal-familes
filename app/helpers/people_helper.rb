@@ -1,14 +1,9 @@
 module PeopleHelper
   
 
-  def show_data(data_name, data_value)
-    # If test_value is supplied, display content if test_value is truthy
-    # Otherwise, display content if data_value is truthy
-      content_tag(:p, "#{data_name}: #{data_value}") if data_value
-  end
-
-  def attribute(model, attribute)
-    model.attribute if model
+  def show_attr(attr_name, subject, attribute)
+    # Display content only if subject and its attribute exist
+      content_tag(:p, "#{attr_name}: #{subject[attribute]}") if (subject && subject[attribute])
   end
 
 end

@@ -1,9 +1,9 @@
 <h1><%= @person.name %></h1>
 <h3><%= @person.title %></h3>
-<%= show_data("Sex", @person.sex) %>
-<%= show_data("Birth Date", @person.birth_date)%>
-<%= show_data("Father", @family[:parents][:male].name) if @family[:parents][:male] %>
-<%= show_data("Mother", @family[:parents][:female].name) if @family[:parents][:female]%>
+<%= show_attr("Sex", @person, :sex) %>
+<%= show_attr("Birth Date", @person, :birth_date)%>
+<%= show_attr("Father", @family[:parents][:male], :name) %>
+<%= show_attr("Mother", @family[:parents][:female], :name)%>
 
 <%= link_to "Edit", edit_person_path(@person) %>
 <%= link_to "Delete", person_path(@person), method: :delete%>

@@ -10,12 +10,26 @@ RSpec.describe Person, type: :model do
       expect(people(:edward_iii)).not_to be_destroyed
     end
 
-    xit "prevents destruction if person is a mother" do
-      
+    it "prevents destruction if person is a mother" do
+      people(:philippa).destroy
+      expect(people(:philippa)).not_to be_destroyed
     end
 
-    xit "allows destruction if person has no children" do
-      
+    it "allows destruction if person has no children" do
+      people(:edward_v).destroy
+      expect(people(:edward_v)).to be_destroyed
+    end
+  end
+
+  describe "#children" do
+    it "returns the children of the person" do
+      expect(people(:edward_iii).children).to contain_exactly(
+        people(:thomas_of_woodstock),
+        people(:john_gaunt),
+        people(:lionel),
+        people(:black_prince),
+        people(:edmund_of_york)
+      )
     end
   end
   
@@ -40,9 +54,74 @@ RSpec.describe Person, type: :model do
   end
 
   describe "#grandparents" do
-    xit "returns the two pairs grandparents of a person under the keys 'maternal' and 'paternal'" do
-      expect(people(:edward_iv).grandparents.to)
+    it "returns the two pairs grandparents of a person under the keys 'maternal' and 'paternal'" do
+      grandparents = people(:edward_iv).grandparents
+      expect(people(:edward_iv).grandparents[:maternal]).to contain_exactly(
+        people(:joan_beaufort),
+        people(:ralph_neville)
+      )
+      expect(grandparents[:paternal]).to contain_exactly(
+        people(:anne_mortimer),
+        people(:richard_of_cambridge)
+      )
     end
+
+    it "works if grandparents are missing" do
+      grandparents = people(:henry_iv).grandparents
+      expect(grandparents[:maternal]).to eq([])
+      expect(grandparents[:paternal]).to contain_exactly(
+        people(:edward_iii),
+        people(:philippa)
+      )
+    end
+
+    it "returns empty arrays as values if no parents are specified" do
+      grandparents = people(:edward_iii).grandparents
+      expect(grandparents).to eq({maternal: [], paternal: []})
+    end
+  end
+
+  describe "#grandchildren" do
+    it "returns a hash of grandchildren arrays with their parents' ids as keys" do
+      grandchildren = people(:john_gaunt).grandchildren
+      expect(grandchildren[people(:henry_iv).id]).to contain_exactly(
+        people(:henry_v), 
+        people(:bedford), 
+        people(:humphrey),
+        people(:fake_guy)
+      )
+      expect(grandchildren[people(:john_beaufort).id]).to contain_exactly(
+        people(:somerset)
+      )
+      expect(grandchildren[people(:joan_beaufort).id]).to contain_exactly(
+        people(:warwick), 
+        people(:cecily_neville)
+      )
+    end
+
+    describe "#siblings" do
+      it "returns an array with all the siblings" do
+        expect(people(:henry_v).siblings).to contain_exactly(
+          people(:bedford), 
+          people(:humphrey)
+        )
+      end
+    end
+
+    describe "#family" do
+      it "returns a hash with keys for parents, grandparents, children, grandchildren. spouses, and siblings" do
+        expect(people(:richard_of_york).family).to eq({
+          parents: people(:richard_of_york).parents,
+          grandparents: people(:richard_of_york).grandparents,
+          children: people(:richard_of_york).children,
+          grandchildren: people(:richard_of_york).grandchildren,
+          siblings: people(:richard_of_york).siblings,
+          spouses: people(:richard_of_york).consorts
+        })
+      end
+    end
+
+
   end
 
 

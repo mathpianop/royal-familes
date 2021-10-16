@@ -41,7 +41,7 @@ class Person < ApplicationRecord
     end
   end
 
-  def grandparents(parents)
+  def grandparents(parents = self.parents)
     gparent_ids = parents.values.compact.flat_map{|par| [par.mother_id, par.father_id]}
     gparent_records = self.class.where(id: gparent_ids)
     maternal_gparents = grandparents_on_side(gparent_records, :female)
@@ -60,8 +60,31 @@ class Person < ApplicationRecord
     self.sex == "F" ? :mother_id : :father_id
   end
 
-  def children
-    self.class.where(mother_id: self.id).or(self.class.where(father_id: self.id))
+  def children(ids = self.id)
+    self.class.where(mother_id: ids).or(self.class.where(father_id: ids))
+  end
+
+  def grandchildren(children = self.children)
+    children_ids = children.map(&:id)
+    grandchild_records = children(children_ids)
+    grandchild_records.group_by do |record| 
+      children_ids.find {|id| id == record.father_id || id == record.mother_id}
+    end
+  end
+  
+  def siblings
+    self.class.where(father_id: self.father_id, mother_id: self.mother_id).where.not(id: self.id)
+  end
+
+  def family
+    {
+      parents: parents,
+      grandparents: grandparents,
+      children: children,
+      grandchildren: grandchildren,
+      siblings: siblings,
+      spouses: consorts
+    }
   end
 
 

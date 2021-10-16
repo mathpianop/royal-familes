@@ -1,13 +1,14 @@
 class Person < ApplicationRecord
   include PgSearch::Model
+  include ActiveModel::Validations
   before_destroy :confirm_no_children
-  belongs_to :father
-  belongs_to :mother
+  belongs_to :father, class_name: "Person"
+  belongs_to :mother, class_name: "Person"
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
+  validates :name, presence: true, uniqueness: { scope: :title }
   validate :birth_must_be_before_death
-  validates :name, presence: true
-  validates :name, uniqueness: { scope: :title }
+  validates_with ParentsValidator
   pg_search_scope :search_by_name_or_title, against: [:name, :title],
     using: {
         tsearch: {
@@ -25,7 +26,6 @@ class Person < ApplicationRecord
   end
 
   def parents
-    # This overrides the parents method from the 'genealogy' gem 
     parent_records = self.class.where(id: [self.mother_id, self.father_id])
     {
       female: parent_records.find{ |parent| parent.sex == "F"}, 

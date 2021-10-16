@@ -10,15 +10,14 @@ RSpec.describe Person, type: :model do
       expect(people(:edward_iii)).not_to be_destroyed
     end
 
-    it "prevents destruction if person is a mother" do
+    xit "prevents destruction if person is a mother" do
       
     end
 
-    it "allows destruction if person has no children" do
+    xit "allows destruction if person has no children" do
       
     end
   end
-  
   
   describe "#parents" do
     it "returns the parents of a person under the keys 'male' and 'female'" do
@@ -45,6 +44,9 @@ RSpec.describe Person, type: :model do
       expect(people(:edward_iv).grandparents.to)
     end
   end
+
+
+  #Separate these guys out?
 
   describe "#relationship_info" do
     it "returns nil for unrelated people" do
@@ -409,6 +411,4 @@ RSpec.describe Person, type: :model do
       ])
     end
   end
-
-
 end

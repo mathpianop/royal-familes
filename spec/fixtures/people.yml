@@ -248,5 +248,11 @@ thomas_of_woodstock:
   death_date: 1397-01-01
   name: Thomas of Woodstock, Duke of Gloucester
 
+unconnected_male:
+  sex: M
+
+unconnected_female:
+  sex: F
+
 
 

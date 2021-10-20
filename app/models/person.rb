@@ -77,7 +77,8 @@ class Person < ApplicationRecord
   def siblings
 
     self.class.where(father_id: self.father_id, mother_id: self.mother_id)
-              .where.not(id: self.id)
+              .where.not(id: self.id, )
+
   end
 
   def family

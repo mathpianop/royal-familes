@@ -9,7 +9,7 @@
 <%= show_relationship_collection("Siblings", @family[:siblings]) %>
 <%= show_relationship_collection("Grandparents", @family[:grandparents].values.flatten) %>
 <%= show_relationship_collection("Spouses", @family[:spouses]) %>
-<section>
+<section id="relationship">
   <form id="relationship-form" data-id="<%= @person.id %>">
     <input type="hidden" id="relation-id">
     <div id="relation-search"></div>
@@ -17,6 +17,15 @@
   </form>
   <div id="relationship-info"></div>
 </section>
+
+<section id="ancestry">
+  <p>Ancestors: <%= @ancestors.map(&:name).join(", ") %></p>
+</section>
+
+<section id="descendants">
+  <p>Descendants: <%= @descendants.map(&:name).join(", ") %></p>
+</section>
+
 
 <%= link_to "Edit", edit_person_path(@person) %>
 <%= link_to "Delete", person_path(@person), method: :delete%>

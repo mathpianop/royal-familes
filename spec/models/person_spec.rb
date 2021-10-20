@@ -106,8 +106,9 @@ RSpec.describe Person, type: :model do
         people(:cecily_neville)
       )
     end
+  end
 
-    describe "#siblings" do
+  describe "#siblings" do
       it "returns an array with all the siblings" do
         expect(people(:henry_v).siblings).to contain_exactly(
           people(:bedford), 
@@ -132,10 +133,6 @@ RSpec.describe Person, type: :model do
         })
       end
     end
-
-
-  end
-
 
   #Separate these guys out?
 

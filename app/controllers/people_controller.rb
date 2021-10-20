@@ -21,6 +21,8 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
     @family = @person.family
+    @ancestors = @person.ancestors
+    @descendants = @person.descendants
   end
 
   def edit

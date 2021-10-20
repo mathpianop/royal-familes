@@ -1,5 +1,4 @@
 -Run Guard, fix tests
--Fix missing id problem for lowest common ancestor in relationship info
 
 
 3. Add Relationship, Ancestry, Descent (JSON, part of Person#show)

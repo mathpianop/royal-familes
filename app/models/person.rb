@@ -74,11 +74,13 @@ class Person < ApplicationRecord
     end
   end
   
+  def siblings_on_side(gender)
+    parent_id = (gender == "F" ? :mother_id : :father_id)
+    self.class.where(parent_id => self[parent_id]).where.not(parent_id => nil)
+  end
+  
   def siblings
-
-    self.class.where(father_id: self.father_id, mother_id: self.mother_id)
-              .where.not(id: self.id, )
-
+    siblings_on_side("M").or(siblings_on_side("F")).where.not(id: self.id)
   end
 
   def family

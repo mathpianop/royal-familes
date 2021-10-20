@@ -53,6 +53,11 @@ class PeopleController < ApplicationController
     render json: results
   end
 
+  def relationship
+    relationship = Person.relationship_info(params[:id], params[:relation_id])
+    render json: relationship
+  end
+
 
   private
 

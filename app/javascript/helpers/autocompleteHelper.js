@@ -6,7 +6,6 @@ import axios from "axios";
 function setPersonInfo (inputElId, value) {
   const inputEl = document.getElementById(inputElId);
   inputEl.value = value
-
 }
 
 function clearPersonInfo (inputElId) {

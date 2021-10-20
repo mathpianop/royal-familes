@@ -35,6 +35,7 @@ class Person < ApplicationRecord
 
   # This method needs to be private
   def grandparents_on_side(gparent_records, gender)
+    return [] if !parents[gender]
     gparent_records.select do |gparent| 
       gparent.id == parents[gender].father_id || 
       gparent.id == parents[gender].mother_id
@@ -44,6 +45,7 @@ class Person < ApplicationRecord
   def grandparents(parents = self.parents)
     gparent_ids = parents.values.compact.flat_map{|par| [par.mother_id, par.father_id]}
     gparent_records = self.class.where(id: gparent_ids)
+    
     maternal_gparents = grandparents_on_side(gparent_records, :female)
     paternal_gparents = grandparents_on_side(gparent_records, :male)
     {maternal: maternal_gparents, paternal: paternal_gparents}
@@ -73,7 +75,9 @@ class Person < ApplicationRecord
   end
   
   def siblings
-    self.class.where(father_id: self.father_id, mother_id: self.mother_id).where.not(id: self.id)
+
+    self.class.where(father_id: self.father_id, mother_id: self.mother_id)
+              .where.not(id: self.id)
   end
 
   def family
@@ -142,12 +146,16 @@ class Person < ApplicationRecord
     sort_by_birth_order(descendants_store)
   end
 
+  def self.relationship_info(subject_id, relation_id)
+    self.find(subject_id).relationship_info(self.find(relation_id))
+  end
+
   def relationship_info(person)
     ancestry_connection = ancestry_connection(self, person)
     if (ancestry_connection)
       return {
         relationship: blood_relationship(ancestry_connection),
-        lowest_common_ancestors: self.class.where(id: ancestry_connection[:lowest_common_ancestors]).select(:name)
+        lowest_common_ancestors: self.class.where(id: ancestry_connection[:lowest_common_ancestors]).select(:name, :id)
       }
     else
       return {relationship: relationship_by_marriage(self, person)}

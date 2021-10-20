@@ -2,9 +2,24 @@
 <h3><%= @person.title %></h3>
 <%= show_attr("Sex", @person, :sex) %>
 <%= show_attr("Birth Date", @person, :birth_date)%>
-<%= show_attr("Father", @family[:parents][:male], :name) %>
-<%= show_attr("Mother", @family[:parents][:female], :name)%>
+<%= show_attr("Father", @family[:parents][:male], :name, link: true) %>
+<%= show_attr("Mother", @family[:parents][:female], :name, link: true)%>
+<%= show_relationship_collection("Children", @family[:children]) %>
+<%= show_relationship_collection("Grandchildren", @family[:grandchildren].values.flatten) %>
+<%= show_relationship_collection("Siblings", @family[:siblings]) %>
+<%= show_relationship_collection("Grandparents", @family[:grandparents].values.flatten) %>
+<%= show_relationship_collection("Spouses", @family[:spouses]) %>
+<section>
+  <form id="relationship-form" data-id="<%= @person.id %>">
+    <input type="hidden" id="relation-id">
+    <div id="relation-search"></div>
+    <input type="submit" value="Get Relationship">
+  </form>
+  <div id="relationship-info"></div>
+</section>
 
 <%= link_to "Edit", edit_person_path(@person) %>
 <%= link_to "Delete", person_path(@person), method: :delete%>
 <%= link_to "People", people_path %>
+
+<%= javascript_pack_tag "relationship" %>

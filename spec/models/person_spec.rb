@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Person, type: :model do
   fixtures :people, :marriages
 
-  
   describe "#confirm_no_children" do
     it "prevents destruction if person is a father" do
       people(:edward_iii).destroy
@@ -79,6 +78,15 @@ RSpec.describe Person, type: :model do
       grandparents = people(:edward_iii).grandparents
       expect(grandparents).to eq({maternal: [], paternal: []})
     end
+
+    it "works if one parent is missing" do
+      grandparents = people(:richard_of_cambridge).grandparents
+      expect(grandparents[:maternal]).to eq([])
+      expect(grandparents[:paternal]).to contain_exactly(
+        people(:edward_iii),
+        people(:philippa)
+      )
+    end
   end
 
   describe "#grandchildren" do
@@ -106,6 +114,10 @@ RSpec.describe Person, type: :model do
           people(:humphrey)
         )
       end
+
+      it "returns an empty array if no siblings" do
+        expect(people(:edward_iii).siblings).to eq([])
+      end
     end
 
     describe "#family" do
@@ -128,6 +140,15 @@ RSpec.describe Person, type: :model do
   #Separate these guys out?
 
   describe "#relationship_info" do
+
+    it "returns lowest_common_ancestors with name and id" do
+      relationship_info = people(:john_gaunt).relationship_info(people(:black_prince))
+      dad = relationship_info[:lowest_common_ancestors].find do |person| 
+        person.name == "Edward III"
+      end
+    
+      expect(dad.id).to eq(people(:edward_iii).id)
+    end
     it "returns nil for unrelated people" do
       relationship_information = people(:catherine_of_valois).relationship_info(people(:cecily_neville))
       expect(relationship_information[:relationship]).to eq(nil)

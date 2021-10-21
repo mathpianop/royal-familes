@@ -65,6 +65,18 @@ RSpec.describe Person, type: :model do
       )
     end
 
+    it "returns the pairs with grandfather, then grandmother" do
+      grandparents = people(:edward_iv).grandparents
+      expect(people(:edward_iv).grandparents[:maternal]).to eq([
+        people(:ralph_neville),
+        people(:joan_beaufort)
+      ])
+      expect(grandparents[:paternal]).to eq([
+        people(:richard_of_cambridge),
+        people(:anne_mortimer)
+      ])
+    end
+
     it "works if grandparents are missing" do
       grandparents = people(:henry_iv).grandparents
       expect(grandparents[:maternal]).to eq([])

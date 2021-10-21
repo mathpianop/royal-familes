@@ -1,0 +1,22 @@
+<li>
+  <span><%= link_to @person.name, person_path(@person) %></span>
+  <% unless family[:children].empty? %>
+    <ul class="child-level">
+      <% family[:children].each do |child| %>
+        <li>
+          <span><%= link_to child.name, person_path(child) %></span>
+          <% grandchildren = family[:grandchildren][child.id] %>
+          <% if grandchildren %>
+            <% grandchildren.each do |gchild| %>
+              <ul class="grandchild-level">
+                <li>
+                  <span><%= link_to gchild.name, person_path(gchild.name) %></span>
+                </li>
+              </ul>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</li>

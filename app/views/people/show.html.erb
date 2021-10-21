@@ -27,79 +27,95 @@
 </section>
 
 
+
+
+
+
+<% @family[:children].each do |child| %>
+  <div><%= child.name %></div>
+<% end %>
+
+<h3>Full Family</h3>
+<section class="family-tree">
+  <% unless @family[:grandparents].values.flatten.empty? %>
+    <div class="ascent-tree">
+      <ul>
+      <%# Extract to Helper method %>
+        <% unless @family[:grandparents][:paternal].empty? %>
+          <li class="paternal-grandparents">
+            <span class="grandparents-node">
+              <% gparent1 = @family[:grandparents][:paternal][0] %>
+              <% gparent2 = @family[:grandparents][:paternal][1] %>
+              <%= link_to(gparent1.name, person_path(gparent1)) if gparent1 %>
+              <%= link_to(gparent2.name, person_path(gparent2)) if gparent2 %>
+            </span>
+          </li>
+        <% end %>
+        <% unless @family[:grandparents][:maternal].empty? %>
+          <li class="paternal-grandparents">
+            <span class="grandparents-node">
+              <% gparent1 = @family[:grandparents][:maternal][0] %>
+              <% gparent2 = @family[:grandparents][:maternal][1] %>
+              <%= link_to(gparent1.name, person_path(gparent1)) if gparent1 %>
+              <%= link_to(gparent2.name, person_path(gparent2)) if gparent2 %>
+            </span>
+          </li>
+        <% end %>
+      </ul> 
+    </div>
+  <% end %>
+  <div class="descent-tree">
+    <% if !@family[:parents].values.all? &:nil? %>
+      <%# Do Parents Version %>
+      <ul class="parents-level">
+        <li>
+          <span>
+            <% father = @family[:parents][:male] %>
+            <% mother = @family[:parents][:female] %>
+            <%= link_to(father.name, person_path(father)) if father %>
+            <%= link_to(mother.name, person_path(mother)) if mother %>
+          </span>
+          <% if !@family[:siblings].empty? %>
+            <ul class="subject-level">
+              <%# Render first half of siblings %>
+              <% num_of_siblings = @family[:siblings].length %>
+              <% halfway_num_of_siblings = num_of_siblings / 2 %>
+              <% (0...halfway_num_of_siblings).each do |idx| %>
+                <% sibling = @family[:siblings][idx] %>
+                <li>
+                  <span><%= link_to sibling.name, person_path(sibling) %></span>
+                </li>
+              <% end %>
+              <%= render partial: "subject_descent_tree", locals: {family: @family }%>
+              <%# Render second half of siblings %>
+              <% (halfway_num_of_siblings...num_of_siblings).each do |idx| %>
+                <% sibling = @family[:siblings][idx] %>
+                <li>
+                  <span><%= link_to sibling.name, person_path(sibling) %></span>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <%# Do Non-siblings version %>
+            <ul class="subject-level">
+              <%= render partial: "subject_descent_tree", locals: {family: @family }%>
+              </ul>
+          <% end %>
+        </li>
+      </ul>
+    <% else %>
+      <%# Do Non Parents Version %>
+      <ul class="subject-level">
+        <%= render partial: "subject_descent_tree", locals: {family: @family }%>
+      </ul>
+    <% end %>
+  </div>
+</section>
+
+
 <%= link_to "Edit", edit_person_path(@person) %>
 <%= link_to "Delete", person_path(@person), method: :delete%>
 <%= link_to "People", people_path %>
 
 <%= javascript_pack_tag "relationship" %>
-
-<h3>Full Family</h3>
-<section class="family-tree">
-  <div class="ascent-tree">
-    <ul>
-      <li class="paternal-grandparents">
-        <span class="grandparents-node">
-          <a href="#">PG</a>
-          <a href="#">PG</a>
-        </span>
-      </li>
-      <li class="maternal-grandparents">
-        <span class="grandparents-node">
-          <a href="#">MG</a>
-          <a href="#">MG</a>
-        </span>
-      </li>
-    </ul> 
-  </div>
-
-  
-
-  <div class="descent-tree">
-    <ul class="parents-level">
-      <li class="parents-tree">
-        <span>
-          <a href="#">Father</a>
-          <a href="#">Mother</a>
-        </span>
-        <ul class="subject-level">
-          <li>
-            <span>Brother</span>
-          </li>
-          <li>
-            <span>Subject</span>
-            <ul class="child-level">
-              <li>
-                <span>Child</span>
-                <ul class="grandchild-level">
-                  <li>
-                    <span>Grand Child</span>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span>Child</span>
-                <ul class="grandchild-level">
-                  <li><span>Grand Child</span></li>
-                  <li>
-                    <span>Grand Child</span>
-                  </li>
-                  <li><span>Grand Child</span></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span>Sister</span>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-</section>
-
-
-
-
-
 <%= javascript_pack_tag "familyTree" %>

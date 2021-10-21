@@ -32,3 +32,74 @@
 <%= link_to "People", people_path %>
 
 <%= javascript_pack_tag "relationship" %>
+
+<h3>Full Family</h3>
+<section class="family-tree">
+  <div class="ascent-tree">
+    <ul>
+      <li class="paternal-grandparents">
+        <span class="grandparents-node">
+          <a href="#">PG</a>
+          <a href="#">PG</a>
+        </span>
+      </li>
+      <li class="maternal-grandparents">
+        <span class="grandparents-node">
+          <a href="#">MG</a>
+          <a href="#">MG</a>
+        </span>
+      </li>
+    </ul> 
+  </div>
+
+  
+
+  <div class="descent-tree">
+    <ul class="parents-level">
+      <li class="parents-tree">
+        <span>
+          <a href="#">Father</a>
+          <a href="#">Mother</a>
+        </span>
+        <ul class="subject-level">
+          <li>
+            <span>Brother</span>
+          </li>
+          <li>
+            <span>Subject</span>
+            <ul class="child-level">
+              <li>
+                <span>Child</span>
+                <ul class="grandchild-level">
+                  <li>
+                    <span>Grand Child</span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <span>Child</span>
+                <ul class="grandchild-level">
+                  <li><span>Grand Child</span></li>
+                  <li>
+                    <span>Grand Child</span>
+                  </li>
+                  <li><span>Grand Child</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Sister</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+
+
+
+
+<%= javascript_pack_tag "familyTree" %>

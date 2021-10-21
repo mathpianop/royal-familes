@@ -1,3 +1,101 @@
 // Place all the styles related to the people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.family-tree {
+  margin: 0; padding: 0;
+  position: relative;
+  min-width: 250px;
+  max-width: 800px;
+}
+
+.descent-tree ul {
+	padding-top: 20px; position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+/* Remove padding from top level */
+
+// .family-tree ul:first-child {
+//   padding-top: 0;
+// }
+
+
+
+.descent-tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+
+}
+
+/*First we will handle the generations at or below the subject*/
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.descent-tree li::before, .descent-tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.descent-tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.descent-tree li:only-child::after, .descent-tree li:only-child::before {
+	display: none;
+}
+
+/*Remove space from the top of single children*/
+.descent-tree li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.descent-tree li:first-child::before, .descent-tree li:last-child::after{
+	border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.descent-tree li:last-child::before {
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.descent-tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.descent-tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.family-tree li span {
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 15px;
+	display: inline-block;
+	
+	border-radius: 5px;
+}
+
+/* We need to handle the generation above the subject differently*/
+

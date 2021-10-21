@@ -1,5 +1,4 @@
 const grandparentsList = document.querySelector(".ascent-tree ul")
-console.log(grandparentsList)
 
 const onlyMaternalGrandparents = function() {
   return (

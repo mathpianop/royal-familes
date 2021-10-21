@@ -10,7 +10,7 @@
             <% grandchildren.each do |gchild| %>
               <ul class="grandchild-level">
                 <li>
-                  <span><%= link_to gchild.name, person_path(gchild.name) %></span>
+                  <span><%= link_to gchild.name, person_path(gchild) %></span>
                 </li>
               </ul>
             <% end %>

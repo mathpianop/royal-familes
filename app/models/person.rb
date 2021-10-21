@@ -34,12 +34,13 @@ class Person < ApplicationRecord
   end
 
   # This method needs to be private
-  def grandparents_on_side(gparent_records, gender)
-    return [] if !parents[gender]
-    gparent_records.select do |gparent| 
-      gparent.id == parents[gender].father_id || 
-      gparent.id == parents[gender].mother_id
+  def grandparents_on_side(gparent_records, sex)
+    return [] if !parents[sex]
+    gparents_on_side = gparent_records.select do |gparent| 
+      gparent.id == parents[sex].father_id || 
+      gparent.id == parents[sex].mother_id
     end
+    gparents_on_side.sort_by{ |gparent| gparent.sex }.reverse
   end
 
   def grandparents(parents = self.parents)

@@ -1,4 +1,5 @@
 --Fix tests
+--Address relationship with self
 
 
 3. Style it up, baby!

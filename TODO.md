@@ -1,7 +1,4 @@
---Fix tests
---Address relationship with self
-
-
+--Erda Fricka sister-in0-law????
 3. Style it up, baby!
 4. Figure out how to elimate lowest common ancestor for direct descendant
 5. Add house

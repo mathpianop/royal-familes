@@ -57,6 +57,14 @@ const buildAncestorsEl = function(ancestors) {
   return ancestorsEl
 }
 
+const formatRelationshipInfo = function(relationshipInfo) {
+  if (relationshipInfo["relationship"]) {
+    return `Relationship: ${capitalize(relationshipInfo["relationship"])}`
+  } else {
+    return "There is no blood relationship or simple in-law relationship between these two people"
+  } 
+}
+
 
 const displayRelationshipInfo = function(relationshipInfo) {
   const relationshipInfoEl = document.getElementById("relationship-info");
@@ -64,7 +72,7 @@ const displayRelationshipInfo = function(relationshipInfo) {
   relationshipInfoEl.textContent = "";
   //Attach the relationship statement (e.g., Relationship: Son)
   const relationshipEl = document.createElement("P")
-  relationshipEl.innerText = `Relationship: ${capitalize(relationshipInfo["relationship"])}`
+  relationshipEl.innerText = formatRelationshipInfo(relationshipInfo)
   relationshipInfoEl.appendChild(relationshipEl)
   //If applicable, attach lowest common ancestor statement
   if (relationshipInfo["lowest_common_ancestors"]) {

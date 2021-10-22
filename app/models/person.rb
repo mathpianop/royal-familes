@@ -190,6 +190,9 @@ class Person < ApplicationRecord
       possible_lowest_common_ancestors = parent_ids_store.map(&:flatten).reduce(:&)
       if possible_lowest_common_ancestors.length > 0
         return {
+          # Striated ancestors ids is a 3-D array. Each 1st-level array corresponds to each person.
+          # Each 2nd-level array represents a generation, 
+          # containing two 3rd-level arrays for the ancestors of each parent at that generation level.
           striated_ancestor_ids: parent_ids_store, 
           lowest_common_ancestors: possible_lowest_common_ancestors,
           sex: person_2.sex
@@ -208,6 +211,7 @@ class Person < ApplicationRecord
 
   def blood_relationship(ancestry_connection)
     counts = generation_counts(ancestry_connection)
+    return "Self" if counts[0] == 0 && counts[1] == 0
     if counts.min == 0
       direct_relationship(counts, ancestry_connection)
     elsif counts.min > 0
@@ -318,8 +322,14 @@ class Person < ApplicationRecord
   end
 
   def sibling_in_law_relationship?(person_1, person_2)
-    siblings_of_spouses = Person.joins(:consorts).where(consorts: {father_id: person_2.father_id, mother_id: person_2.mother_id})
-    spouses_of_siblings = Person.joins(:consorts).where(consorts: {father_id: person_1.father_id, mother_id: person_1.mother_id})
+    siblings_of_spouses = Person.joins(:consorts)
+                                .where(consorts: {father_id: person_2.father_id, mother_id: person_2.mother_id})
+                                .where.not(consorts: {father_id: nil, mother_id: nil})
+    spouses_of_siblings = Person.joins(:consorts)
+                                .where(consorts: {father_id: person_1.father_id, mother_id: person_1.mother_id})\
+                                .where.not(consorts: {father_id: nil, mother_id: nil})
+    p siblings_of_spouses.map(&:name)
+    p spouses_of_siblings.map(&:name)
     sibling_in_law_ids = siblings_of_spouses.or(spouses_of_siblings).pluck(:id)
     sibling_in_law_ids.include?(person_1.id) || sibling_in_law_ids.include?(person_2.id)
   end

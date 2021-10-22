@@ -150,6 +150,11 @@ RSpec.describe Person, type: :model do
 
   describe "#relationship_info" do
 
+    it "works for relationship with self" do
+      relationship_info = people(:edward_iii).relationship_info(people(:edward_iii))
+      expect(relationship_info[:relationship]).to eq("Self")
+    end
+
     it "returns lowest_common_ancestors with name and id" do
       relationship_info = people(:john_gaunt).relationship_info(people(:black_prince))
       dad = relationship_info[:lowest_common_ancestors].find do |person| 
@@ -348,7 +353,7 @@ RSpec.describe Person, type: :model do
   end
 
   describe "#ancestors" do
-    it "returns parents if no >=grandparents exist" do
+    it "returns parents if no >= grandparents exist" do
       expect(people(:black_prince).ancestors).to contain_exactly(people(:edward_iii), people(:philippa))
     end
 

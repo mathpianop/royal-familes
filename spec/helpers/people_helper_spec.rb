@@ -11,5 +11,17 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe PeopleHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  fixtures :people, :marriages
+
+  describe "#subject_level_people" do
+    it "returns an array sorted by birth date" do
+      expect(subject_level_people(people(:john_gaunt), people(:john_gaunt).siblings)).to eq([
+        people(:black_prince),
+        people(:lionel),
+        people(:john_gaunt),
+        people(:edmund_of_york),
+        people(:thomas_of_woodstock)
+      ])
+    end
+  end
 end

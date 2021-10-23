@@ -1,13 +1,6 @@
 <h1><%= @person.name %></h1>
 <h3><%= @person.title %></h3>
-<%= show_attr("Sex", @person, :sex) %>
 <%= show_attr("Birth Date", @person, :birth_date)%>
-<%= show_attr("Father", @family[:parents][:male], :name, link: true) %>
-<%= show_attr("Mother", @family[:parents][:female], :name, link: true)%>
-<%= show_relationship_collection("Children", @family[:children]) %>
-<%= show_relationship_collection("Grandchildren", @family[:grandchildren].values.flatten) %>
-<%= show_relationship_collection("Siblings", @family[:siblings]) %>
-<%= show_relationship_collection("Grandparents", @family[:grandparents].values.flatten) %>
 <%= show_relationship_collection("Spouses", @family[:spouses]) %>
 <section id="relationship">
   <form id="relationship-form" data-id="<%= @person.id %>">
@@ -28,18 +21,10 @@
 
 
 
-
-
-
-<% @family[:children].each do |child| %>
-  <div><%= child.name %></div>
-<% end %>
-
-<h3>Full Family</h3>
 <section class="family-tree">
   <% unless @family[:grandparents].values.flatten.empty? %>
     <div class="ascent-tree">
-      <ul>
+      <ul class="grandparents-level">
       <%# Extract to Helper method %>
         <% unless @family[:grandparents][:paternal].empty? %>
           <li class="paternal-grandparents">
@@ -52,7 +37,7 @@
           </li>
         <% end %>
         <% unless @family[:grandparents][:maternal].empty? %>
-          <li class="paternal-grandparents">
+          <li class="maternal-grandparents">
             <span class="grandparents-node">
               <% gparent1 = @family[:grandparents][:maternal][0] %>
               <% gparent2 = @family[:grandparents][:maternal][1] %>
@@ -69,42 +54,28 @@
       <%# Do Parents Version %>
       <ul class="parents-level">
         <li>
-          <span>
+          <span class="parents">
             <% father = @family[:parents][:male] %>
             <% mother = @family[:parents][:female] %>
             <%= link_to(father.name, person_path(father)) if father %>
             <%= link_to(mother.name, person_path(mother)) if mother %>
           </span>
-          <% if !@family[:siblings].empty? %>
-            <ul class="subject-level">
-              <%# Render first half of siblings %>
-              <% num_of_siblings = @family[:siblings].length %>
-              <% halfway_num_of_siblings = num_of_siblings / 2 %>
-              <% (0...halfway_num_of_siblings).each do |idx| %>
-                <% sibling = @family[:siblings][idx] %>
+          <ul class="subject-level">
+            <% subject_level_people(@person, @family[:siblings]).each do |person| %>
+              <% #If person is the subject, render their tree. If not, render a sibling leaf %>
+              <% if person.id == @person.id %>
+                <%= render partial: "subject_descent_tree", locals: {family: @family }%>
+              <% else %>
                 <li>
-                  <span><%= link_to sibling.name, person_path(sibling) %></span>
+                  <span><%= link_to person.name, person_path(person) %></span>
                 </li>
               <% end %>
-              <%= render partial: "subject_descent_tree", locals: {family: @family }%>
-              <%# Render second half of siblings %>
-              <% (halfway_num_of_siblings...num_of_siblings).each do |idx| %>
-                <% sibling = @family[:siblings][idx] %>
-                <li>
-                  <span><%= link_to sibling.name, person_path(sibling) %></span>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <%# Do Non-siblings version %>
-            <ul class="subject-level">
-              <%= render partial: "subject_descent_tree", locals: {family: @family }%>
-              </ul>
-          <% end %>
+            <% end %>
+          </ul>
         </li>
       </ul>
     <% else %>
-      <%# Do Non Parents Version %>
+      <%# Do non-parents Version %>
       <ul class="subject-level">
         <%= render partial: "subject_descent_tree", locals: {family: @family }%>
       </ul>

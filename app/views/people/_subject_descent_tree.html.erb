@@ -7,13 +7,13 @@
           <span><%= link_to child.name, person_path(child) %></span>
           <% grandchildren = family[:grandchildren][child.id] %>
           <% if grandchildren %>
-            <% grandchildren.each do |gchild| %>
-              <ul class="grandchild-level">
+            <ul class="grandchild-level">
+              <% grandchildren.each do |gchild| %>
                 <li>
                   <span><%= link_to gchild.name, person_path(gchild) %></span>
                 </li>
-              </ul>
-            <% end %>
+              <% end %>
+            </ul>
           <% end %>
         </li>
       <% end %>

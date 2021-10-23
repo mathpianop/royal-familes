@@ -328,8 +328,6 @@ class Person < ApplicationRecord
     spouses_of_siblings = Person.joins(:consorts)
                                 .where(consorts: {father_id: person_1.father_id, mother_id: person_1.mother_id})\
                                 .where.not(consorts: {father_id: nil, mother_id: nil})
-    p siblings_of_spouses.map(&:name)
-    p spouses_of_siblings.map(&:name)
     sibling_in_law_ids = siblings_of_spouses.or(spouses_of_siblings).pluck(:id)
     sibling_in_law_ids.include?(person_1.id) || sibling_in_law_ids.include?(person_2.id)
   end

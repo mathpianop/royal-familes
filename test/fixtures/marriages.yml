@@ -1,0 +1,26 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tudor_beaufort:
+  person: edmund_tudor
+  consort: margaret_beaufort
+
+beaufort_tudor:
+  person: margaret_beaufort
+  consort: edmund_tudor
+
+
+elizabeth_edward:
+  person: elizabeth_woodville
+  consort: edward_iv
+
+edward_elizabeth:
+  person: edward_iv
+  consort: elizabeth_woodville
+
+beaufort_neville:
+  person: joan_beaufort
+  consort: ralph_neville
+
+neville_beaufort:
+  person: ralph_neville
+  consort: joan_beaufort

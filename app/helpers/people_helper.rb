@@ -26,6 +26,10 @@ module PeopleHelper
     end
   end
 
+  def subject_level_people(subject, siblings)
+    siblings.to_a.push(subject).sort_by(&:birth_date)
+  end
+
   
 
 

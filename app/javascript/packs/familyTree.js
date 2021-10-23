@@ -1,4 +1,5 @@
-const grandparentsList = document.querySelector(".ascent-tree ul")
+const grandparentsList = document.querySelector(".grandparents-level")
+const parentsList = document.querySelector(".parents-level")
 
 const onlyMaternalGrandparents = function() {
   return (
@@ -8,6 +9,19 @@ const onlyMaternalGrandparents = function() {
   )
 }
 
+const grandparentsWithOnlyOneParent = function() {
+  console.log(parentsList.querySelectorAll(".parents a").length);
+  return (
+    grandparentsList &&
+    parentsList &&
+    parentsList.querySelectorAll(".parents a").length === 1
+  )
+}
+
 if (onlyMaternalGrandparents()) {
-  grandparentsList.style.justifyContent = "flex-end"
+  grandparentsList.classList.add("only-maternal")
+}
+
+if (grandparentsWithOnlyOneParent()) {
+  grandparentsList.classList.add("grandparents-single-parent")
 }

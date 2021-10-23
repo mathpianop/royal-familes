@@ -1,10 +1,13 @@
---Erda Fricka sister-in0-law????
+--Fix Richard of Cambridge gchildren tree
+--Fix grandparents family tree
+
+
 3. Style it up, baby!
 4. Figure out how to elimate lowest common ancestor for direct descendant
 5. Add house
 
 6. Consider adding filters to autocomplete for spouse/parent
 - Can't be self (done)
-  - Can't be descendant (done)
-  - Can't be spouse (done)
+- Can't be descendant (done)
+- Can't be spouse (done)
 

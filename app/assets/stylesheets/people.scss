@@ -3,37 +3,78 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+$connector-color: #666;
+$backdrop-color: #dfdede;
+$node-height: 70px;
+$connector-length: 20px;
+
+
+
 .family-tree {
-  margin: 0; padding: 0;
+  margin: 50px 0; padding: 0;
   position: relative;
+	display: inline-block;
   min-width: 250px;
+	
+}
+
+.family-tree-container {
+	width: 100vw;
 	overflow: scroll;
 }
 
-.descent-tree ul {
-	padding-top: 20px; position: relative;
-  display: flex;
-  justify-content: space-around;
-  padding-left: 10px;
-  padding-right: 10px;
 
+.subtrees-container {
+	position: relative;
+	left: 100px;
+	display: inline-block;
+	text-align: center;
+	padding-top: ($connector-length / 2);
 }
 
-/* Remove padding from top level */
 
-// .family-tree ul:first-child {
-//   padding-top: 0;
-// }
+.generations-backdrop {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	right: 0;
+}
+
+.generation {
+	box-sizing: border-box;
+	height: $node-height + (2 * $connector-length) + 11px;
+	padding: 5px;
+	margin: 1px;
+	background-color: $backdrop-color;
+	border-radius: 10px;
+}
+
+.ascent-tree {
+	display: inline-block;
+	max-width: 700px;
+}
+
+
+
+
+
+
+.descent-tree ul {
+	position: relative;
+  display: flex;
+  justify-content: space-around;
+	padding-top: $connector-length;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 
 
 .descent-tree li {
-	float: left; text-align: center;
+	text-align: center;
 	list-style-type: none;
 	position: relative;
-	padding: 20px 5px 0 5px;
-	max-width: 500px;
-
+	padding: $connector-length 5px 0 5px;
 }
 
 /*First we will handle the generations at or below the subject*/
@@ -43,22 +84,23 @@
 .descent-tree li::before, .descent-tree li::after{
 	content: '';
 	position: absolute; top: 0; right: 50%;
-	border-top: 1px solid #ccc;
-	width: 50%; height: 20px;
+	border-top: 1px solid $connector-color;
+	width: 50%; height: $connector-length;
 }
 .descent-tree li::after{
 	right: auto; left: 50%;
-	border-left: 1px solid #ccc;
+	border-left: 1px solid $connector-color;
 }
 
 /*We need to remove left-right connectors from elements without 
 any siblings*/
-.descent-tree li:only-child::after, .descent-tree li:only-child::before {
+.descent-tree li:only-child::before {
 	display: none;
 }
 
-/*Remove space from the top of single children*/
-.descent-tree li:only-child{ padding-top: 0;}
+
+
+
 
 /*Remove left connector from first child and 
 right connector from last child*/
@@ -67,7 +109,7 @@ right connector from last child*/
 }
 /*Adding back the vertical connector to the last nodes*/
 .descent-tree li:last-child::before {
-	border-right: 1px solid #ccc;
+	border-right: 1px solid $connector-color;
 	border-radius: 0 5px 0 0;
 	-webkit-border-radius: 0 5px 0 0;
 	-moz-border-radius: 0 5px 0 0;
@@ -78,37 +120,51 @@ right connector from last child*/
 	-moz-border-radius: 5px 0 0 0;
 }
 
+.descent-tree li:only-child::after {
+	border-radius: 0;
+	border-left: 1px solid $connector-color;
+}
+
 /*Time to add downward connectors from parents*/
 .descent-tree ul ul::before{
 	content: '';
 	position: absolute; top: 0; left: 50%;
-	border-left: 1px solid #ccc;
-	width: 0; height: 20px;
+	border-left: 1px solid $connector-color;
+	width: 0; height: $connector-length;
 }
 
 .family-tree li span {
-	border: 1px solid #ccc;
+	border: 1px solid $connector-color;
 	padding: 5px 10px;
+	height: $node-height;
 	text-decoration: none;
-	color: #666;
+	background-color: #fff;
 	font-family: arial, verdana, tahoma;
-	font-size: 15px;
-	display: inline-block;
-	
+	font-size: 16px;
+	display: inline-flex;
+	align-items: center;
 	border-radius: 5px;
 }
 
 /* We need to handle the generation above the subject differently */
 
+.descent-tree .parents, .descent-tree .orphan {
+	padding-top: 0;
+}
+
+.descent-tree .parents::after, .descent-tree .orphan::after {
+	height: 0;
+}
+
 .ascent-tree li {
   list-style: none;
-  padding: 0 5px 20px 5px;
+  padding: 0 5px $connector-length 5px;
 }
 
 
 
 .ascent-tree ul {
-	padding-top: 20px; position: relative;
+	padding-top: $connector-length; position: relative;
   display: flex;
   justify-content: space-between;
   padding-left: 10px;
@@ -123,19 +179,19 @@ right connector from last child*/
 
 .ascent-tree .paternal-grandparents::after{
 	content: '';
-	position: absolute; bottom: 0; right: 51%;
-	border-bottom: 1px solid #ccc;
-	width: 42%; height: 20px;
-  border-left: 1px solid #ccc;
+	position: absolute; bottom: 0; right: 70%;
+	border-bottom: 1px solid $connector-color;
+	width: 5%; height: $connector-length;
+  border-left: 1px solid $connector-color;
   border-bottom-left-radius: 5px;
 }
 
 .ascent-tree .maternal-grandparents::after{
 	content: '';
-	position: absolute; bottom: 0; left: 51%;
-	border-bottom: 1px solid #ccc;
-	width: 42%; height: 20px;
-  border-right: 1px solid #ccc;
+	position: absolute; bottom: 0; left: 70%;
+	border-bottom: 1px solid $connector-color;
+	width: 5%; height: $connector-length;
+  border-right: 1px solid $connector-color;
   border-bottom-right-radius: 5px;
 }
 
@@ -143,18 +199,22 @@ right connector from last child*/
 
 .ascent-tree .paternal-grandparents::before {
   content: '';
-	position: absolute; bottom: -20px; right: 51%;
+	position: absolute; bottom: -$connector-length; right: 65%;
 
-	width: 25%; height: 20px;
-  border-right: 1px solid #ccc;
+	width: 5%; height: $connector-length;
+	border-top: 1px solid $connector-color;
+  border-right: 1px solid $connector-color;
+	border-top-right-radius: 5px;
 }
 
 .ascent-tree .maternal-grandparents::before {
   content: '';
-	position: absolute; bottom: -20px; left: 51%;
+	position: absolute; bottom: -$connector-length; left: 65%;
 
-	width: 25%; height: 20px;
-  border-left: 1px solid #ccc;
+	width: 5%; height: $connector-length;
+	border-top: 1px solid $connector-color;
+  border-left: 1px solid $connector-color;
+	border-top-left-radius: 5px;
 }
 
 .ascent-tree .only-maternal {
@@ -165,13 +225,16 @@ right connector from last child*/
 	justify-content: space-around;
 }
 
-.ascent-tree .grandparents-single-parent li {
-	padding-bottom: 0;
-}
 
 .ascent-tree .grandparents-single-parent li::after {
+	display: none;
+}
+
+.ascent-tree .grandparents-single-parent li::before {
 	width: 0;
 	height: 0;
+	height: ($connector-length * 2);
+	left: 50%;
 }
 
 

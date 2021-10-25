@@ -10,12 +10,13 @@ const onlyMaternalGrandparents = function() {
 }
 
 const grandparentsWithOnlyOneParent = function() {
-  console.log(parentsList.querySelectorAll(".parents a").length);
-  return (
-    grandparentsList &&
-    parentsList &&
-    parentsList.querySelectorAll(".parents a").length === 1
-  )
+  if (parentsList) {
+    return (
+      grandparentsList &&
+      parentsList &&
+      parentsList.querySelectorAll(".parents-node a").length === 1
+    )
+  }
 }
 
 if (onlyMaternalGrandparents()) {

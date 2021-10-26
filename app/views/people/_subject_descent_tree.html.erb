@@ -1,5 +1,5 @@
 <li class="<%= "orphan" if orphan%>">
-  <span><%= link_to @person.name, person_path(@person) %></span>
+  <span class="subject-node"><%= link_to @person.name, person_path(@person) %></span>
   <% unless family[:children].empty? %>
     <ul class="child-level">
       <% family[:children].each do |child| %>

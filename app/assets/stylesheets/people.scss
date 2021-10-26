@@ -3,12 +3,36 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
 $connector-color: #666;
 $backdrop-color: #dfdede;
 $node-height: 70px;
 $connector-length: 20px;
 
-
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .family-tree {
   margin: 50px 0; padding: 0;
@@ -21,12 +45,12 @@ $connector-length: 20px;
 .family-tree-container {
 	width: 100vw;
 	overflow: scroll;
+	text-align: center;
 }
 
 
 .subtrees-container {
 	position: relative;
-	left: 100px;
 	display: inline-block;
 	text-align: center;
 	padding-top: ($connector-length / 2);
@@ -51,15 +75,17 @@ $connector-length: 20px;
 
 .generation-label {
 	position: relative;
+	display: block;
 	height: 100%;
-	// border-right: 3px solid black;
+	width: 30px;
+	line-height: 30px;
 	border-radius: 10px;
 	box-shadow: 2px 0 10px rgb(122, 121, 121);
 	writing-mode: vertical-rl;
 	background-color: hsl(194, 47%, 81%);
 	text-orientation: mixed;
 	z-index: 100;
-	
+	font-size: 15px;
 	text-align: center;
 }
 
@@ -89,6 +115,10 @@ $connector-length: 20px;
 	list-style-type: none;
 	position: relative;
 	padding: $connector-length 5px 0 5px;
+}
+
+.family-tree span a {
+	color: black;
 }
 
 /*First we will handle the generations at or below the subject*/
@@ -156,8 +186,14 @@ right connector from last child*/
 	font-family: arial, verdana, tahoma;
 	font-size: 16px;
 	display: inline-flex;
+	justify-content: center;
 	align-items: center;
 	border-radius: 5px;
+}
+
+.descent-tree .subject-node {
+	box-shadow: 0 0 20px yellow inset;
+	font-weight: 700;
 }
 
 /* We need to handle the generation above the subject differently */
@@ -169,6 +205,23 @@ right connector from last child*/
 .descent-tree .parents::after, .descent-tree .orphan::after {
 	height: 0;
 }
+
+.parents-node a, .grandparents-node a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	padding: 20px 5px
+}
+
+.parents-node a:first-child, .grandparents-node a:first-child {
+	border-right: 1px solid black;
+}
+
+.parents-node a:only-child, .grandparents-node a:only-child {
+	border: none;
+}
+
 
 .ascent-tree li {
   list-style: none;
@@ -231,9 +284,7 @@ right connector from last child*/
 	border-top-left-radius: 5px;
 }
 
-.ascent-tree .only-maternal {
-	justify-content: flex-end;
-}
+
 
 .ascent-tree .grandparents-single-parent {
 	justify-content: space-around;
@@ -250,6 +301,40 @@ right connector from last child*/
 	height: ($connector-length * 2);
 	left: 50%;
 }
+
+.ascent-tree .only-paternal {
+	display: block;
+	position: relative;
+	right: 33%;
+}
+
+.ascent-tree .only-paternal li::after {
+	right: 50%;
+}
+
+.ascent-tree .only-paternal li::before {
+	right: 45%;
+}
+
+.ascent-tree .only-maternal {
+	display: block;
+	position: relative;
+	left: 33%;
+}
+
+.ascent-tree .only-maternal li::after {
+	left: 50%;
+}
+
+.ascent-tree .only-maternal li::before {
+	left: 45%;
+}
+
+
+
+
+
+
 
 
 

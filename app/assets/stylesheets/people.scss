@@ -49,6 +49,20 @@ $connector-length: 20px;
 	border-radius: 10px;
 }
 
+.generation-label {
+	position: relative;
+	height: 100%;
+	// border-right: 3px solid black;
+	border-radius: 10px;
+	box-shadow: 2px 0 10px rgb(122, 121, 121);
+	writing-mode: vertical-rl;
+	background-color: hsl(194, 47%, 81%);
+	text-orientation: mixed;
+	z-index: 100;
+	
+	text-align: center;
+}
+
 .ascent-tree {
 	display: inline-block;
 	max-width: 700px;

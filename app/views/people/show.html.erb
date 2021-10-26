@@ -26,21 +26,33 @@
   <div class="family-tree-container">
     <div class="generations-backdrop">
       <% unless @family[:grandparents].values.flatten.empty? %>
-        <div class="generation">Grandparents</div>
+        <div class="generation">
+          <span class="generation-label">Grandparents</span>
+        </div>
       <% end %>
       <% unless @family[:parents].values.all? &:nil? %>
-        <div class="generation">Parents</div>
+        <div class="generation">
+          <span class="generation-label">Parents</span>
+        </div>
       <% end %>
       <% if @family[:siblings].empty? %>
-        <div class="generation">Subject</div>
+        <div class="generation">
+          <span class="generation-label">Subject</span>
+        </div>
       <% else %>
-        <div class="generation">Siblings</div>
+        <div class="generation">
+          <span class="generation-label">Siblings</span>
+        </div>
       <% end %>
       <% unless @family[:children].empty? %>
-        <div class="generation">Children</div>
+        <div class="generation">
+          <span class="generation-label">Children</span>
+        </div>
       <% end %>
       <% unless @family[:grandchildren].empty? %>
-        <div class="generation">Grandchildren</div>
+        <div class="generation">
+          <span class="generation-label">Grandchildren</span>
+        </div>
       <% end %>
     </div>
     <div class="subtrees-container">

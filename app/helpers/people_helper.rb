@@ -3,19 +3,21 @@ module PeopleHelper
 
 
   
-  def show_attr(attr_name, subject, attribute, options = {})
+  def show_attr(attr_string, subject, attribute, options = {})
     # Display content only if subject and its attribute exist
-     attr_tag(attr_name, subject, attribute, options) if (subject && subject[attribute])
+     attr_string if (subject && subject[attribute])
   end
 
-  def attr_tag(attr_name, subject, attribute, options = {})
-    if options[:link]
-      formatted_attribute = link_to subject[attribute], person_path(subject)
+  
+  def show_dates_years(person)
+    if !person.death_date
+      "b. #{person.birth_date.year}"
     else
-      formatted_attribute = subject[attribute]
+      "#{person.birth_date.year}-#{person.death_date.year}"
     end
-    tag.p(sanitize("#{attr_name}: #{formatted_attribute}"))
   end
+
+
 
   def show_relationship_collection(relationship, collection)
     if (!collection.empty?)

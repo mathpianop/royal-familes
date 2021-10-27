@@ -1,5 +1,4 @@
---Fix Richard of Cambridge gchildren tree
---Fix grandparents family tree
+--Make birthdate mandatory
 
 
 3. Style it up, baby!

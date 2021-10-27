@@ -163,6 +163,18 @@ RSpec.describe Person, type: :model do
     
       expect(dad.id).to eq(people(:edward_iii).id)
     end
+
+    it "does not return lowest_common_ancestors for a direct descendant" do
+      relationship_info = people(:edward_iii).relationship_info(people(:henry_iv))
+      expect(relationship_info[:lowest_common_ancestors]).to be(nil)
+    end
+
+    it "does not return lowest_common_ancestors for a direct ancestor" do
+      relationship_info = people(:henry_iv).relationship_info(people(:edward_iii))
+      expect(relationship_info[:lowest_common_ancestors]).to be(nil)
+    end
+
+
     it "returns nil for unrelated people" do
       relationship_information = people(:catherine_of_valois).relationship_info(people(:cecily_neville))
       expect(relationship_information[:relationship]).to eq(nil)
@@ -249,49 +261,41 @@ RSpec.describe Person, type: :model do
     it "works for a father" do
       relationship_information = people(:edward_iv).relationship_info(people(:richard_of_york))
       expect(relationship_information[:relationship]).to eq("father")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Richard, Duke of York")
     end
 
     it "works for a mother" do
       relationship_information = people(:edward_iv).relationship_info(people(:cecily_neville))
       expect(relationship_information[:relationship]).to eq("mother")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Cecily Neville")
     end
 
     it "works for a son" do
       relationship_information = people(:cecily_neville).relationship_info(people(:edward_iv))
       expect(relationship_information[:relationship]).to eq("son")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Cecily Neville")
     end
 
     it "works for a daughter" do
       relationship_information = people(:ralph_neville).relationship_info(people(:cecily_neville))
       expect(relationship_information[:relationship]).to eq("daughter")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Ralph Neville")
     end
 
     it "works for a grandparent" do
       relationship_information = people(:edward_iv).relationship_info(people(:ralph_neville))
       expect(relationship_information[:relationship]).to eq("grandfather")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Ralph Neville")
     end
 
     it "works for a grandchild" do
       relationship_information = people(:edward_iii).relationship_info(people(:richard_ii))
       expect(relationship_information[:relationship]).to eq("grandson")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Edward III")
     end
 
     it "works for extreme ancestor" do
       relationship_information = people(:edward_v).relationship_info(people(:joan_beaufort))
       expect(relationship_information[:relationship]).to eq("great-grandmother")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Joan Beaufort")
     end
 
     it "works for extreme descendant" do
       relationship_information = people(:edward_iii).relationship_info(people(:henry_vii))
       expect(relationship_information[:relationship]).to eq("great-great-great-grandson")
-      expect(relationship_information[:lowest_common_ancestors].map(&:name)).to contain_exactly("Edward III")
     end
 
     it "works for a son-in-law" do
@@ -429,19 +433,6 @@ RSpec.describe Person, type: :model do
         people(:edmund_of_york)
     ])
     end
-
-    it "puts the ancestors without a specified birth date at the end" do
-      expect(people(:richard_of_york).ancestors).to eq([
-        people(:edward_iii),
-        people(:philippa),
-        people(:lionel),
-        people(:edmund_of_york),
-        people(:anne_mortimer),
-        people(:philippa_of_clarence),
-        people(:richard_of_cambridge),
-        people(:roger_mortimer)
-    ])
-    end
   end
 
   describe "#descendants" do
@@ -511,17 +502,6 @@ RSpec.describe Person, type: :model do
         people(:richard_iii),
         people(:edward_v),
         people(:margaret_of_york)
-      ])
-    end
-
-    it "puts the descendants without specified birth_date at the end" do
-      
-      expect(people(:richard_of_cambridge).descendants).to eq([
-        people(:edward_iv),
-        people(:richard_iii),
-        people(:edward_v),
-        people(:margaret_of_york),
-        people(:richard_of_york)
       ])
     end
   end

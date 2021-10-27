@@ -154,15 +154,32 @@ class Person < ApplicationRecord
     self.find(subject_id).relationship_info(self.find(relation_id))
   end
 
-  def relationship_info(person)
-    ancestry_connection = ancestry_connection(self, person)
-    if (ancestry_connection)
-      return {
+
+
+  # These next two methods could also be private
+  def relationship_is_direct(ancestry_connection, person)
+    ancestry_connection[:lowest_common_ancestors].any? do |ancestor_id|
+      ancestor_id == self.id || ancestor_id == person.id
+    end
+  end
+
+  def blood_relationship_info(ancestry_connection, person)
+    if relationship_is_direct(ancestry_connection, person)
+      {relationship: blood_relationship(ancestry_connection)}
+    else
+      {
         relationship: blood_relationship(ancestry_connection),
         lowest_common_ancestors: self.class.where(id: ancestry_connection[:lowest_common_ancestors]).select(:name, :id)
       }
+    end
+  end
+
+  def relationship_info(person)
+    ancestry_connection = ancestry_connection(self, person)
+    if (ancestry_connection)
+      blood_relationship_info(ancestry_connection, person)
     else
-      return {relationship: relationship_by_marriage(self, person)}
+      {relationship: relationship_by_marriage(self, person)}
     end
   end
 

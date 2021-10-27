@@ -59,7 +59,7 @@ const buildAncestorsEl = function(ancestors) {
 
 const formatRelationshipInfo = function(relationshipInfo) {
   if (relationshipInfo["relationship"]) {
-    return `Relationship: ${capitalize(relationshipInfo["relationship"])}`
+    return `${capitalize(relationshipInfo["relationship"])} to ${relationshipForm.dataset.name}`
   } else {
     return "There is no blood relationship or simple in-law relationship between these two people"
   } 

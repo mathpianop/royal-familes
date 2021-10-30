@@ -8,57 +8,59 @@
     </div>
 
     <section id="relationship">
+      <h5 class="secondary-label">Identify a Relationship</h5>
       <form id="relationship-form" data-id="<%= @person.id %>" data-name="<%= @person.name %>">
         <input type="hidden" id="relation-id">
-        <input type="submit" value="Identify Relationship">
         <div id="relation-search"></div>
       </form>
       <div id="relationship-info"></div>
     </section>
-    <% unless @family[:spouses].empty? %>
-      <section id="spouses">
-        <h4><%= spouses_type_name(@person) %></h4>
-        <ul class="spouse-list">
-          <% @family[:spouses].each do |spouse| %>
-            <li>
-              <span><%= link_to spouse.name, person_path(spouse)%></span>
-              <% if children_clarification_needed?(spouse, @family) %>
-                <span>(Children: </span>
-                <ul>
-                  <% children_of_spouse(spouse, @family[:children]).each do |child| %>
-                    <li><%= link_to child.name, person_path(child) %></li>
+    <section id="relations">
+      <% unless @family[:spouses].empty? %>
+        <div id="spouses">
+          <h4>Spouse(s)</h4>
+          <ul class="spouse-list">
+            <% @family[:spouses].each do |spouse| %>
+              <li>
+                <span><%= link_to spouse.name, person_path(spouse)%></span>
+                <% if children_clarification_needed?(spouse, @family) %>
+                  <span>(Children: </span>
+                  <ul>
+                    <% children_of_spouse(spouse, @family[:children]).each do |child| %>
+                      <li><%= link_to child.name, person_path(child) %></li>
+                    <% end %>
+                  </ul>
                   <% end %>
-                </ul>
-                <% end %>
-            </li>
-          <% end %>
-        </ul>
-      
-      </section>
-    <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-    <section id="ancestors-descendants">
-      <% if @ancestors.length > 0 %>
-        <details id="ancestors">
-          <summary><h4>Ancestors</h4></summary>
-          <ul class="relations-list">
-            <% @ancestors.each do |ancestor| %>
-              <li><%= link_to ancestor.name, person_path(ancestor) %></li>
-            <% end %>
-          </ul>
-        </details>
-      <% end %>
-      <% if @descendants.length > 0 %>
-        <details id="ancestors">
-          <summary><h4>Descendants</h4></summary>
-          <ul class="relations-list">
-            <% @descendants.each do |descendant| %>
-              <li><%= link_to descendant.name, person_path(descendant) %></li>
-            <% end %>
-          </ul>
-        </details>
-      <% end %>
-    </section> 
+      <div id="ancestors-descendants">
+        <% if @ancestors.length > 0 %>
+          <details id="ancestors">
+            <summary><h4>Ancestors</h4></summary>
+            <ul class="relations-list">
+              <% @ancestors.each do |ancestor| %>
+                <li><%= link_to ancestor.name, person_path(ancestor) %></li>
+              <% end %>
+            </ul>
+          </details>
+        <% end %>
+        <% if @descendants.length > 0 %>
+          <details id="ancestors">
+            <summary><h4>Descendants</h4></summary>
+            <ul class="relations-list">
+              <% @descendants.each do |descendant| %>
+                <li><%= link_to descendant.name, person_path(descendant) %></li>
+              <% end %>
+            </ul>
+          </details>
+        <% end %>
+      </div> 
+    </section>
+    
   </div>
 
   <div class="family-tree-wrapper">
@@ -67,31 +69,31 @@
         <div class="generations-backdrop">
           <% unless @family[:grandparents].values.flatten.empty? %>
             <div class="generation">
-              <span class="generation-label">Grandparents</span>
+              <span class="secondary-label generation-label">Grandparents</span>
             </div>
           <% end %>
           <% unless @family[:parents].values.all? &:nil? %>
             <div class="generation">
-              <span class="generation-label">Parents</span>
+              <span class="secondary-label generation-label">Parents</span>
             </div>
           <% end %>
           <% if @family[:siblings].empty? %>
             <div class="generation">
-              <span class="generation-label">Subject</span>
+              <span class="secondary-label generation-label">Subject</span>
             </div>
           <% else %>
             <div class="generation">
-              <span class="generation-label">Siblings</span>
+              <span class="secondary-label generation-label">Siblings</span>
             </div>
           <% end %>
           <% unless @family[:children].empty? %>
             <div class="generation">
-              <span class="generation-label">Children</span>
+              <span class="secondary-label generation-label">Children</span>
             </div>
           <% end %>
           <% unless @family[:grandchildren].empty? %>
             <div class="generation">
-              <span class="generation-label">Grandchildren</span>
+              <span class="secondary-label generation-label">Grandchildren</span>
             </div>
           <% end %>
         </div>

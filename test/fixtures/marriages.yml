@@ -24,3 +24,35 @@ beaufort_neville:
 neville_beaufort:
   person: ralph_neville
   consort: joan_beaufort
+
+gaunt_lancaster:
+  person: john_gaunt
+  consort: blanche_of_lancaster
+
+lancaster_gaunt:
+  person: blanche_of_lancaster
+  consort: john_gaunt
+
+gaunt_swynford:
+  person: john_gaunt
+  consort: katherine_swynford
+
+swynford_gaunt:
+  person: katherine_swynford
+  consort: john_gaunt
+
+henry_joan:
+  person: henry_iv
+  consort: joan_of_navarre
+
+joan_henry:
+  person: joan_of_navarre
+  consort: henry_iv
+
+henry_mary:
+  person: henry_iv
+  consort: mary_de_bohun
+
+mary_henry:
+  person: mary_de_bohun
+  consort: henry_iv

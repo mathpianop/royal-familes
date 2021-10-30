@@ -24,4 +24,27 @@ RSpec.describe PeopleHelper, type: :helper do
       ])
     end
   end
+
+  describe "#children_by_multiple_spouses?" do
+    it "returns true if a person has children by more than one spouse" do
+      expect(children_by_multiple_spouses?(people(:john_gaunt).consorts, people(:john_gaunt).children)).to be(true)
+    end
+
+    it "returns false if a person has only one spouse" do
+      expect(children_by_multiple_spouses?(people(:edward_iv).consorts, people(:edward_iv).children)).to be(false)
+    end
+
+    it "returns false if a person has more than one spouse, but children by only one" do
+      expect(children_by_multiple_spouses?(people(:henry_iv).consorts, people(:henry_iv).children)).to be(false)
+    end
+  end
+
+  describe "#children_by_spouse" do
+    it "returns all the children the subject has by a given spouse" do
+      expect(children_by_spouse(people(:katherine_swynford), people(:john_gaunt).children)).to contain_exactly(
+        people(:joan_beaufort),
+        people(:john_beaufort)
+      )
+    end
+  end
 end

@@ -24,7 +24,7 @@ relationshipForm.addEventListener("submit", (e) => {
 
 searchPeople({
   container: relationSearch,
-  placeholder: "Search for a relation...",
+  placeholder: "Search people...",
   onSelect: (selection) => {
     setPersonInfo("relation-id", selection.id);
     getRelationship(relationshipForm.dataset.id);
@@ -61,7 +61,7 @@ const formatRelationshipInfo = function(relationshipInfo) {
   if (relationshipInfo["relationship"]) {
     return `${capitalize(relationshipInfo["relationship"])} to ${relationshipForm.dataset.name}`
   } else {
-    return "There is no blood relationship or simple in-law relationship between these two people"
+    return "There is no blood or simple in-law relationship with this person"
   } 
 }
 

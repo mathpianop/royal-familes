@@ -83,6 +83,11 @@ henry_iv:
   death_date: 1413-01-01
   name: Henry IV
 
+joan_of_navarre:
+  sex: F
+  name: Joan of Navarre
+  birth_date: 2020-08-23
+
 mary_de_bohun:
   sex: F
   name: Mary de Bohun

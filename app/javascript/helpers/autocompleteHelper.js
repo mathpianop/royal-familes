@@ -1,6 +1,7 @@
-import autocomplete from "autocomplete-select";
-//import autocomplete from "../../../../autocomplete-select";
-import "autocomplete-select/autocomplete.css"
+//import autocomplete from "autocomplete-select";
+import autocomplete from "../../../../autocomplete-select";
+//import "autocomplete-select/autocomplete.css";
+import "../../../../autocomplete-select/autocomplete.css"
 import axios from "axios";
 
 function setPersonInfo (inputElId, value) {
@@ -15,8 +16,7 @@ function clearPersonInfo (inputElId) {
 
 function searchPeople({ container, placeholder, sex, onSelect, onClear, personIdField }) {
 
-  
-
+  const confirmedOnClear = (onClear ? onClear : () => {});
   const getPeople = (query, display) => {
     axios.get("/autocomplete", { params: {
         query: query.toLowerCase(),
@@ -52,7 +52,7 @@ function searchPeople({ container, placeholder, sex, onSelect, onClear, personId
     placeholder: placeholder,
     onSelect: onSelect,
     clearBtn: true,
-    onClear: onClear,
+    onClear: confirmedOnClear,
     initialValue: initialValue
   })
 }

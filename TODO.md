@@ -1,5 +1,6 @@
+--Style header
+--Style Flash
 --Make birthdate mandatory
-
 
 3. Style it up, baby!
 4. Neo4j

@@ -2,34 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
+@import "mixins.scss";
 
 $primary-color: #b7daee;
 $secondary-color: rgb(226, 205, 148);
-// $default-font-family: Verdana, Geneva, Tahoma, sans-serif;
 $default-font-family: arial, verdana, tahoma, sans-serif;
 $header-height: 70px;
+$footer-height: 30px;
+$compressed-header-height: 100px;
 $content-x-padding: 10px;
+
+
+html {
+	position: relative;
+}
 
 body {
 	font-family: $default-font-family;
@@ -45,11 +31,24 @@ header {
 	padding: 0 15px;
 	height: $header-height;
 	width: 100%;
+
 	font-size: 40px;
 	font-family: Apple Chancery, Georgia, 'Times New Roman', Times, serif;
 	background-color: $primary-color;
 	border-bottom: 3px solid black;
 	z-index: 1000;
+
+	@include for-phone-only {
+		font-size: 35px;
+	}
+
+	@include for-small-phone-only {
+		flex-wrap: wrap;
+		column-gap: 20px;
+		height: $compressed-header-height;
+		justify-content: center;
+		align-content: center;
+	}
 }
 
 #person-search {
@@ -58,7 +57,12 @@ header {
 	align-items: center;
 	font-family: $default-font-family;
 	font-size: 15px;
-	width: 240px;
+	width: 235px;
+
+	@include for-large-phone-only {
+		width: 140px;
+	}
+
 }
 
 
@@ -95,9 +99,7 @@ header {
 	background: #eee;
 }
 
-#person-search .autocomplete-input {
-		width: 240px;
-}
+
 
 #person-search .autocomplete-clear {
 	display: none;
@@ -109,9 +111,14 @@ header {
 
 footer {
 	display: flex;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
 	justify-content: center;
 	align-items: center;
-	height: 30px;
+	height: $footer-height;
+	min-width: 250px;
 	background-color: #000;
 	color: #fff;
 	font-size: 12px;
@@ -134,6 +141,11 @@ h4 {
 
 .content-container {
 	padding-top: $header-height;
+	padding-bottom: $footer-height;
+	min-width: 250px;
+	@include for-small-phone-only {
+		padding-top: $compressed-header-height;
+	}
 }
 
 .secondary-label {
@@ -157,40 +169,13 @@ Top Section
 #top {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
+	column-gap: 10px;
 	padding: 0 $content-x-padding;
 	position: relative;
 	padding-bottom: 50px;
 }
 
-$background-opaque-mask-color: #ffffff60;
 
-#top:before {
-	
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	background-image: linear-gradient(to bottom, $background-opaque-mask-color 0%, $background-opaque-mask-color 85%, #fff 100%);
-	z-index: -1;
-}
-
-#top:after {
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	background-image: image-url("parchment-3.jpeg");
-	background-size: 2000px;
-	background-position: 0% 0%;
-	z-index: -2;
-	background-repeat: repeat-x;
-
-	
-}
 
 
 /* Name Banner */
@@ -200,6 +185,14 @@ $background-opaque-mask-color: #ffffff60;
 	//font-family: Georgia, 'Times New Roman', Times, serif;
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-size: 40px;
+
+	@include for-phone-only {
+		font-size: 30px;
+	}
+
+	@include for-small-phone-only {
+		grid-column: 1 / 13;
+	}
 }
 
 #name-banner h1 {
@@ -209,10 +202,18 @@ $background-opaque-mask-color: #ffffff60;
 #name-banner span {
 	display: inline-block;
 	font-size: 30px;
+
+	@include for-phone-only {
+		font-size: 25px;
+	}
 }
 
 #name-banner div {
 	font-size: 30px;
+
+	@include for-phone-only {
+		font-size: 25px;
+	}
 }
 
 /* Sidebar */
@@ -223,6 +224,17 @@ $background-opaque-mask-color: #ffffff60;
 	justify-self: end;
 	height: 250px;
 	width: 250px;
+
+	@include for-large-phone-only {
+		width: 180px;
+	}
+
+	@include for-small-phone-only {
+		grid-column: 1 / 13;
+		grid-row: auto;
+		justify-self: center;
+		width: 100%
+	}
 }
 
 #relationship {
@@ -255,11 +267,12 @@ $background-opaque-mask-color: #ffffff60;
 }
 
 
-
-
-
 #relationship-info p {
 	padding-top: 5px;
+
+	@include for-phone-only {
+		font-size: 14px;
+	}
 }
 
 #relationship-info p h6 {
@@ -278,6 +291,10 @@ $background-opaque-mask-color: #ffffff60;
 	display: flex;
 	justify-content: flex-end;
 	gap: 5px;
+
+	@include for-small-phone-only {
+		justify-content: flex-start;
+	}
 }
 
 #admin-btns a {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_190258) do
+ActiveRecord::Schema.define(version: 2021_11_03_214223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2021_09_13_190258) do
     t.date "birth_date"
     t.date "death_date"
     t.string "title"
+    t.boolean "birth_date_approximate"
+    t.boolean "death_date_approximate"
     t.index ["father_id", "mother_id"], name: "index_people_on_father_id_and_mother_id"
     t.index ["father_id"], name: "index_people_on_father_id"
     t.index ["mother_id", "father_id"], name: "index_people_on_mother_id_and_father_id"

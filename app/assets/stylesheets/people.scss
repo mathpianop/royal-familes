@@ -26,17 +26,19 @@ header {
 	box-sizing: border-box;
 	position: fixed;
 	display: flex;
+	right: 0;
+	left: 0;
 	justify-content: space-between;
+	column-gap: 10px;
 	align-items: center;
 	padding: 0 15px;
 	height: $header-height;
-	width: 100%;
-
 	font-size: 40px;
 	font-family: Apple Chancery, Georgia, 'Times New Roman', Times, serif;
+	white-space: nowrap;
 	background-color: $primary-color;
 	border-bottom: 3px solid black;
-	z-index: 1000;
+	z-index: 900;
 
 	@include for-phone-only {
 		font-size: 35px;
@@ -61,6 +63,10 @@ header {
 
 	@include for-large-phone-only {
 		width: 140px;
+	}
+
+	@include for-small-phone-only {
+		width: 200px;
 	}
 
 }
@@ -118,7 +124,6 @@ footer {
 	justify-content: center;
 	align-items: center;
 	height: $footer-height;
-	min-width: 250px;
 	background-color: #000;
 	color: #fff;
 	font-size: 12px;
@@ -142,7 +147,6 @@ h4 {
 .content-container {
 	padding-top: $header-height;
 	padding-bottom: $footer-height;
-	min-width: 250px;
 	@include for-small-phone-only {
 		padding-top: $compressed-header-height;
 	}
@@ -320,7 +324,6 @@ Top Section
 
 #spouses { 
 	margin-top: 10px;
-	min-width: 300px;
 }
 
 
@@ -712,6 +715,12 @@ right connector from last child*/
 .ascent-tree .only-maternal li::before {
 	left: 45%;
 }
+
+
+/*==========================
+Profile Form
+===========================*/
+
 
 
 

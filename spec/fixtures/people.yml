@@ -32,6 +32,7 @@ richard_ii:
   mother: joan_of_kent
   name: Richard II
   birth_date: 2020-08-23
+  birth_date_approximate: true
   
 
 lionel:
@@ -47,18 +48,21 @@ philippa_of_clarence:
   father: lionel
   name: Philippa of Clarence
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 roger_mortimer:
   sex: M
   mother: philippa_of_clarence
   name: Roger Mortimer
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 anne_mortimer:
   sex: F
   father: roger_mortimer
   name: Anne Mortimer
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 
 john_gaunt:
@@ -87,11 +91,13 @@ joan_of_navarre:
   sex: F
   name: Joan of Navarre
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 mary_de_bohun:
   sex: F
   name: Mary de Bohun
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 henry_v:
   sex: M
@@ -105,6 +111,7 @@ catherine_of_valois:
   sex: F
   name: Catherine of Valois
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 henry_vi:
   sex: M
@@ -112,6 +119,7 @@ henry_vi:
   mother: catherine_of_valois
   name: Henry VI
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 bedford:
   sex: M
@@ -119,6 +127,7 @@ bedford:
   mother: mary_de_bohun
   name: John, Duke of Bedford
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 humphrey:
   sex: M
@@ -126,11 +135,13 @@ humphrey:
   mother: mary_de_bohun
   name: Humphrey, Duke of Gloucester
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 owen_tudor:
   sex: M
   name: Owen Tudor
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 edmund_tudor:
   sex: M
@@ -138,6 +149,7 @@ edmund_tudor:
   mother: catherine_of_valois
   name: Edmund Tudor
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 jasper_tudor:
   sex: M
@@ -145,12 +157,14 @@ jasper_tudor:
   mother: catherine_of_valois
   name: Jasper Tudor
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 katherine_swynford:
   sex: F
   birth_date: 1360-01-01
   death_date: 1403-01-01
   name: Katherine Swynford
+  birth_date_approximate: true
 
 john_beaufort:
   sex: M
@@ -158,18 +172,21 @@ john_beaufort:
   mother: katherine_swynford
   name: John Beaufort
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 somerset:
   sex: M
   father: john_beaufort
   name: John Beaufort, Duke of Somerset
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 margaret_beaufort:
   sex: F
   father: somerset
   name: Margaret Beaufort
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 henry_vii:
   sex: M
@@ -177,6 +194,7 @@ henry_vii:
   mother: margaret_beaufort
   name: Henry VII
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 joan_beaufort:
   sex: F
@@ -184,18 +202,14 @@ joan_beaufort:
   mother: katherine_swynford
   name: Joan Beaufort
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
-fake_guy:
-  sex: M
-  father: philippa_of_clarence
-  mother: henry_iv
-  name: Fake Guy
-  birth_date: 2020-08-23
 
 ralph_neville:
   sex: M
   name: Ralph Neville
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 cecily_neville:
   sex: F
@@ -203,6 +217,7 @@ cecily_neville:
   mother: joan_beaufort
   name: Cecily Neville
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 warwick:
   sex: M
@@ -210,6 +225,7 @@ warwick:
   mother: joan_beaufort
   name: Richard Neville, Earl of Warwick
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 
 
@@ -227,6 +243,7 @@ richard_of_cambridge:
   father: edmund_of_york
   name: Richard, Earl of Cambridge
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 richard_of_york:
   sex: M
@@ -234,6 +251,7 @@ richard_of_york:
   mother: anne_mortimer
   name: Richard, Duke of York
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 margaret_of_york:
   sex: F
@@ -241,6 +259,7 @@ margaret_of_york:
   mother: cecily_neville
   name: Margaret of York
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 edward_iv:
   sex: M
@@ -248,11 +267,13 @@ edward_iv:
   mother: cecily_neville
   name: Edward IV
   birth_date: 1442-01-01
+  birth_date_approximate: true
 
 elizabeth_woodville:
   sex: F
   name: Elizabeth Woodville
   birth_date: 2020-08-23
+  birth_date_approximate: true
 
 edward_v:
   sex: M
@@ -260,6 +281,7 @@ edward_v:
   mother: elizabeth_woodville
   name: Edward V
   birth_date: 1470-01-01
+  birth_date_approximate: true
 
 
 richard_iii:
@@ -268,6 +290,7 @@ richard_iii:
   mother: cecily_neville
   name: Richard III
   birth_date: 1452-01-01
+  birth_date_approximate: true
 
 
 
@@ -279,11 +302,6 @@ thomas_of_woodstock:
   death_date: 1397-01-01
   name: Thomas of Woodstock, Duke of Gloucester
 
-unconnected_male:
-  sex: M
-
-unconnected_female:
-  sex: F
 
 
 

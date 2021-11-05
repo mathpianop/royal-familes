@@ -3,7 +3,9 @@ import { searchPeople, setPersonInfo, clearPersonInfo } from "../helpers/autocom
 const fatherSearch = document.getElementById("father-search");
 const fatherIdField = document.getElementById("person_father_id")
 const motherSearch = document.getElementById("mother-search");
-const motherIdField = document.getElementById("person_mother_id")
+const motherIdField = document.getElementById("person_mother_id");
+const spousesFieldset = document.getElementById("spouses-fields");
+const spouseForms = spousesFieldset.getElementsByClassName("spouse-form");
 
 
 searchPeople({
@@ -24,3 +26,16 @@ searchPeople({
   personIdField: motherIdField
 });
 
+
+Array.from(spouseForms).forEach((spouseForm) => {
+  const spouseIdField = spouseForm.querySelector('input[type=hidden]');
+  searchPeople({
+    container: spouseForm, 
+    placeholder: "Search For Spouse...", 
+    //Figure this out later
+    // sex: ???,
+    onSelect: (selection) => setPersonInfo(spouseIdField.id, selection.id),
+    onClear: () => clearPersonInfo(spouseIdField.id),
+    personIdField: spouseIdField
+  });
+})

@@ -33,10 +33,11 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
+    @person.consort_ids = consort_params.values.map {|consort| consort[:id]} if consort_params
     if @person.update(person_params)
       redirect_to person_path(@person)
     else
-      redirect_to :edit_person, notice: "Person could not be updated"
+      redirect_to :edit_person, notice: @person.errors.full_messages[0]
     end
   end
 
@@ -66,6 +67,10 @@ class PeopleController < ApplicationController
   def person_params
     params.require(:person)
           .permit(:name, :sex, :title, :birth_date, :death_date, :father_id, :mother_id)
+  end
+
+  def consort_params
+    params[:person].permit(consorts_attributes: :id)[:consorts_attributes]
   end
 
 

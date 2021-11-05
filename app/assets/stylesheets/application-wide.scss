@@ -19,6 +19,24 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+@import "mixins.scss";
+
+#flash {
+  background-color: rgb(156, 29, 12);
+  color: #fff;
+  padding: 5px;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  left: 0;
+
+	@include for-small-phone-only {
+		white-space: wrap;
+	}
+}
+
+
+
 
 
 $background-opaque-mask-color: #ffffff60;
@@ -47,6 +65,8 @@ $background-opaque-mask-color: #ffffff60;
 	background-position: 0% 0%;
 	z-index: -2;
 	background-repeat: repeat-x;
+}
 
-	
+.autocomplete-container {
+	position: relative;
 }

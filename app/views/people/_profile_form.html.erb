@@ -11,21 +11,38 @@
   <%= form.date_field :birth_date %>
   <%= form.label :death_date, "Death Date" %>
   <%= form.date_field :death_date %>
-  <%= form.label :father_name, "Father Name" %>
-  <div id="father-search"></div>
+  <%= form.label :father_id, "Father" %>
+  <div id="father-search" class="autocomplete-container"></div>
   <%= form.hidden_field(
     :father_id, 
     "data-name": (@family[:parents][:male].name if @family[:parents][:male]), 
     "data-title": (@family[:parents][:male].title if @family[:parents][:male])
     )
   %>
-  <div id="mother-search"></div>
+    <%= form.label :mother_id, "Mother" %>
+  <div id="mother-search" class="autocomplete-container"></div>
   <%= form.hidden_field(
     :mother_id, 
     "data-name": (@family[:parents][:female].name if @family[:parents][:female]), 
     "data-title": (@family[:parents][:female].title if @family[:parents][:female])
     )
   %>
+  <fieldset id="spouses-fields">
+    <ul>
+      <%= form.fields_for :consorts do |spouse_form| %>
+      <% spouse = spouse_form.object %>
+        <li class="spouse-form autocomplete-container" data-initial-id="<%= spouse.id%>">
+          <%= spouse_form.hidden_field(
+            :id, 
+            "data-name": spouse.name, 
+            "data-title": (spouse.title if spouse.title)
+            ) 
+          %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+  <button id="add-spouse">Add Spouse</button>
   <%= form.submit %>
 <% end %>
 

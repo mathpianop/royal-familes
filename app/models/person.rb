@@ -6,7 +6,9 @@ class Person < ApplicationRecord
   belongs_to :mother, class_name: "Person"
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
+  accepts_nested_attributes_for :consorts, allow_destroy: true
   validates :name, presence: true, uniqueness: { scope: :title }
+  validates :birth_date, presence: true
   validate :birth_must_be_before_death
   validates_with ParentsValidator
   pg_search_scope :search_by_name_or_title, against: [:name, :title],

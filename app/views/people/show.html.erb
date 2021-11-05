@@ -1,5 +1,5 @@
 <header>
-  <h1>Royal Families</h1>
+  <h1><a href="/people">Royal Families</a></h1>
   <form>
     <div id="person-search">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -15,10 +15,7 @@
         <%= @person.name %>, <span id="title">Fill-in Title </span>
       </h2>
       <div id="dates"><%= show_dates_years(@person)%></div>
-    </div>
-    
-
-    
+    </div> 
     <section id="relations">
       <% unless @family[:spouses].empty? %>
         <div id="spouses">

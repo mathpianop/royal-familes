@@ -30,6 +30,11 @@ RSpec.describe Person, type: :model do
         people(:edmund_of_york)
       )
     end
+
+    it "returns an empty array for an unsaved record" do
+      person = Person.new
+      expect(person.children).to eq([])
+    end
   end
   
   describe "#parents" do
@@ -504,5 +509,7 @@ RSpec.describe Person, type: :model do
         people(:margaret_of_york)
       ])
     end
+
+    
   end
 end

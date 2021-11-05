@@ -92,6 +92,14 @@ RSpec.describe ParentsValidator, type: :validator do
       person.validate
       expect(person.errors[:parent]).to_not include("can't be a descendant")
     end
+
+    it "passes when person doesn't have any descendants" do
+      person = people(:orphaned_woman)
+      person.mother = people(:elizabeth_woodville)
+      person.father = people(:edward_iv)
+      person.validate
+      expect(person.errors[:parent]).to_not include("can't be a descendant")
+    end
   
   end
 end

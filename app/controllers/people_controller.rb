@@ -14,7 +14,7 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to person_path(@person)
     else
-      redirect_to :new_person, notice: "Person could not be created"
+      redirect_to :new_person, notice: @person.errors.full_messages[0]
     end
   end
 
@@ -37,6 +37,7 @@ class PeopleController < ApplicationController
     if @person.update(person_params)
       redirect_to person_path(@person)
     else
+      p @person.errors
       redirect_to :edit_person, notice: @person.errors.full_messages[0]
     end
   end

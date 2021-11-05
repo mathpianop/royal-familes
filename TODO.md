@@ -1,6 +1,5 @@
---Style header
---Style Flash
---Make birthdate mandatory
+--Figure out "Parent must exist" message
+--Add spouse addition functionality
 
 3. Style it up, baby!
 4. Neo4j

@@ -303,5 +303,23 @@ thomas_of_woodstock:
   name: Thomas of Woodstock, Duke of Gloucester
 
 
+orphaned_woman:
+  name: "Elizabeth of York"
+  sex: F
+  birth_date: 2020-08-23
+
+
+unconnected_male:
+  sex: M
+
+unconnected_female:
+  sex: F
+
+fake_guy:
+  sex: M
+  father: philippa_of_clarence
+  mother: henry_iv
+  name: Fake Guy
+  birth_date: 2020-08-23
 
 

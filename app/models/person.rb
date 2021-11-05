@@ -2,8 +2,8 @@ class Person < ApplicationRecord
   include PgSearch::Model
   include ActiveModel::Validations
   before_destroy :confirm_no_children
-  belongs_to :father, class_name: "Person"
-  belongs_to :mother, class_name: "Person"
+  belongs_to :father, class_name: "Person", optional: true
+  belongs_to :mother, class_name: "Person", optional: true
   has_many :marriages
   has_many :consorts, through: :marriages, foreign_key: :consort_id
   accepts_nested_attributes_for :consorts, allow_destroy: true
@@ -66,7 +66,8 @@ class Person < ApplicationRecord
   end
 
   def children(ids = self.id)
-    self.class.where(mother_id: ids).or(self.class.where(father_id: ids))
+    self.class.where(mother_id: ids).where.not(mother_id: nil)
+              .or(self.class.where(father_id: ids).where.not(father_id: nil))
   end
 
   def grandchildren(children = self.children)

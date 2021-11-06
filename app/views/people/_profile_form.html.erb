@@ -1,8 +1,6 @@
 <%= form_with model: @person, id: "profile" do |form| %>
   <div id="fieldsets-container">
-    <button class="basic-btn">
-      <%= link_to "Back to #{@person.name}", person_path(@person)%>
-    </button>
+      <%= link_to "Back to #{@person.name}", person_path(@person), class: "basic-btn"%>
     <fieldset>
       <legend>Basic Info</legend>
       <div class="form-unit">

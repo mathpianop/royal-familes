@@ -1,4 +1,6 @@
-<% @people.each do |person| %>
-  <%= link_to person.name, person_path(person) %>
-<% end %>
-<%= link_to "Add a Royal", new_person_path%>
+<div id="index-container" class="hero content-container">
+  <form>
+    <%= render partial: "person_search" %>
+  </form>
+  <%= javascript_pack_tag "personSearch" %>
+</div>

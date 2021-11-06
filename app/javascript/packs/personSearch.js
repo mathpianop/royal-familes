@@ -1,6 +1,6 @@
 import { searchPeople, setPersonInfo, clearPersonInfo } from "../helpers/autocompleteHelper";
 
-const personSearch = document.getElementById("person-search");
+const personSearch = document.getElementsByClassName("person-search")[0];
 console.log(personSearch)
 
 searchPeople({

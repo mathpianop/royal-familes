@@ -21,6 +21,7 @@ html {
 
 body {
 	font-family: $default-font-family;
+	min-height: 100vh;
 }
 
 
@@ -39,9 +40,10 @@ h4 {
 }
 
 .content-container {
+	box-sizing: border-box;
+	min-height: 100vh;
 	padding-top: $header-height;
-	padding-bottom: $footer-height;
-	margin-bottom: 20px;
+	padding-bottom: $footer-height + 20px;
 	@include for-small-phone-only {
 		padding-top: $compressed-header-height;
 	}
@@ -79,7 +81,7 @@ h4 {
 	color: #fff;
 }
 
-.basic-btn a:hover {
+.basic-btn:hover {
 	text-decoration: none;
 }
 
@@ -130,7 +132,11 @@ header h1 a:hover {
 	cursor: pointer;
 }
 
-#person-search {
+header .basic-btn {
+	font-family: $default-font-family;
+}
+
+.person-search {
 	display: flex;
 	position: relative;
 	align-items: center;
@@ -148,7 +154,7 @@ header h1 a:hover {
 
 }
 
-.autocomplete-clear, #person-search svg {
+.autocomplete-clear, .person-search svg {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -161,11 +167,11 @@ header h1 a:hover {
 	cursor: pointer;
 }
 
-#person-search .autocomplete-clear {
+.person-search .autocomplete-clear {
 	display: none;
 }
 
-#person-search svg {
+.person-search svg {
 	cursor: default;
 }
 
@@ -839,8 +845,28 @@ Profile Form
 }
 
 
+/*==========================
+Index
+===========================*/
 
 
+#index-container form {
+	margin-top: 10%;
+	
+}
+
+#index-container .person-search {
+	height: 100%;
+	width: 400px;
+	margin: auto;
+}
+
+#index-container .autocomplete-input {
+	height: 50px;
+	border-radius: 25px;
+	font-size: 25px;
+	padding-left: 10px;
+}
 
 
 

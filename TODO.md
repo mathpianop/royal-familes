@@ -1,5 +1,7 @@
---Figure out "Parent must exist" message
---Add spouse addition functionality
+--Redo responsive header
+--Make index page responsive
+--Style autocomplete results better
+--Update autocomplete package
 
 3. Style it up, baby!
 4. Neo4j

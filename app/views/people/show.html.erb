@@ -9,9 +9,9 @@
   </form>
 </header>
 <div class="content-container">
-  <div id="top">
+  <div id="top" class="hero">
     <div id="name-banner">
-      <h2>
+      <h2 id="page-header">
         <%= @person.name %>, <span id="title">Fill-in Title </span>
       </h2>
       <div id="dates"><%= show_dates_years(@person)%></div>
@@ -176,9 +176,6 @@
     </section>
   </div>
 </div>
-<footer>
-  <span>Copyright 2021, Paul David Cline</span>
-</footer>
 
 <%= javascript_pack_tag "relationship" %>
 <%= javascript_pack_tag "familyTree" %>

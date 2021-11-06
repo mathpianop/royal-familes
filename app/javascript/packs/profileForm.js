@@ -32,8 +32,9 @@ searchPeople({
 
 const attachSpouseAutocomplete = function(spouseForm) {
   const spouseIdField = spouseForm.querySelector('input[type=hidden]');
+  const container = spouseForm.querySelector(".autocomplete-container")
   searchPeople({
-    container: spouseForm, 
+    container: container, 
     placeholder: "Search For Spouse...", 
     //Figure this out later
     // sex: ???,
@@ -54,9 +55,10 @@ const buildSpouseFormElement = function() {
   const spouseIndex = getSpouseForms().length;
   inputElement.name = `person[consorts_attributes][${spouseIndex}][id]`;
   inputElement.id = `person_consorts_attributes_${spouseIndex}_id`;
-  listElement.appendChild(inputElement);
   const cancelBtn = buildCancelBtn(listElement);
-  listElement.appendChild(cancelBtn);
+  const autocompleteContainer = document.createElement("DIV");
+  autocompleteContainer.classList.add("autocomplete-container");
+  listElement.append(inputElement, autocompleteContainer, cancelBtn)
   return listElement
 }
 const attachCancelBtn = function(spouseForm) {
@@ -67,8 +69,8 @@ const attachCancelBtn = function(spouseForm) {
 const buildCancelBtn = function(spouseForm) {
   const btn = document.createElement("BUTTON")
   btn.type = "button";
-  btn.textContent = "Cancel Spouse";
-  btn.class = "cancel-spouse-btn"
+  btn.textContent = "Remove";
+  btn.classList.add("cancel-spouse-btn");
   btn.addEventListener("click", () => {
     spouseForm.remove();
   });
@@ -83,8 +85,17 @@ Array.from(getSpouseForms()).forEach((spouseForm) => {
 
 const addSpouseBtn = document.getElementById("add-spouse");
 
+const wrapSpouseForm = function(spouseForm) {
+  const formUnitWrapper = document.createElement("DIV");
+  formUnitWrapper.classList.add("form-unit");
+  const formLineWrapper = document.createElement("DIV");
+  formLineWrapper.classList.add("form-line")
+  formLineWrapper.appendChild(spouseForm);
+  formUnitWrapper.appendChild(formLineWrapper);
+  return formUnitWrapper;
+}
 addSpouseBtn.addEventListener("click", () => {
   const spouseForm = buildSpouseFormElement();
-  spousesFieldset.querySelector("ul").appendChild(spouseForm);
+  spousesFieldset.querySelector("ul").appendChild(wrapSpouseForm(spouseForm));
   attachSpouseAutocomplete(spouseForm);
 })

@@ -1,49 +1,100 @@
-<%= form_with model: @person do |form| %>
-  <%= form.label :name, "Name" %>
-  <%= form.text_field :name%>
-  <%= form.label :title, "Title" %>
-  <%= form.text_field :title %>
-  <%= form.label :sex_M, "M" %>
-  <%= form.radio_button :sex, "M", required: true %>
-  <%= form.label :sex_F, "F" %>
-  <%= form.radio_button :sex, "F", required: true %>
-  <%= form.label :birth_date, "Birth Date" %>
-  <%= form.date_field :birth_date %>
-  <%= form.label :death_date, "Death Date" %>
-  <%= form.date_field :death_date %>
-  <%= form.label :father_id, "Father" %>
-  <div id="father-search" class="autocomplete-container"></div>
-  <%= form.hidden_field(
-    :father_id, 
-    "data-name": (@family[:parents][:male].name if @family[:parents][:male]), 
-    "data-title": (@family[:parents][:male].title if @family[:parents][:male])
-    )
-  %>
-    <%= form.label :mother_id, "Mother" %>
-  <div id="mother-search" class="autocomplete-container"></div>
-  <%= form.hidden_field(
-    :mother_id, 
-    "data-name": (@family[:parents][:female].name if @family[:parents][:female]), 
-    "data-title": (@family[:parents][:female].title if @family[:parents][:female])
-    )
-  %>
-  <fieldset id="spouses-fields">
-    <ul>
-      <%= form.fields_for :consorts do |spouse_form| %>
-      <% spouse = spouse_form.object %>
-        <li class="spouse-form autocomplete-container" data-initial-id="<%= spouse.id%>">
-          <%= spouse_form.hidden_field(
-            :id, 
-            "data-name": spouse.name, 
-            "data-title": (spouse.title if spouse.title)
-            ) 
+<%= form_with model: @person, id: "profile" do |form| %>
+  <div id="fieldsets-container">
+    <fieldset>
+      <legend>Basic Info</legend>
+      <div class="form-unit">
+        <%= form.label :name, "Name", class: "required" %>
+        <%= form.text_field :name%>
+      </div>
+      <div class="form-unit">
+        <%= form.label :title, "Title" %>
+        <%= form.text_field :title %>
+      </div>
+      <div class="form-unit">
+        <%= form.label :sex, "Sex", class: "required"%>
+        <div class="form-line">
+          <%= form.radio_button :sex, "M", required: true %>
+          <%= form.label :sex_M, "Male" %>
+          <%= form.radio_button :sex, "F", required: true %>
+          <%= form.label :sex_F, "Female" %>
+        </div>
+      </div>
+      <div class="form-unit">
+        <%= form.label :birth_date, "Birth Date", class: "required" %>
+        <%= form.date_field :birth_date, required: true %>
+      </div>
+      <div class="form-unit">
+        <div class="form-line">
+          <%= form.check_box :birth_date_approximate %>
+          <%= form.label :birth_date_approximate, "Birth date is approximate (circa)" %>
+        </div> 
+      </div>
+      <div class="form-unit">
+        <%= form.label :death_date, "Death Date", required: true %>
+        <%= form.date_field :death_date %>
+      </div>
+      <div class="form-unit">
+        <div class="form-line">
+          <%= form.check_box :death_date_approximate %>
+          <%= form.label :death_date_approximate, "Death date is approximate (circa)" %>
+        </div> 
+      </div>
+    </fieldset>
+
+
+    <fieldset>
+      <legend>Parents</legend>
+
+      <div class="form-unit">
+        <%= form.label :father_id, "Father" %>
+        <div id="father-search" class="autocomplete-container"></div>
+        <%= form.hidden_field(
+          :father_id, 
+          "data-name": (@family[:parents][:male].name if @family[:parents][:male]), 
+          "data-title": (@family[:parents][:male].title if @family[:parents][:male])
+          )
+        %>
+      </div>
+      <div class="form-unit">
+        <%= form.label :mother_id, "Mother" %>
+          <div id="mother-search" class="autocomplete-container"></div>
+          <%= form.hidden_field(
+            :mother_id, 
+            "data-name": (@family[:parents][:female].name if @family[:parents][:female]), 
+            "data-title": (@family[:parents][:female].title if @family[:parents][:female])
+            )
           %>
-        </li>
-      <% end %>
-    </ul>
-  </fieldset>
-  <button id="add-spouse" type="button">Add Spouse</button>
-  <%= form.submit %>
+      </div>
+    </fieldset>
+    
+    <fieldset id="spouses-fields">
+      <legend>Spouses</legend>
+      <ul>
+        <%= form.fields_for :consorts do |spouse_form| %>
+        <% spouse = spouse_form.object %>
+          <div class="form-unit">
+            <div class="form-line">
+              <li class="spouse-form" data-initial-id="<%= spouse.id%>">
+                <%= spouse_form.hidden_field(
+                  :id, 
+                  "data-name": spouse.name, 
+                  "data-title": (spouse.title if spouse.title)
+                  ) 
+                %>
+                <div class="autocomplete-container"></div>
+              </li>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+      <div class="form-unit">
+        <button id="add-spouse" type="button">Add</button>
+      </div>
+    </fieldset>
+    <%= form.submit "Update Profile", id: "update-profile" %>
+  </div>
+  
+  
 <% end %>
 
 

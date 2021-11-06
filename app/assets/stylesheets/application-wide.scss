@@ -35,13 +35,22 @@ time, mark, audio, video {
 	}
 }
 
+a:hover, button, input[type=submit] {
+	cursor: pointer;
+}
 
 
 
 
-$background-opaque-mask-color: #ffffff60;
 
-#top:before {
+$background-opaque-mask-color: #ffffff7c;
+
+
+.hero {
+	position: relative;
+}
+
+.hero:before {
 	
 	content: "";
 	position: absolute;
@@ -53,7 +62,7 @@ $background-opaque-mask-color: #ffffff60;
 	z-index: -1;
 }
 
-#top:after {
+.hero:after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -64,9 +73,16 @@ $background-opaque-mask-color: #ffffff60;
 	background-size: 2000px;
 	background-position: 0% 0%;
 	z-index: -2;
-	background-repeat: repeat-x;
 }
 
 .autocomplete-container {
 	position: relative;
+}
+
+
+
+
+#page-header {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 40px;
 }

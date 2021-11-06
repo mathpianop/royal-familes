@@ -12,6 +12,7 @@ $default-font-family: arial, verdana, tahoma, sans-serif;
 $header-height: 70px;
 $footer-height: 30px;
 $compressed-header-height: 100px;
+$super-compressed-header-height: 150px;
 $content-x-padding: 10px;
 
 
@@ -44,8 +45,12 @@ h4 {
 	min-height: 100vh;
 	padding-top: $header-height;
 	padding-bottom: $footer-height + 20px;
-	@include for-small-phone-only {
+	@include for-phone-only {
 		padding-top: $compressed-header-height;
+	}
+
+	@include up-to-medium-phone {
+		padding-top: $super-compressed-header-height;
 	}
 }
 
@@ -114,16 +119,21 @@ header {
 	border-bottom: 3px solid black;
 	z-index: 900;
 
-	@include for-phone-only {
+	@include up-to-small-tablet {
 		font-size: 35px;
 	}
 
-	@include for-small-phone-only {
+	@include for-phone-only {
 		flex-wrap: wrap;
 		column-gap: 20px;
 		height: $compressed-header-height;
 		justify-content: center;
 		align-content: center;
+	}
+
+	@include up-to-medium-phone {
+		height: $super-compressed-header-height;
+		gap: 10px;
 	}
 }
 
@@ -144,11 +154,11 @@ header .basic-btn {
 	font-size: 15px;
 	width: 235px;
 
-	@include for-large-phone-only {
+	@include for-small-tablet-only {
 		width: 140px;
 	}
 
-	@include for-small-phone-only {
+	@include for-phone-only {
 		width: 200px;
 	}
 
@@ -212,11 +222,11 @@ Top Section
 
 #name-banner {
 	grid-column: 1 / 10;
-	@include for-phone-only {
+	@include up-to-small-tablet {
 		font-size: 30px;
 	}
 
-	@include for-small-phone-only {
+	@include for-phone-only {
 		grid-column: 1 / 13;
 	}
 }
@@ -229,7 +239,7 @@ Top Section
 	display: inline-block;
 	font-size: 30px;
 
-	@include for-phone-only {
+	@include up-to-small-tablet {
 		font-size: 25px;
 	}
 }
@@ -237,7 +247,7 @@ Top Section
 #name-banner div {
 	font-size: 30px;
 
-	@include for-phone-only {
+	@include up-to-small-tablet {
 		font-size: 25px;
 	}
 }
@@ -251,11 +261,11 @@ Top Section
 	height: 250px;
 	width: 250px;
 
-	@include for-large-phone-only {
+	@include for-small-tablet-only {
 		width: 180px;
 	}
 
-	@include for-small-phone-only {
+	@include for-phone-only {
 		grid-column: 1 / 13;
 		grid-row: auto;
 		justify-self: center;
@@ -296,7 +306,7 @@ Top Section
 #relationship-info p {
 	padding-top: 5px;
 
-	@include for-phone-only {
+	@include up-to-small-tablet {
 		font-size: 14px;
 	}
 }
@@ -318,7 +328,7 @@ Top Section
 	justify-content: flex-end;
 	gap: 5px;
 
-	@include for-small-phone-only {
+	@include for-phone-only {
 		justify-content: flex-start;
 	}
 }
@@ -452,6 +462,10 @@ $connector-length: 20px;
 .family-tree-liner {
 	overflow: scroll;
 	text-align: center;
+
+	@include for-phone-only {
+		padding: 0 40px 0 80px;
+	}
 }
 
 

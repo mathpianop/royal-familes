@@ -1,13 +1,17 @@
+@mixin up-to-small-tablet {
+  @media (max-width: 699px) { @content; }
+}
+
 @mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
+  @media (max-width: 499px) { @content; }
 }
 
-@mixin for-small-phone-only {
-  @media (max-width: 399px) { @content; }
+@mixin for-small-tablet-only {
+  @media (min-width: 500px) and (max-width: 699px) { @content; }
 }
 
-@mixin for-large-phone-only {
-  @media (min-width: 400px) and (max-width: 599px) { @content; }
+@mixin up-to-medium-phone {
+	@media (max-width: 399px) { @content; }
 }
 
 @mixin basic-input {

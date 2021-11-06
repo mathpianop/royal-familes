@@ -1,4 +1,3 @@
---Redo responsive header
 --Make index page responsive
 --Style autocomplete results better
 --Update autocomplete package

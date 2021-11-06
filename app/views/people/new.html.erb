@@ -1,4 +1,5 @@
-<h1>Add a New Person</h1>
-
-<%= render partial: "profile_form" %>
+<div id="new-container" class="hero content-container">
+  <h1 id="page-header">Add a new person</h1>
+  <%= render partial: "profile_form", locals: {action: :new} %>
+</div>
 <%= javascript_pack_tag "profileForm" %>

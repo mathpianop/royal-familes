@@ -1,6 +1,6 @@
-<div id="edit-container" class="hero">
-  <h1 id="page-header">Edit Person Info</h1>
-  <%= render partial: "profile_form" %>
+<div id="edit-container" class="hero content-container">
+  <h1 id="page-header">Edit Profile</h1>
+  <%= render partial: "profile_form", locals: {action: :edit} %>
 </div>
 
 <%= javascript_pack_tag "profileForm" %>

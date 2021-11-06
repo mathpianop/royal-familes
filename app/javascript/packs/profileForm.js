@@ -94,8 +94,11 @@ const wrapSpouseForm = function(spouseForm) {
   formUnitWrapper.appendChild(formLineWrapper);
   return formUnitWrapper;
 }
-addSpouseBtn.addEventListener("click", () => {
+
+const addSpouse = function() {
   const spouseForm = buildSpouseFormElement();
   spousesFieldset.querySelector("ul").appendChild(wrapSpouseForm(spouseForm));
   attachSpouseAutocomplete(spouseForm);
-})
+}
+addSpouseBtn.addEventListener("click", addSpouse);
+

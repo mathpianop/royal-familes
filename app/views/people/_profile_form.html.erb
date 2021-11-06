@@ -1,5 +1,8 @@
 <%= form_with model: @person, id: "profile" do |form| %>
   <div id="fieldsets-container">
+    <button class="basic-btn">
+      <%= link_to "Back to #{@person.name}", person_path(@person)%>
+    </button>
     <fieldset>
       <legend>Basic Info</legend>
       <div class="form-unit">
@@ -91,7 +94,7 @@
         <button id="add-spouse" type="button">Add</button>
       </div>
     </fieldset>
-    <%= form.submit "Update Profile", id: "update-profile" %>
+    <%= form.submit (action == :new ? "Add Person" : "Update Profile"), id: "submit-profile" %>
   </div>
   
   

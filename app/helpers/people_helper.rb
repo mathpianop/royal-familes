@@ -1,19 +1,18 @@
 module PeopleHelper
   
-
-
-  
-  def show_attr(attr_string, subject, attribute, options = {})
-    # Display content only if subject and its attribute exist
-     attr_string if (subject && subject[attribute])
+  def format_year(person, birth_or_death)
+    if birth_or_death == :birth
+      person.birth_date_approximate ? "ca. #{person.birth_date.year}" : person.birth_date.year
+    elsif birth_or_death == :death
+      person.death_date_approximate ? "ca. #{person.death_date.year}" : person.death_date.year
+    end
   end
-
   
   def show_dates_years(person)
     if !person.death_date
-      "b. #{person.birth_date.year}"
+      "born #{format_year(person, :birth)}"
     else
-      "#{person.birth_date.year}-#{person.death_date.year}"
+      "#{format_year(person, :birth)} - #{format_year(person, :death)}"
     end
   end
 

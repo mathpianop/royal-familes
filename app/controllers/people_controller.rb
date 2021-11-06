@@ -73,7 +73,4 @@ class PeopleController < ApplicationController
   def consort_params
     params[:person].permit(consorts_attributes: :id)[:consorts_attributes]
   end
-
-
-
 end

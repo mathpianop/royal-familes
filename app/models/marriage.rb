@@ -31,10 +31,8 @@ class Marriage < ApplicationRecord
 
   private
 
-  #See README for explanation of heteronormativity
   def genders_are_correct
     if self.person.sex == self.consort.sex
-      p "Hello!!!!!"
       self.person.errors.add(:base, "Marriage cannot be same-sex")
       throw :abort
     end

@@ -27,6 +27,10 @@ searchPeople({
   personIdField: motherIdField
 });
 
+const oppositeSex = function(sex) {
+  return (sex === "F" ? "M" : "F")
+}
+
 
 //This could be a separate object??
 
@@ -36,8 +40,7 @@ const attachSpouseAutocomplete = function(spouseForm) {
   searchPeople({
     container: container, 
     placeholder: "Search For Spouse...", 
-    //Figure this out later
-    // sex: ???,
+    sex: oppositeSex(spousesFieldset.dataset.personSex),
     onSelect: (selection) => setPersonInfo(spouseIdField.id, selection.id),
     onClear: () => clearPersonInfo(spouseIdField.id),
     personIdField: spouseIdField

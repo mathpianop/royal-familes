@@ -70,7 +70,7 @@
       </div>
     </fieldset>
     
-    <fieldset id="spouses-fields">
+    <fieldset id="spouses-fields" data-person-sex="<%= @person.sex %>">
       <legend>Spouses</legend>
       <ul>
         <%= form.fields_for :consorts do |spouse_form| %>

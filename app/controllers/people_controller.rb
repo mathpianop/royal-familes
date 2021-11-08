@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(person_params)
+    @person.consort_ids = consort_params.values.map {|consort| consort[:id]} if consort_params
     if @person.save
       redirect_to person_path(@person)
     else
@@ -33,11 +34,9 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-    @person.consort_ids = consort_params.values.map {|consort| consort[:id]} if consort_params
-    if @person.update(person_params)
+    if update_consorts(@person) && @person.update(person_params)
       redirect_to person_path(@person)
     else
-      p @person.errors
       redirect_to :edit_person, notice: @person.errors.full_messages[0]
     end
   end
@@ -72,5 +71,11 @@ class PeopleController < ApplicationController
 
   def consort_params
     params[:person].permit(consorts_attributes: :id)[:consorts_attributes]
+  end
+
+  def update_consorts(person)
+    person.consort_ids = consort_params.values.map{|consort| consort[:id]} if consort_params
+    p person.errors
+    person.errors.empty?
   end
 end

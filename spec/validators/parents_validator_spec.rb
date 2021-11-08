@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 RSpec.describe ParentsValidator, type: :validator do
   fixtures :people, :marriages
@@ -99,6 +100,15 @@ RSpec.describe ParentsValidator, type: :validator do
       person.father = people(:edward_iv)
       person.validate
       expect(person.errors[:parent]).to_not include("can't be a descendant")
+    end
+
+    it "passes when no parents are specified (blank strings)" do
+      person = Person.new(name: "Orphan", sex: "F", birth_date: Date.today)
+      person.mother_id = ""
+      person.father_id = ""
+      p person.father_id
+      person.validate
+      expect(person.errors[:parent].length).to eq(0)
     end
   
   end

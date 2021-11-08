@@ -41,7 +41,7 @@ class ParentsValidator < ActiveModel::Validator
   end
 
   def confirm_parents_not_person(person)
-    if person.father_id == person.id || person.mother_id == person.id
+    if person.id && (person.father_id == person.id || person.mother_id == person.id) 
       person.errors.add(:parent, "can't be oneself")
       throw :abort
     end

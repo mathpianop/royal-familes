@@ -33,8 +33,12 @@ class Marriage < ApplicationRecord
 
   #See README for explanation of heteronormativity
   def genders_are_correct
-    errors.add(:base, "Marriage cannot be same-sex") if self.person.sex == self.consort.sex
-  end
+    if self.person.sex == self.consort.sex
+      p "Hello!!!!!"
+      self.person.errors.add(:base, "Marriage cannot be same-sex")
+      throw :abort
+    end
+end
 
   def lifespans_overlap?
     spouses = Person.where(id: [self.person_id, self.consort_id])

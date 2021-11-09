@@ -5,15 +5,15 @@
       <% end %>
     <fieldset>
       <legend>Basic Info</legend>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :name, "Name", class: "required" %>
         <%= form.text_field :name%>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :title, "Title" %>
         <%= form.text_field :title %>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :sex, "Sex", class: "required"%>
         <div class="form-line">
           <%= form.radio_button :sex, "M", required: true %>
@@ -22,21 +22,21 @@
           <%= form.label :sex_F, "Female" %>
         </div>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :birth_date, "Birth Date", class: "required" %>
         <%= form.date_field :birth_date, required: true %>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <div class="form-line">
           <%= form.check_box :birth_date_approximate %>
           <%= form.label :birth_date_approximate, "Birth date is approximate (circa)" %>
         </div> 
       </div>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :death_date, "Death Date", required: true %>
         <%= form.date_field :death_date %>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <div class="form-line">
           <%= form.check_box :death_date_approximate %>
           <%= form.label :death_date_approximate, "Death date is approximate (circa)" %>
@@ -48,7 +48,7 @@
     <fieldset>
       <legend>Parents</legend>
 
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :father_id, "Father" %>
         <div id="father-search" class="autocomplete-container"></div>
         <%= form.hidden_field(
@@ -58,7 +58,7 @@
           )
         %>
       </div>
-      <div class="form-unit">
+      <div class="field">
         <%= form.label :mother_id, "Mother" %>
           <div id="mother-search" class="autocomplete-container"></div>
           <%= form.hidden_field(
@@ -75,7 +75,7 @@
       <ul>
         <%= form.fields_for :consorts do |spouse_form| %>
         <% spouse = spouse_form.object %>
-          <div class="form-unit">
+          <div class="field">
             <div class="form-line">
               <li class="spouse-form" data-initial-id="<%= spouse.id%>">
                 <%= spouse_form.hidden_field(
@@ -90,11 +90,11 @@
           </div>
         <% end %>
       </ul>
-      <div class="form-unit">
+      <div class="field">
         <button id="add-spouse" type="button">Add</button>
       </div>
     </fieldset>
-    <%= form.submit (action == :new ? "Add Person" : "Update Profile"), id: "submit-profile" %>
+    <%= form.submit (action == :new ? "Add Person" : "Update Profile"), id: "submit-main" %>
   </div>
   
   

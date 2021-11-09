@@ -5,9 +5,7 @@
 @import "mixins.scss";
 
 
-$primary-color: #c9e3f1;
-$secondary-color: rgb(226, 205, 148);
-$form-color: #efe9f8;
+
 $default-font-family: arial, verdana, tahoma, sans-serif;
 $header-height: 70px;
 $footer-height: 30px;
@@ -756,66 +754,6 @@ right connector from last child*/
 Profile Form
 ===========================*/
 
-.required::after {
-	content: " *";
-	color: red;
-}
-
-
-
-#edit-container h1, #new-container h1 {
-	text-align: center;
-	padding: 20px;
-}
-
-#edit-container .basic-btn, #new-container .basic-btn {
-	align-self: center;
-}
-
-#fieldsets-container {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	max-width: 350px;
-	margin: auto;
-	padding: 0 20px;
-}
-
-#fieldsets-container fieldset {
-	@include fieldset-border;
-	box-sizing: border-box;
-	border-radius: 10px;
-	width: 100%;
-	padding: 10px;
-	background-color: $form-color;
-}
-
-#fieldsets-container legend {
-	//@include fieldset-border;
-	border-radius: 10px;
-	background-color: $form-color;
-	font-weight: 700;
-	padding: 5px;
-}
-
-.form-unit label {
-	display: block;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	padding-bottom: 5px;
-}
-
-
-.form-unit {
-	margin: 10px 10px 30px 10px;
-}
-
-.form-line {
-	margin-bottom: 10px;
-}
-
-.form-line label {
-	display: inline;
-}
 
 .spouse-form {
 	display: flex;
@@ -840,28 +778,13 @@ Profile Form
 }
 
 
-#fieldsets-container input[type="text"] {
-	@include basic-input;
-}
 
-#fieldsets-container input[type="date"] {
-	@include basic-input;
-	padding: 2px;
-	width: auto;
-}
 
 .spouse-form {
 	list-style: none;
 }
 
-#submit-profile {
-	padding: 10px;
-	background-color: $secondary-color;
-	border: none;
-	border-radius: 10px;
-	box-shadow: 2px 2px 10px gray;
-	font-size: 18px;
-}
+
 
 
 /*==========================

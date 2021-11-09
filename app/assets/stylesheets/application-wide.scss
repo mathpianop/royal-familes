@@ -45,11 +45,9 @@ a:hover, button, input[type=submit] {
 
 
 $background-opaque-mask-color: #ffffff7c;
+$form-color: #efe9f8;
 
 
-.hero {
-	position: relative;
-}
 
 .hero:before {
 	
@@ -86,4 +84,91 @@ $background-opaque-mask-color: #ffffff7c;
 #page-header {
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-size: 40px;
+}
+
+
+
+/*===================
+Main Forms
+====================*/
+
+
+#main-form-container h1 {
+	text-align: center;
+	padding: 20px;
+}
+
+#main-form-container .basic-btn {
+	align-self: center;
+}
+
+#fieldsets-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 350px;
+	margin: auto;
+	padding: 0 20px;
+}
+
+#fieldsets-container fieldset {
+	@include fieldset-border;
+	box-sizing: border-box;
+	border-radius: 10px;
+	width: 100%;
+	padding: 10px;
+	background-color: $form-color;
+}
+
+#fieldsets-container legend {
+	border-radius: 10px;
+	background-color: $form-color;
+	font-weight: 700;
+	padding: 5px;
+}
+
+.required::after {
+	content: " *";
+	color: red;
+}
+
+
+.field label {
+	display: block;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	padding-bottom: 5px;
+}
+
+
+.field {
+	margin: 10px 10px 30px 10px;
+}
+
+.form-line {
+	margin-bottom: 10px;
+}
+
+.form-line label {
+	display: inline;
+}
+
+#fieldsets-container input[type=text], 
+#fieldsets-container input[type=email],
+#fieldsets-container input[type=password] {
+	@include basic-input;
+}
+
+#fieldsets-container input[type=date] {
+	@include basic-input;
+	padding: 2px;
+	width: auto;
+}
+
+#submit-main {
+	padding: 10px;
+	background-color: $secondary-color;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px gray;
+	font-size: 18px;
 }

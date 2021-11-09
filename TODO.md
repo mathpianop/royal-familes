@@ -3,6 +3,7 @@
 --Clean up n+1
 --Update autocomplete package
 
+0. Customize devise flash messages
 1. Make magnifying glass select the first option
 2. Style autocomplete results better
 3. Create records for spouses when adding spouses

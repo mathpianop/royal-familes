@@ -869,8 +869,15 @@ Index
 ===========================*/
 
 
+#description {
+	margin: 50px auto 0 auto;
+	max-width: 400px;
+	text-align: center;
+	font-family: Roboto Slab, Georgia, 'Times New Roman', Times, serif;
+	font-size: 25px;
+}
 #index-container form {
-	margin-top: 10%;
+	margin-top: 50px;
 }
 
 #index-container .person-search {
@@ -882,7 +889,6 @@ Index
 		max-width: 80vw;
 	}
 }
-
 
 
 #index-container .autocomplete-input {

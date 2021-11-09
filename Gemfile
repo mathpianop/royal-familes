@@ -32,6 +32,9 @@ gem 'pg_search'
 
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
+#Authenticate administrators
+gem 'devise'
+
 
 
 group :development, :test do

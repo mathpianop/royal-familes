@@ -43,7 +43,6 @@ h4 {
 .content-container {
 	box-sizing: border-box;
 	min-height: 100vh;
-	padding-top: $header-height;
 	padding-bottom: $footer-height + 20px;
 	@include for-phone-only {
 		padding-top: $compressed-header-height;
@@ -103,8 +102,9 @@ Header / Footer
 
 header {
 	box-sizing: border-box;
-	position: fixed;
+	position: sticky;
 	display: flex;
+	top: 0;
 	right: 0;
 	left: 0;
 	justify-content: space-between;
@@ -871,6 +871,7 @@ Index
 
 #description {
 	margin: 50px auto 0 auto;
+	padding: 0 10px;
 	max-width: 400px;
 	text-align: center;
 	font-family: Roboto Slab, Georgia, 'Times New Roman', Times, serif;

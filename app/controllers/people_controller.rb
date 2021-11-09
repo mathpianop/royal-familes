@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  
+  before_action :authenticate_admin!, except: [:index, :show, :autocomplete, :relationship]
   def index
     @people = Person.all
   end

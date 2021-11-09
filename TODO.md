@@ -1,8 +1,9 @@
---Make index page responsive
---Make magnifying glass select the first option
+
+--Add devise
 --Clean up n+1
 --Update autocomplete package
 
+1. Make magnifying glass select the first option
 2. Style autocomplete results better
 3. Create records for spouses when adding spouses
 4. Neo4j

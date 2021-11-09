@@ -137,6 +137,10 @@ header {
 	}
 }
 
+header h1 {
+	flex-shrink: auto;
+}
+
 header h1 a:hover {
 	text-decoration: none;
 	cursor: pointer;
@@ -144,6 +148,7 @@ header h1 a:hover {
 
 header .basic-btn {
 	font-family: $default-font-family;
+
 }
 
 .person-search {
@@ -169,7 +174,7 @@ header .basic-btn {
 	top: 0;
 	bottom: 0;
 	height: 70%;
-	right: 3%;
+	right: 8px;
 	margin: auto 0;
 	border: none;
 	border-radius: 2px;
@@ -866,14 +871,19 @@ Index
 
 #index-container form {
 	margin-top: 10%;
-	
 }
 
 #index-container .person-search {
 	height: 100%;
 	width: 400px;
 	margin: auto;
+
+	@include for-phone-only {
+		max-width: 80vw;
+	}
 }
+
+
 
 #index-container .autocomplete-input {
 	height: 50px;

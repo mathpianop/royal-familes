@@ -1,8 +1,10 @@
 --Make index page responsive
---Style autocomplete results better
+--Make magnifying glass select the first option
+--Clean up n+1
 --Update autocomplete package
 
-3. Style it up, baby!
+2. Style autocomplete results better
+3. Create records for spouses when adding spouses
 4. Neo4j
 
 5. Add house

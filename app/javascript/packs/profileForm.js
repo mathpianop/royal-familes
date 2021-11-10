@@ -28,7 +28,11 @@ searchPeople({
 });
 
 const oppositeSex = function(sex) {
-  return (sex === "F" ? "M" : "F")
+  if (sex === "F") {
+    return "M"
+  } else if(sex === "M") {
+    return "F"
+  }
 }
 
 

@@ -3,7 +3,11 @@
   <div id="top" class="hero">
     <div id="name-banner">
       <h2 id="page-header">
-        <%= @person.name %>, <span id="title">Fill-in Title </span>
+        <% if !@person.title.blank? %>
+          <%= @person.name %>, <span id="title"><%= @person.title %></span>
+        <% else %>
+          <%= @person.name %>
+        <% end %>
       </h2>
       <div id="dates"><%= show_dates_years(@person)%></div>
     </div> 

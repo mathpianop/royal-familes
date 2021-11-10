@@ -1,7 +1,7 @@
-//import autocomplete from "autocomplete-select";
-import autocomplete from "../../../../autocomplete-select";
-//import "autocomplete-select/autocomplete.css";
-import "../../../../autocomplete-select/autocomplete.css"
+import autocomplete from "autocomplete-select";
+//import autocomplete from "../../../../autocomplete-select";
+import "autocomplete-select/autocomplete.css";
+//import "../../../../autocomplete-select/autocomplete.css"
 import axios from "axios";
 
 function setPersonInfo (inputElId, value) {

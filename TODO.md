@@ -1,8 +1,5 @@
 
---Add devise
---Clean up n+1
---Update autocomplete package
-
+0. Make sex-contrained spouse selection dependant on form, not current record
 0. Customize devise flash messages
 1. Make magnifying glass select the first option
 2. Style autocomplete results better

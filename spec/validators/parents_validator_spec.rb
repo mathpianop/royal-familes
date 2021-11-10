@@ -106,7 +106,6 @@ RSpec.describe ParentsValidator, type: :validator do
       person = Person.new(name: "Orphan", sex: "F", birth_date: Date.today)
       person.mother_id = ""
       person.father_id = ""
-      p person.father_id
       person.validate
       expect(person.errors[:parent].length).to eq(0)
     end

@@ -65,7 +65,16 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person)
-          .permit(:name, :sex, :title, :birth_date, :death_date, :father_id, :mother_id)
+          .permit(:name, 
+                  :sex, 
+                  :title, 
+                  :birth_date, 
+                  :death_date, 
+                  :father_id, 
+                  :mother_id,
+                  :birth_date_approximate,
+                  :death_date_approximate
+                  )
   end
 
   def consort_params

@@ -34,7 +34,8 @@ class ParentsValidator < ActiveModel::Validator
   end
 
   def confirm_parents_not_descendants(person)
-    if person.descendants.any? {|desc| desc.id == person.father_id || desc.id == person.mother_id }
+    family = Family.new(person)
+    if family.descendants.any? {|desc| desc.id == person.father_id || desc.id == person.mother_id }
       person.errors.add(:parent, "can't be a descendant")
       throw :abort
     end

@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   
   def new
     @person = Person.new
-    @family = @person.family
+    @family = Family.new(@person)
   end
 
   def create
@@ -20,14 +20,12 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
-    @family = @person.family
-    @ancestors = @person.ancestors
-    @descendants = @person.descendants
+    @family = Family.new(@person)
   end
 
   def edit
     @person = Person.find(params[:id])
-    @family = @person.family
+    @family = Family.new(@person)
     @suggestions = Person.all
   end
 
@@ -43,7 +41,7 @@ class PeopleController < ApplicationController
   def destroy
     @person = Person.find(params[:id])
     if @person.destroy
-      redirect_to :people
+      redirect_to :people, notice: "#{@person.name} succesfully deleted"
     else
       flash[:notice] = @person.errors.messages[:base][0]
       redirect_back(fallback_location: root_url)

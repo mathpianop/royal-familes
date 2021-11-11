@@ -53,8 +53,8 @@
         <div id="father-search" class="autocomplete-container"></div>
         <%= form.hidden_field(
           :father_id, 
-          "data-name": (@family[:parents][:male].name if @family[:parents][:male]), 
-          "data-title": (@family[:parents][:male].title if @family[:parents][:male])
+          "data-name": (@family.parents[:male].name if @family.parents[:male]), 
+          "data-title": (@family.parents[:male].title if @family.parents[:male])
           )
         %>
       </div>
@@ -63,8 +63,8 @@
           <div id="mother-search" class="autocomplete-container"></div>
           <%= form.hidden_field(
             :mother_id, 
-            "data-name": (@family[:parents][:female].name if @family[:parents][:female]), 
-            "data-title": (@family[:parents][:female].title if @family[:parents][:female])
+            "data-name": (@family.parents[:female].name if @family.parents[:female]), 
+            "data-title": (@family.parents[:female].title if @family.parents[:female])
             )
           %>
       </div>

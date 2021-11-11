@@ -44,8 +44,8 @@ module PeopleHelper
   end
 
   def children_clarification_needed?(spouse, family)
-    family[:spouses].length > 1 && 
-    children_of_spouse(spouse, family[:children]).length > 0
+    family.spouses.length > 1 && 
+    children_of_spouse(spouse, family.children).length > 0
   end
 
   

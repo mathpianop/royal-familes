@@ -12,17 +12,17 @@
       <div id="dates"><%= show_dates_years(@person)%></div>
     </div> 
     <section id="relations">
-      <% unless @family[:spouses].empty? %>
+      <% unless @family.spouses.empty? %>
         <div id="spouses">
           <h4>Spouse(s)</h4>
           <ul class="spouse-list">
-            <% @family[:spouses].each do |spouse| %>
+            <% @family.spouses.each do |spouse| %>
               <li>
                 <span><%= link_to spouse.name, person_path(spouse)%></span>
                 <% if children_clarification_needed?(spouse, @family) %>
                   <span>(Children: </span>
                   <ul>
-                    <% children_of_spouse(spouse, @family[:children]).each do |child| %>
+                    <% children_of_spouse(spouse, @family.children).each do |child| %>
                       <li><%= link_to child.name, person_path(child) %></li>
                     <% end %>
                   </ul>
@@ -33,21 +33,21 @@
         </div>
       <% end %>
       <div id="ancestors-descendants">
-        <% if @ancestors.length > 0 %>
+        <% if @family.ancestors.length > 0 %>
           <details id="ancestors">
             <summary><h4>Ancestors</h4></summary>
             <ul class="relations-list">
-              <% @ancestors.each do |ancestor| %>
+              <% @family.ancestors.each do |ancestor| %>
                 <li><%= link_to ancestor.name, person_path(ancestor) %></li>
               <% end %>
             </ul>
           </details>
         <% end %>
-        <% if @descendants.length > 0 %>
+        <% if @family.descendants.length > 0 %>
           <details id="descendants">
             <summary><h4>Descendants</h4></summary>
             <ul class="relations-list">
-              <% @descendants.each do |descendant| %>
+              <% @family.descendants.each do |descendant| %>
                 <li><%= link_to descendant.name, person_path(descendant) %></li>
               <% end %>
             </ul>
@@ -76,17 +76,17 @@
     <section class="family-tree">
       <div class="family-tree-liner">
         <div class="generations-backdrop">
-          <% unless @family[:grandparents].values.flatten.empty? %>
+          <% unless @family.grandparents.values.flatten.empty? %>
             <div class="generation">
               <span class="secondary-label generation-label">Grandparents</span>
             </div>
           <% end %>
-          <% unless @family[:parents].values.all? &:nil? %>
+          <% unless @family.parents.values.all? &:nil? %>
             <div class="generation">
               <span class="secondary-label generation-label">Parents</span>
             </div>
           <% end %>
-          <% if @family[:siblings].empty? %>
+          <% if @family.siblings.empty? %>
             <div class="generation">
               <span class="secondary-label generation-label">Subject</span>
             </div>
@@ -95,37 +95,37 @@
               <span class="secondary-label generation-label">Siblings</span>
             </div>
           <% end %>
-          <% unless @family[:children].empty? %>
+          <% unless @family.children.empty? %>
             <div class="generation">
               <span class="secondary-label generation-label">Children</span>
             </div>
           <% end %>
-          <% unless @family[:grandchildren].empty? %>
+          <% unless @family.grandchildren.empty? %>
             <div class="generation">
               <span class="secondary-label generation-label">Grandchildren</span>
             </div>
           <% end %>
         </div>
         <div class="subtrees-container">
-          <% unless @family[:grandparents].values.flatten.empty? %>
+          <% unless @family.grandparents.values.flatten.empty? %>
             <div class="ascent-tree">
               <ul class="grandparents-level">
               <%# Extract to Helper method %>
-                <% unless @family[:grandparents][:paternal].empty? %>
+                <% unless @family.grandparents[:paternal].empty? %>
                   <li class="paternal-grandparents">
                     <span class="grandparents-node">
-                      <% gparent1 = @family[:grandparents][:paternal][0] %>
-                      <% gparent2 = @family[:grandparents][:paternal][1] %>
+                      <% gparent1 = @family.grandparents[:paternal][0] %>
+                      <% gparent2 = @family.grandparents[:paternal][1] %>
                       <%= link_to(gparent1.name, person_path(gparent1)) if gparent1 %>
                       <%= link_to(gparent2.name, person_path(gparent2)) if gparent2 %>
                     </span>
                   </li>
                 <% end %>
-                <% unless @family[:grandparents][:maternal].empty? %>
+                <% unless @family.grandparents[:maternal].empty? %>
                   <li class="maternal-grandparents">
                     <span class="grandparents-node">
-                      <% gparent1 = @family[:grandparents][:maternal][0] %>
-                      <% gparent2 = @family[:grandparents][:maternal][1] %>
+                      <% gparent1 = @family.grandparents[:maternal][0] %>
+                      <% gparent2 = @family.grandparents[:maternal][1] %>
                       <%= link_to(gparent1.name, person_path(gparent1)) if gparent1 %>
                       <%= link_to(gparent2.name, person_path(gparent2)) if gparent2 %>
                     </span>
@@ -135,18 +135,18 @@
             </div>
           <% end %>
           <div class="descent-tree">
-            <% if !@family[:parents].values.all? &:nil? %>
+            <% if !@family.parents.values.all? &:nil? %>
               <%# Do Parents Version %>
               <ul class="parents-level">
                 <li class="parents">
                   <span class="parents-node">
-                    <% father = @family[:parents][:male] %>
-                    <% mother = @family[:parents][:female] %>
+                    <% father = @family.parents[:male] %>
+                    <% mother = @family.parents[:female] %>
                     <%= link_to(father.name, person_path(father)) if father %>
                     <%= link_to(mother.name, person_path(mother)) if mother %>
                   </span>
                   <ul class="subject-level">
-                    <% subject_level_people(@person, @family[:siblings]).each do |person| %>
+                    <% subject_level_people(@person, @family.siblings).each do |person| %>
                       <% #If person is the subject, render their tree. If not, render a sibling leaf %>
                       <% if person.id == @person.id %>
                         <%= render partial: "subject_descent_tree", locals: {family: @family, orphan: false }%>

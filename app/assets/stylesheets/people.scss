@@ -212,6 +212,7 @@ Top Section
 
 #top {
 	display: grid;
+	position: relative;
 	grid-template-columns: repeat(12, 1fr);
 	column-gap: 10px;
 	padding: 0 $content-x-padding;
@@ -793,8 +794,8 @@ Index
 
 
 #description {
-	margin: 50px auto 0 auto;
-	padding: 0 10px;
+	margin: auto;
+	padding: 50px 10px 0 10px;
 	max-width: 400px;
 	text-align: center;
 	font-family: Roboto Slab, Georgia, 'Times New Roman', Times, serif;

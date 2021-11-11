@@ -1,11 +1,11 @@
 <li class="<%= "orphan" if orphan%>">
   <span class="subject-node"><%= link_to @person.name, person_path(@person) %></span>
-  <% unless family[:children].empty? %>
+  <% unless family.children.empty? %>
     <ul class="child-level">
-      <% family[:children].each do |child| %>
+      <% family.children.each do |child| %>
         <li>
           <span><%= link_to child.name, person_path(child) %></span>
-          <% grandchildren = family[:grandchildren][child.id] %>
+          <% grandchildren = family.grandchildren[child.id] %>
           <% if grandchildren %>
             <ul class="grandchild-level">
               <% grandchildren.each do |gchild| %>

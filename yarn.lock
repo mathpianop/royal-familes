@@ -1880,10 +1880,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autocomplete-select@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/autocomplete-select/-/autocomplete-select-1.0.0.tgz#cf6e84f7406feae00bea46353dbe0195e050e3d7"
-  integrity sha512-b6/p+T7bcKE0khPFzTuqod/dNkJUvtIX2Ye9pXDdd4vM0bjZUgZVr2uxZvFWz2dImhbKLvXJFRM1p/BG1WXjeg==
+autocomplete-select@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/autocomplete-select/-/autocomplete-select-1.0.2.tgz#1eaff67a762e59e57d0596e36e4a62ed5e973bfb"
+  integrity sha512-3b05gD/CQRw1IdRMQoyIn7x82+Uy8WZdve8G9IYUgz3UFHyZLtQnX0hoOj83INDeynDp6t5lqMAJO7F6xNLk5w==
 
 autoprefixer@^9.6.1:
   version "9.8.6"

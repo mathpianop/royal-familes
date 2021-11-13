@@ -42,13 +42,6 @@ h4 {
 	box-sizing: border-box;
 	min-height: 100vh;
 	padding-bottom: $footer-height + 20px;
-	@include for-phone-only {
-		padding-top: $compressed-header-height;
-	}
-
-	@include up-to-medium-phone {
-		padding-top: $super-compressed-header-height;
-	}
 }
 
 .secondary-label {

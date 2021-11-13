@@ -4,11 +4,13 @@ Royal Familes is a Rails app for tracking the family relationships of European m
 ## Current Features
 1. Each person in the database has an auto-generated CSS family tree that spans up to 5 generations, as well as a list of ancestors and descendants.
 <br>
+
 ![Family Tree Example](readme-images/family-tree.png)
 <br>
 
 2. On each person's page, there is a section for finding distant relationships with other people (e.g., Edward V to Henry VI of England, half second cousins once removed).
 <br>
+
 ![Relationship Widget](readme-images/relationship.png)
 
 ## Planned Features

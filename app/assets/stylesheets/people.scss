@@ -160,6 +160,10 @@ header .basic-btn {
 
 }
 
+.person-search input[type=submit] {
+	@include hide;
+}
+
 .autocomplete-clear, .person-search svg {
 	position: absolute;
 	top: 0;

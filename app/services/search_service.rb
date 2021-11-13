@@ -1,4 +1,4 @@
-class AutocompleteSearchService
+class SearchService
   def initialize(query, options = {})
     @query = query
     @sex = options[:sex]

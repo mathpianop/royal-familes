@@ -14,7 +14,7 @@ function clearPersonInfo (inputElId) {
   inputEl.value = "";
 }
 
-function searchPeople({ container, placeholder, sex, onSelect, onClear, personIdField }) {
+function searchPeople({ container, placeholder, name, sex, onSelect, onClear, personIdField }) {
 
   const confirmedOnClear = (onClear ? onClear : () => {});
   const getPeople = (query, display) => {
@@ -50,6 +50,7 @@ function searchPeople({ container, placeholder, sex, onSelect, onClear, personId
     onInput: getPeople,
     formatMatch: formatPerson,
     placeholder: placeholder,
+    name: name,
     onSelect: onSelect,
     clearBtn: true,
     onClear: confirmedOnClear,

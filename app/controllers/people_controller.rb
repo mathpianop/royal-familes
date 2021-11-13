@@ -48,8 +48,20 @@ class PeopleController < ApplicationController
     end
   end
 
+  def search
+    person_name = params[:person_search][:query]
+    @person = SearchService.new(person_name).call[:people][0]
+    p "Hey!!!"
+    p @person
+    if @person
+      redirect_to person_path(@person)
+    else
+      redirect_back(fallback_location: root_url, notice: "No person matches #{person_name}")
+    end
+  end
+
   def autocomplete
-    results = AutocompleteSearchService.new(params[:query], sex: params[:sex]).call
+    results = SearchService.new(params[:query], sex: params[:sex]).call
     render json: results
   end
 
@@ -74,6 +86,8 @@ class PeopleController < ApplicationController
                   :death_date_approximate
                   )
   end
+
+ 
 
   def consort_params
     params[:person].permit(consorts_attributes: :id)[:consorts_attributes]

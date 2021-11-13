@@ -38,6 +38,12 @@
   border: 2px solid black;
 }
 
+@mixin hide {
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+}
+
 
 $primary-color: #c9e3f1;
 $secondary-color: rgb(226, 205, 148);

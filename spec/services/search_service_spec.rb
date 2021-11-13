@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe AutocompleteSearchService, type: :service do
+RSpec.describe SearchService, type: :service do
   fixtures :people, :marriages
   describe "#call" do
     it "returns results that match query" do
-      results = AutocompleteSearchService.new("ed").call[:people]
+      results = SearchService.new("ed").call[:people]
       expect(results).to include(
         people(:edward_iv),
         people(:edmund_tudor),
@@ -15,11 +15,11 @@ RSpec.describe AutocompleteSearchService, type: :service do
     end
 
     it "filters results based on :sex option" do
-      results = AutocompleteSearchService.new("e").call[:people]
+      results = SearchService.new("e").call[:people]
       expect(results).to include(people(:edward_iv), people(:elizabeth_woodville)
       )
 
-      results = AutocompleteSearchService.new("e", sex: "M").call[:people]
+      results = SearchService.new("e", sex: "M").call[:people]
       expect(results).to include(people(:edward_iv))
       expect(results).to_not include(people(:elizabeth_woodville))
     end

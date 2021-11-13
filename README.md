@@ -1,12 +1,14 @@
 # Royal Familes
 Royal Familes is a Rails app for tracking the family relationships of European medieval royalty. I built it becuase I wanted the challenge of dealing with a more complicated backend situation than I had previously. I wanted to be able to construct sophisticated queries for relationship types and lineage tracing. Along the way, I learned how to build something truly dynamic with CSS (a family tree) and created my own [JS autocomplete wiget.](https://github.com/mathpianop/autocomplete-select)
+
 ## Current Features
 1. Each person in the database has an auto-generated CSS family tree that spans up to 5 generations, as well as a list of ancestors and descendants.
+<br>
 ![Family Tree Example](readme-images/family-tree.png)
-
 <br>
 
 2. On each person's page, there is a section for finding distant relationships with other people (e.g., Edward V to Henry VI of England, half second cousins once removed).
+<br>
 ![Relationship Widget](readme-images/relationship.png)
 
 ## Planned Features

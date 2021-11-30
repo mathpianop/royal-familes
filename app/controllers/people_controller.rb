@@ -51,8 +51,6 @@ class PeopleController < ApplicationController
   def search
     person_name = params[:person_search][:query]
     @person = SearchService.new(person_name).call[:people][0]
-    p "Hey!!!"
-    p @person
     if @person
       redirect_to person_path(@person)
     else
@@ -93,8 +91,16 @@ class PeopleController < ApplicationController
     params[:person].permit(consorts_attributes: :id)[:consorts_attributes]
   end
 
+  def consort_ids
+    if consort_params
+      consort_params.values.map{|consort| consort[:id]}
+    else
+      []
+    end
+  end
+
   def set_consorts(person)
-    person.consort_ids = consort_params.values.map{|consort| consort[:id]} if consort_params
+    person.consort_ids = consort_ids
     person.errors.empty?
   end
 end

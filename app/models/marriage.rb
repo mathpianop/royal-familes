@@ -2,7 +2,6 @@ class Marriage < ApplicationRecord
   validates_presence_of :person
   validates_presence_of :consort
   validate :genders_are_correct
-  validate :consorts_are_contemporary
   belongs_to :person
   belongs_to :consort, class_name: "Person"
   after_create :create_inverse, unless: :has_inverse?
@@ -38,17 +37,5 @@ class Marriage < ApplicationRecord
     end
 end
 
-  def lifespans_overlap?
-    spouses = Person.where(id: [self.person_id, self.consort_id])
-    # Ensure that one spouse was born before the other died, unless there is a date missing
-    if spouses.all? {|spouse| spouse.birth_date && spouse.death_date}
-      spouses[0].death_date > spouses[1].birth_date && spouses[1].death_date > spouses[1].birth_date
-    else
-      true
-    end
-  end
 
-  def consorts_are_contemporary
-    errors.add(:base, "Spouses must have overlapped in time") if !lifespans_overlap?
-  end
 end

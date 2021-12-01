@@ -304,16 +304,18 @@ thomas_of_woodstock:
 
 
 orphaned_woman:
-  name: "Elizabeth of York"
+  name: Elizabeth of York
   sex: F
   birth_date: 2020-08-23
 
 
 unconnected_male:
   sex: M
+  name: Umale
 
 unconnected_female:
   sex: F
+  name: Ufemale
 
 fake_guy:
   sex: M

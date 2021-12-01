@@ -31,7 +31,11 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-    if set_consorts(@person) && @person.update(person_params)
+    @person.child_ids = relation_ids(:child)
+    @person.consort_ids = relation_ids(:spouse)
+    p "Hello!"
+    p @person.errors
+    if @person.update(person_params)
       redirect_to person_path(@person)
     else
       redirect_to :edit_person, notice: @person.errors.full_messages[0]
@@ -71,6 +75,7 @@ class PeopleController < ApplicationController
 
   private
 
+
   def person_params
     params.require(:person)
           .permit(:name, 
@@ -85,15 +90,15 @@ class PeopleController < ApplicationController
                   )
   end
 
- 
-
-  def consort_params
-    params[:person].permit(consorts_attributes: :id)[:consorts_attributes]
+  def relation_params(relation)
+    params.require(:person).permit(relation => [:id])
   end
 
-  def consort_ids
-    if consort_params
-      consort_params.values.map{|consort| consort[:id]}
+
+  def relation_ids(relation)
+    relation_params = relation_params(relation)
+    if (!relation_params.empty?)
+      relation_params[relation].map{|relation_attributes| relation_attributes[:id]}
     else
       []
     end

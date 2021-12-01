@@ -753,22 +753,22 @@ Profile Form
 ===========================*/
 
 
-.spouse-form {
+.relation-form {
 	display: flex;
 	gap: 10px;
 }
 
-.spouse-form .autocomplete-container {
+.relation-form .autocomplete-container {
 	flex: 5;
 }
 
-.spouse-form .cancel-spouse-btn {
+.relation-form .cancel-relation-btn {
 	flex: 1;
 	@include basic-btn;
 	border: none;
 }
 
-#add-spouse {
+.add-relation {
 	@include basic-btn;
 	display: block;
 	border: none;
@@ -778,7 +778,7 @@ Profile Form
 
 
 
-.spouse-form {
+.relation-form {
 	list-style: none;
 }
 

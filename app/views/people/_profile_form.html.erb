@@ -70,16 +70,45 @@
       </div>
     </fieldset>
     
-    <fieldset id="spouses-fields" data-person-sex="<%= @person.sex %>">
+    <fieldset id="child-fields">
+      <legend>Children</legend>
+      <ul>
+        <% @family.children.each_with_index do |child, index| %>
+          <div class="field">
+            <div class="form-line">
+              <li class="relation-form" data-initial-id="<%= child.id%>">
+                <%= form.fields_for :child, index: index do |child_form| %>
+                  <%= child_form.hidden_field(
+                    :id,
+                    name: "person[child][][id]",
+                    value: child.id, 
+                    "data-name": child.name, 
+                    "data-title": (child.title if child.title)
+                    ) 
+                  %>
+                <% end %>
+                <div class="autocomplete-container"></div>
+              </li>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+      <div class="field">
+        <button class="add-relation" type="button">Add</button>
+      </div>
+    </fieldset>
+
+    <fieldset id="spouse-fields" data-person-sex="<%= @person.sex %>">
       <legend>Spouses</legend>
       <ul>
         <%= form.fields_for :consorts do |spouse_form| %>
         <% spouse = spouse_form.object %>
           <div class="field">
             <div class="form-line">
-              <li class="spouse-form" data-initial-id="<%= spouse.id%>">
+              <li class="relation-form" data-initial-id="<%= spouse.id%>">
                 <%= spouse_form.hidden_field(
                   :id, 
+                  name: "person[spouse][][id]",
                   "data-name": spouse.name, 
                   "data-title": (spouse.title if spouse.title)
                   ) 
@@ -91,13 +120,11 @@
         <% end %>
       </ul>
       <div class="field">
-        <button id="add-spouse" type="button">Add</button>
+        <button class="add-relation" type="button">Add</button>
       </div>
     </fieldset>
     <%= form.submit (action == :new ? "Add Person" : "Update Profile"), id: "submit-main" %>
   </div>
-  
-  
 <% end %>
 
 

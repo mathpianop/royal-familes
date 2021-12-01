@@ -20,5 +20,24 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe "#child_ids=" do
+    it "sets the appropriate parent id attribute on each corresponsing child" do
+      expect(people(:unconnected_male).father_id).to eq(nil)
+      expect(people(:unconnected_female).father_id).to eq(nil)
+      people(:thomas_of_woodstock).child_ids = [people(:unconnected_male).id, people(:unconnected_female).id]
+      people(:unconnected_female).reload
+      people(:unconnected_male).reload
+      expect(people(:unconnected_male).father_id).to eq(people(:thomas_of_woodstock).id)
+      expect(people(:unconnected_female).father_id).to eq(people(:thomas_of_woodstock).id)
+    end
+
+    it "removes existing parent connections for records not in ids list" do
+      expect(people(:edward_v).father_id).to eq(people(:edward_iv).id)
+      people(:edward_iv).child_ids = []
+      people(:edward_v).reload
+      expect(people(:edward_v).father_id).to eq(nil)
+    end
+  end
+
   
 end

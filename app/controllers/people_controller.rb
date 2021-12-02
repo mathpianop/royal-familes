@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(person_params)
-    if set_consorts(@person) && @person.save
+    if @person.save && set_consorts(@person) && set_children(@person)
       redirect_to person_path(@person)
     else
       redirect_to :new_person, notice: @person.errors.full_messages[0]
@@ -31,11 +31,7 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-    @person.child_ids = relation_ids(:child)
-    @person.consort_ids = relation_ids(:spouse)
-    p "Hello!"
-    p @person.errors
-    if @person.update(person_params)
+    if @person.update(person_params) && set_consorts(@person) && set_children(@person)
       redirect_to person_path(@person)
     else
       redirect_to :edit_person, notice: @person.errors.full_messages[0]
@@ -104,8 +100,13 @@ class PeopleController < ApplicationController
     end
   end
 
+  def set_children(person)
+    person.child_ids = relation_ids(:child)
+    person.errors.empty?
+  end
+
   def set_consorts(person)
-    person.consort_ids = consort_ids
+    @person.consort_ids = relation_ids(:spouse)
     person.errors.empty?
   end
 end

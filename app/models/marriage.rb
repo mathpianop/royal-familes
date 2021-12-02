@@ -2,6 +2,7 @@ class Marriage < ApplicationRecord
   validates_presence_of :person
   validates_presence_of :consort
   validate :genders_are_correct
+  validate :spouse_not_ancestor_or_descendant
   belongs_to :person
   belongs_to :consort, class_name: "Person"
   after_create :create_inverse, unless: :has_inverse?
@@ -35,7 +36,18 @@ class Marriage < ApplicationRecord
       self.person.errors.add(:base, "Marriage cannot be same-sex")
       throw :abort
     end
-end
+  end
+
+  def spouse_not_ancestor_or_descendant
+    p self.consort.id
+    p "Hello!"
+    p Family.new(self.person).ancestors.map(&:id)
+    if Family.new(self.person).ancestors.any? {|anc| anc.id == self.consort.id}
+      self.person.errors.add(:spouse, "can't be an ancestor or descendant")
+      throw :abort
+    end
+  end
+
 
 
 end

@@ -1,7 +1,7 @@
 class Family
 
-  def initialize(person)
-    @person = person
+  def initialize(person, fresh_copy = false)
+    @person = (fresh_copy && person.id) ? Person.find(person.id) : person
   end
 
 
@@ -80,6 +80,8 @@ class Family
     ancestors_store = []
     ancestor_ids = []
     current_gen_temp = parents.values.compact
+    p "Hello!!!"
+    p current_gen_temp
     
     while current_gen_temp.length > 0
       # Add the current generation to the ancestors store
@@ -97,6 +99,10 @@ class Family
     end
     
     sort_by_birth_order(ancestors_store)
+  end
+
+  def ancestors_without_parents
+    ancestors.filter{|anc| anc.id != @person.father_id && anc.id != @person.mother_id}
   end
 
   def descendants

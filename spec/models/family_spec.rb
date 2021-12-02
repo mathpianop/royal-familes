@@ -202,6 +202,18 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe "#ancestors_without_parents" do
+    it "gives the ancestors without the parents" do
+      expect(Family.new(people(:fake_guy)).ancestors_without_parents).to contain_exactly(
+        people(:lionel),
+        people(:john_gaunt),
+        people(:blanche_of_lancaster),
+        people(:edward_iii),
+        people(:philippa)
+      )
+    end
+  end
+
   describe "#descendants" do
     it "returns children if there are no grandchildren" do
       expect(Family.new(people(:edward_iv)).descendants).to contain_exactly(people(:edward_v))

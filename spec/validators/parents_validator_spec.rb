@@ -109,6 +109,19 @@ RSpec.describe ParentsValidator, type: :validator do
       person.validate
       expect(person.errors[:parent].length).to eq(0)
     end
+
+    it "validates mother can't be ancestor" do
+      person = people(:margaret_beaufort)
+      person.mother_id = people(:katherine_swynford).id
+      person.validate
+      expect(person.errors[:parent]).to include("can't be an ancestor")
+    end
+
+    it "passes when a single valid parent is added" do
+      person = people(:margaret_beaufort)
+      person.validate
+      expect(person.errors[:parent]).to_not include("can't be an ancestor")
+    end
   
   end
 end

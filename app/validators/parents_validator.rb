@@ -1,9 +1,11 @@
 class ParentsValidator < ActiveModel::Validator
+
   def validate(person)
     confirm_parents_correct_genders(person)
     confirm_parents_not_person(person)
     confirm_parents_not_spouse(person)
     confirm_parents_not_descendants(person)
+    confirm_parents_not_ancestors(person)
   end
 
   private
@@ -44,6 +46,14 @@ class ParentsValidator < ActiveModel::Validator
   def confirm_parents_not_person(person)
     if person.id && (person.father_id == person.id || person.mother_id == person.id) 
       person.errors.add(:parent, "can't be oneself")
+      throw :abort
+    end
+  end
+
+  def confirm_parents_not_ancestors(person)
+    family = Family.new(person, true)
+    if family.ancestors_without_parents.any? {|anc| anc.id == person.father_id || anc.id == person.mother_id }
+      person.errors.add(:parent, "can't be an ancestor")
       throw :abort
     end
   end

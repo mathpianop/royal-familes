@@ -36,6 +36,9 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 gem 'devise'
 
 
+gem 'activegraph', '~> 10.1', '>= 10.1.1'
+gem 'neo4j-ruby-driver', '~> 1.7', '>= 1.7.5'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

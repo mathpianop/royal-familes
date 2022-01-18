@@ -1,0 +1,1 @@
+db/neo4j-community-3.5.30/bin/neo4j start

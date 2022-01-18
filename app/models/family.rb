@@ -80,8 +80,6 @@ class Family
     ancestors_store = []
     ancestor_ids = []
     current_gen_temp = parents.values.compact
-    p "Hello!!!"
-    p current_gen_temp
     
     while current_gen_temp.length > 0
       # Add the current generation to the ancestors store

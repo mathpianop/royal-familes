@@ -2,8 +2,9 @@ require_relative "boot"
 
 require "rails/all"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
+require 'active_graph/railtie'
+
+
 Bundler.require(*Rails.groups)
 
 module RoyalFamilies
@@ -18,5 +19,6 @@ module RoyalFamilies
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators { |g| g.orm :active_graph }
   end
 end

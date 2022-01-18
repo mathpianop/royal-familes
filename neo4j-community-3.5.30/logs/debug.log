@@ -1,0 +1,338 @@
+2021-12-10 01:25:23.230+0000 INFO [o.n.l.i.StoreLogService] Opened new internal log file
+2021-12-10 01:25:23.233+0000 INFO [o.n.i.d.DiagnosticsManager] Graph Database: community single StoreId{creationTime=1639071134102, randomId=1063260670339920388, storeVersion=16094931155187206, upgradeTime=1639071134102, upgradeId=1}
+2021-12-10 01:25:23.233+0000 INFO [o.n.i.d.DiagnosticsManager] Kernel version: 3.5.30,198d21d5ae752c3ce8517654d03025cb16ce3c61
+2021-12-10 01:25:23.234+0000 INFO [o.n.i.d.DiagnosticsManager] Neo4j Kernel properties:
+2021-12-10 01:25:23.235+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.http.enabled=true
+2021-12-10 01:25:23.235+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.block_size.labels=56
+2021-12-10 01:25:23.235+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.security.auth_enabled=true
+2021-12-10 01:25:23.235+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.windows_service_name=neo4j
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.block_size.strings=120
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.directories.neo4j_home=/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.directories.import=import
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.block_size.array_properties=120
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.edition=community
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.bolt.enabled=true
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.connector.https.enabled=true
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.jvm.additional=-XX:+UseG1GC
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] dbms.tx_log.rotation.retention_policy=1 days
+2021-12-10 01:25:23.236+0000 INFO [o.n.i.d.DiagnosticsManager] Diagnostics providers:
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] KernelDiagnostics:Versions
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] org.neo4j.kernel.configuration.Config
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] org.neo4j.internal.diagnostics.DiagnosticsManager
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] SYSTEM_MEMORY
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] JAVA_MEMORY
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] OPERATING_SYSTEM
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] JAVA_VIRTUAL_MACHINE
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] CLASSPATH
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] LIBRARY_PATH
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] SYSTEM_PROPERTIES
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] TIMEZONE_DATABASE
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] NETWORK
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] NEO_STORE_VERSIONS
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] NEO_STORE_ID_USAGE
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] NEO_STORE_RECORDS
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] TRANSACTION_RANGE
+2021-12-10 01:25:23.237+0000 INFO [o.n.i.d.DiagnosticsManager] KernelDiagnostics:StoreFiles
+2021-12-10 01:25:23.238+0000 INFO [o.n.i.d.DiagnosticsManager] System memory information:
+2021-12-10 01:25:23.248+0000 INFO [o.n.i.d.DiagnosticsManager] Total Physical memory: 8.00 GB
+2021-12-10 01:25:23.248+0000 INFO [o.n.i.d.DiagnosticsManager] Free Physical memory: 3.61 GB
+2021-12-10 01:25:23.249+0000 INFO [o.n.i.d.DiagnosticsManager] Committed virtual memory: 7.82 GB
+2021-12-10 01:25:23.249+0000 INFO [o.n.i.d.DiagnosticsManager] Total swap space: 2.00 GB
+2021-12-10 01:25:23.249+0000 INFO [o.n.i.d.DiagnosticsManager] Free swap space: 1.22 GB
+2021-12-10 01:25:23.249+0000 INFO [o.n.i.d.DiagnosticsManager] JVM memory information:
+2021-12-10 01:25:23.250+0000 INFO [o.n.i.d.DiagnosticsManager] Free  memory: 37.29 MB
+2021-12-10 01:25:23.251+0000 INFO [o.n.i.d.DiagnosticsManager] Total memory: 132.00 MB
+2021-12-10 01:25:23.251+0000 INFO [o.n.i.d.DiagnosticsManager] Max   memory: 2.00 GB
+2021-12-10 01:25:23.251+0000 INFO [o.n.i.d.DiagnosticsManager] Garbage Collector: G1 Young Generation: [G1 Eden Space, G1 Survivor Space]
+2021-12-10 01:25:23.251+0000 INFO [o.n.i.d.DiagnosticsManager] Garbage Collector: G1 Old Generation: [G1 Eden Space, G1 Survivor Space, G1 Old Gen]
+2021-12-10 01:25:23.252+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: Code Cache (Non-heap memory): committed=19.88 MB, used=19.71 MB, max=240.00 MB, threshold=0.00 B
+2021-12-10 01:25:23.252+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: Metaspace (Non-heap memory): committed=70.33 MB, used=68.32 MB, max=-1.00 B, threshold=0.00 B
+2021-12-10 01:25:23.253+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: Compressed Class Space (Non-heap memory): committed=10.13 MB, used=9.72 MB, max=1.00 GB, threshold=0.00 B
+2021-12-10 01:25:23.253+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Eden Space (Heap memory): committed=44.00 MB, used=6.00 MB, max=-1.00 B, threshold=?
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Survivor Space (Heap memory): committed=5.00 MB, used=5.00 MB, max=-1.00 B, threshold=?
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Memory Pool: G1 Old Gen (Heap memory): committed=83.00 MB, used=82.85 MB, max=2.00 GB, threshold=0.00 B
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Operating system information:
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Operating System: Mac OS X; version: 10.15.7; arch: x86_64; cpus: 4
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Max number of file descriptors: 10240
+2021-12-10 01:25:23.254+0000 INFO [o.n.i.d.DiagnosticsManager] Number of open file descriptors: 282
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] Process id: 73190@Pauls-MacBook-Pro.local
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] Byte order: LITTLE_ENDIAN
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] Local timezone: America/Chicago
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] JVM information:
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] VM Name: Java HotSpot(TM) 64-Bit Server VM
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] VM Vendor: Oracle Corporation
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] VM Version: 25.301-b09
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] JIT compiler: HotSpot 64-Bit Tiered Compilers
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] VM Arguments: [-XX:+UseG1GC, -XX:-OmitStackTraceInFastThrow, -XX:+AlwaysPreTouch, -XX:+UnlockExperimentalVMOptions, -XX:+TrustFinalNonStaticFields, -XX:+DisableExplicitGC, -Djdk.tls.ephemeralDHKeySize=2048, -Djdk.tls.rejectClientInitiatedRenegotiation=true, -Dunsupported.dbms.udc.source=tarball, -Dfile.encoding=UTF-8]
+2021-12-10 01:25:28.262+0000 INFO [o.n.i.d.DiagnosticsManager] Java classpath:
+2021-12-10 01:25:28.285+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/jsse.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-util-3.5-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-import-tool-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/resources.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-resource-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/caffeine-2.6.2.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-databind-2.10.5.1.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/bcpkix-jdk15on-1.68.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/jfr.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/zipfs.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jProcesses-1.6.4.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jsr311-api-1.1.1.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-http-9.4.43.v20210629.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/classes
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jersey-server-1.19.3.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jakarta.xml.bind-api-2.3.2.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-module-jaxb-annotations-2.10.5.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/istack-commons-runtime-3.0.8.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/sunec.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-codegen-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/opencsv-2.3.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-browser-4.3.4.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/sunrsasign.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/netty-all-4.1.68.Final.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-annotation-processors-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-text-1.4.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-security-3.5.30.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/scala-library-2.11.12.jar
+2021-12-10 01:25:28.286+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-io-9.4.43.v20210629.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/txw2-2.3.2.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-3.5.30.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-spatial-index-3.5.30.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/stax-ex-1.8.1.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-interpreted-runtime-3.5.30.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-logging-3.5.30.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/javax.servlet-api-3.1.0.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/parboiled-scala_2.11-1.1.7.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-io-2.6.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-front-end-3.5-3.5.30.jar
+2021-12-10 01:25:28.287+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-expression-3.4-3.4.18.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-index-3.5.30.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-compress-1.21.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/rt.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/server-api-3.5.30.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-3.5.30.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-logging-1.1.1.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jaxb-api-2.3.0.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-dbms-3.5.30.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/localedata.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-lucene-index-3.5.30.jar
+2021-12-10 01:25:28.288+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-legacy-3.5.30.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-compiler-3.1-3.1.9.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-runtime-util-3.5.30.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-values-3.5.30.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-bolt-3.5.30.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-core-2.10.5.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/concurrentlinkedhashmap-lru-1.4.2.jar
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/plugins/
+2021-12-10 01:25:28.289+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/lucene-core-5.5.5.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-util-3.4-3.4.18.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-jaxrs-json-provider-2.10.5.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-ast-3.5-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-annotations-2.10.5.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/dnsns.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-ir-3.4-3.4.18.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-push-to-cloud-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-diagnostics-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-ir-3.5-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-rewriting-3.5-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-kernel-api-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-io-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-xml-9.4.43.v20210629.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-frontend-3.1-3.1.9.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-frontend-2.3-2.3.12.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-server-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-webapp-9.4.43.v20210629.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-common-3.5.30.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/openCypher-frontend-1-3.4.18.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-server-9.4.43.v20210629.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-planner-3.4-3.4.18.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/nashorn.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/lucene-queryparser-5.5.5.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-security-9.4.43.v20210629.jar
+2021-12-10 01:25:28.290+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-graphdb-api-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-jmx-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/conf/
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-procedure-api-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/lucene-analyzers-common-5.5.5.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/eclipse-collections-9.2.0.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-configuration-1.10.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jersey-servlet-1.19.3.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/parboiled-core-1.1.7.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-planner-3.5-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/zstd-jni-1.3.8-6.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-unsafe-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/lib/tools.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-kernel-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jackson-jaxrs-base-2.10.5.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/FastInfoset-1.2.16.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/activation-1.1.1.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/jfxrt.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-lucene-upgrade-3.5.30.jar
+2021-12-10 01:25:28.291+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jPowerShell-1.9.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/charsets.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-lang3-3.8.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/bcprov-jdk15on-1.68.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-compiler-2.3-2.3.12.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-udc-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-parser-3.5-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/WMI4Java-1.6.1.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jakarta.activation-api-1.2.1.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/System/Library/Java/Extensions/MRJToolkit.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-expression-evaluator-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/commons-lang-2.6.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jersey-core-1.19.3.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-command-line-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/scala-reflect-2.11.12.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-planner-spi-3.4-3.4.18.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-expressions-3.5-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/lucene-codecs-5.5.5.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/zstd-proxy-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-ssl-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-collections-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [bootstrap] /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/jce.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-configuration-3.5.30.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-graph-matching-3.1.9.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar
+2021-12-10 01:25:28.292+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/plugins/*
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/cldrdata.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-util-9.4.43.v20210629.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jaxb-runtime-2.3.2.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-data-collector-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-csv-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-fulltext-index-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [loader.1] file:/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib/ext/jaccess.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/jetty-servlet-9.4.43.v20210629.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-planner-spi-3.5-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-concurrent-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-logical-plans-3.4-3.4.18.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-cypher-logical-plans-3.5-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-consistency-check-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/neo4j-graph-algo-3.5.30.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager]  [classpath + loader.0] file:/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/lib/eclipse-collections-api-9.2.0.jar
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager] Library path:
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager] /Users/paulus/Library/Java/Extensions
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager] /Library/Java/Extensions
+2021-12-10 01:25:28.293+0000 INFO [o.n.i.d.DiagnosticsManager] /Network/Library/Java/Extensions
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] /System/Library/Java/Extensions
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] /usr/lib/java
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] /Users/paulus/pet-projects/royal_families
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] System.properties:
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] sun.boot.library.path = /Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home/jre/lib
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] jdk.tls.rejectClientInitiatedRenegotiation = true
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] gopherProxySet = false
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] path.separator = :
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] file.encoding.pkg = sun.io
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] user.country = US
+2021-12-10 01:25:28.294+0000 INFO [o.n.i.d.DiagnosticsManager] sun.java.launcher = SUN_STANDARD
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] sun.os.patch.level = unknown
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] user.dir = /Users/paulus/pet-projects/royal_families
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] sun.jnu.encoding = UTF-8
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] jetty.git.hash = 526006ecfa3af7f1a27ef3a288e2bef7ea9dd7e8
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] sun.nio.ch.bugLevel = 
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] unsupported.dbms.udc.source = tarball
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] http.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+2021-12-10 01:25:28.295+0000 INFO [o.n.i.d.DiagnosticsManager] user.home = /Users/paulus
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] user.timezone = America/Chicago
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] file.encoding = UTF-8
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] user.name = paulus
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] sun.java.command = org.neo4j.server.CommunityEntryPoint --home-dir=/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30 --config-dir=/Users/paulus/pet-projects/royal_families/neo4j-community-3.5.30/conf
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] sun.arch.data.model = 64
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] user.language = en
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] awt.toolkit = sun.lwawt.macosx.LWCToolkit
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] jdk.tls.ephemeralDHKeySize = 2048
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] file.separator = /
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] sun.io.unicode.encoding = UnicodeBig
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] sun.cpu.endian = little
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] socksNonProxyHosts = local|*.local|169.254/16|*.169.254/16
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] ftp.nonProxyHosts = local|*.local|169.254/16|*.169.254/16
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] sun.cpu.isalist = 
+2021-12-10 01:25:28.296+0000 INFO [o.n.i.d.DiagnosticsManager] (IANA) TimeZone Database Version:
+2021-12-10 01:25:28.299+0000 INFO [o.n.i.d.DiagnosticsManager]   TimeZone version: 2021a (available for 600 zone identifiers)
+2021-12-10 01:25:28.299+0000 INFO [o.n.i.d.DiagnosticsManager] Network information:
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager] Interface utun1:
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]     address: fe80:0:0:0:630:e205:f665:2c55%utun1
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager] Interface utun0:
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]     address: fe80:0:0:0:6b17:8c9b:afbd:35a6%utun0
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager] Interface lo0:
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]     address: fe80:0:0:0:0:0:0:1%lo0
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]     address: 0:0:0:0:0:0:0:1%lo0
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]     address: 127.0.0.1
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager] Store versions:
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   ArrayPropertyStore[neostore.nodestore.db.labels] v0.A.9
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   NodeStore[neostore.nodestore.db] v0.A.9
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.propertystore.db.index.keys] v0.A.9
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   PropertyIndexStore[neostore.propertystore.db.index] v0.A.9
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.propertystore.db.strings] v0.A.9
+2021-12-10 01:25:28.301+0000 INFO [o.n.i.d.DiagnosticsManager]   ArrayPropertyStore[neostore.propertystore.db.arrays] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   PropertyStore[neostore.propertystore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipStore[neostore.relationshipstore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.relationshiptypestore.db.names] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipTypeStore[neostore.relationshiptypestore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.labeltokenstore.db.names] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   LabelTokenStore[neostore.labeltokenstore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   SchemaStore[neostore.schemastore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipGroupStore[neostore.relationshipgroupstore.db] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   NeoStore[neostore] v0.A.9
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager] Id usage:
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   ArrayPropertyStore[neostore.nodestore.db.labels]: used=1 high=0
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   NodeStore[neostore.nodestore.db]: used=2 high=39
+2021-12-10 01:25:28.302+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.propertystore.db.index.keys]: used=5 high=4
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   PropertyIndexStore[neostore.propertystore.db.index]: used=4 high=3
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.propertystore.db.strings]: used=1 high=0
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   ArrayPropertyStore[neostore.propertystore.db.arrays]: used=1 high=0
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   PropertyStore[neostore.propertystore.db]: used=3 high=39
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipStore[neostore.relationshipstore.db]: used=0 high=-1
+2021-12-10 01:25:28.303+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.relationshiptypestore.db.names]: used=1 high=0
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipTypeStore[neostore.relationshiptypestore.db]: used=0 high=-1
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   StringPropertyStore[neostore.labeltokenstore.db.names]: used=4 high=3
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   LabelTokenStore[neostore.labeltokenstore.db]: used=2 high=1
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   SchemaStore[neostore.schemastore.db]: used=15 high=14
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   RelationshipGroupStore[neostore.relationshipgroupstore.db]: used=1 high=0
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager]   NeoStore[neostore]: used=15 high=14
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] Neostore records:
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] TIME (Creation time): 1639071134102
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] RANDOM_NUMBER (Random number for store id): 1063260670339920388
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] LOG_VERSION (Current log version): 0
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_ID (Last committed transaction): 14
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] STORE_VERSION (Store format version): 16094931155187206
+2021-12-10 01:25:28.304+0000 INFO [o.n.i.d.DiagnosticsManager] FIRST_GRAPH_PROPERTY (First property record containing graph properties): -1
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CONSTRAINT_TRANSACTION (Last committed transaction containing constraint changes): 11
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_ID (Transaction id most recent upgrade was performed at): 1
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TIME (Time of last upgrade): 1639071134102
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_CHECKSUM (Checksum of last committed transaction): -161047212754
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_CHECKSUM (Checksum of transaction id the most recent upgrade was performed at): 0
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_VERSION (Log version where the last transaction commit entry has been written into): 0
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_BYTE_OFFSET (Byte offset in the log file where the last transaction commit entry has been written into): 3051
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] LAST_TRANSACTION_COMMIT_TIMESTAMP (Commit time timestamp for last committed transaction): 1639083583224
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] UPGRADE_TRANSACTION_COMMIT_TIMESTAMP (Commit timestamp of transaction the most recent upgrade was performed at): 0
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] Transaction log:
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] No transactions found in any log
+2021-12-10 01:25:28.305+0000 INFO [o.n.i.d.DiagnosticsManager] Disk space on partition (Total / Free / Free %): 0 / 0 / 0
+2021-12-10 01:25:28.306+0000 INFO [o.n.i.d.DiagnosticsManager] Storage files: (filename : modification date - size)
+2021-12-10 01:25:28.306+0000 INFO [o.n.i.d.DiagnosticsManager] Storage summary: 
+2021-12-10 01:25:28.306+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of store: 0.00 B
+2021-12-10 01:25:28.306+0000 INFO [o.n.i.d.DiagnosticsManager]   Total size of mapped files: 0.00 B
+2021-12-10 01:25:28.307+0000 INFO [o.n.l.i.StoreLogService] Rotated internal log file
+2021-12-10 02:57:59.003+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=313, gcTime=0, gcCount=0}
+2021-12-10 03:27:20.830+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=6571, gcTime=0, gcCount=0}
+2021-12-10 03:27:21.140+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=699, gcTime=0, gcCount=0}
+2021-12-10 03:27:22.431+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=224, gcTime=0, gcCount=0}
+2021-12-10 03:37:50.011+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=425, gcTime=0, gcCount=0}
+2021-12-10 04:09:17.003+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=413, gcTime=0, gcCount=0}
+2021-12-10 15:36:46.071+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=5716, gcTime=0, gcCount=0}
+2021-12-10 15:36:46.183+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=933, gcTime=0, gcCount=0}
+2021-12-10 16:07:44.022+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=385, gcTime=0, gcCount=0}
+2021-12-10 18:00:45.007+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=621, gcTime=0, gcCount=0}
+2021-12-10 22:11:07.849+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=6057, gcTime=0, gcCount=0}
+2021-12-10 22:11:08.033+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=520, gcTime=0, gcCount=0}
+2021-12-10 23:12:24.190+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=725, gcTime=0, gcCount=0}
+2021-12-11 00:40:51.008+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=470, gcTime=0, gcCount=0}
+2021-12-11 01:03:30.439+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=6914, gcTime=0, gcCount=0}
+2021-12-11 01:03:30.707+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=289, gcTime=0, gcCount=0}
+2021-12-11 01:03:30.814+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=111, gcTime=0, gcCount=0}
+2021-12-11 01:19:27.288+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=175, gcTime=0, gcCount=0}
+2021-12-11 03:40:16.007+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=440, gcTime=0, gcCount=0}
+2021-12-11 15:58:09.770+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=7745, gcTime=0, gcCount=0}
+2021-12-11 15:58:10.365+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=602, gcTime=0, gcCount=0}
+2021-12-11 15:58:10.556+0000 WARN [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=502, gcTime=0, gcCount=0}

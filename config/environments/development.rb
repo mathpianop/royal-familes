@@ -76,4 +76,10 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+
+  config.neo4j.driver.url = 'bolt://localhost:7687'
+  config.neo4j.driver.username = 'neo4j'
+  config.neo4j.driver.password = 'ImagendeDios3!'
 end

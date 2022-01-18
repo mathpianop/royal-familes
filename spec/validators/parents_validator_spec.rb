@@ -41,7 +41,7 @@ RSpec.describe ParentsValidator, type: :validator do
 
     it "validates father can't be descendant" do
       person = people(:edward_iii)
-      person.father = people(:henry_v)
+      person.father = people(:henry_vii)
       person.validate
       expect(person.errors[:parent]).to include("can't be a descendant")
 

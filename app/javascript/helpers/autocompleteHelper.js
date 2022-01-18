@@ -14,8 +14,8 @@ function clearPersonInfo (inputElId) {
   inputEl.value = "";
 }
 
-function searchPeople({ container, placeholder, name, sex, onSelect, onClear, personIdField }) {
-
+function searchPeople({ container, placeholder, name, sex, onSelect, onClear, personIdField}) {
+  
   const confirmedOnClear = (onClear ? onClear : () => {});
   const getPeople = (query, display) => {
     axios.get("/autocomplete", { params: {

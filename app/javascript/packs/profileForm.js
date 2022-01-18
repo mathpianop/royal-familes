@@ -33,6 +33,7 @@ const oppositeSex = function(sex) {
   }
 }
 
+
 const spouseSex = oppositeSex(document.getElementById("spouse-fields").dataset.personSex);
 manageDynamicRelationForm("spouse", "Search for spouses", spouseSex);
 manageDynamicRelationForm("child", "Search for children");

@@ -9,6 +9,7 @@ searchPeople({
   placeholder: "Search people...",
   name: "person_search[query]",
   onSelect: (selection) => {
+    console.log("Hello");
     if (selection) {
       location.href = `/people/${selection.id}`
     }

@@ -43,9 +43,12 @@ class Person < ApplicationRecord
     self.find(subject_id).relationship_info(self.find(relation_id))
   end
 
-  def child_ids=(ids)
+  def set_child_ids(ids)
     self.class.where(parent_id_name => self.id).where.not(id: ids).update_all(parent_id_name => nil)
-    self.class.where(id: ids).update_all(parent_id_name => self.id)
+    children = self.class.where(id: ids)
+    children.update(parent_id_name => self.id)
+    children.each {|child| child.errors[:parent].each {|error| self.errors.add(:parent, error)}}
+    self.errors.messages.empty?
   end
 
   

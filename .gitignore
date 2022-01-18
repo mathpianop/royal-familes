@@ -36,3 +36,5 @@ yarn-debug.log*
 .yarn-integrity
 TODO.md
 convert.rb
+
+/db/neo4j-community-3.5.30

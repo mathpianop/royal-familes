@@ -101,12 +101,11 @@ class PeopleController < ApplicationController
   end
 
   def set_children(person)
-    person.child_ids = relation_ids(:child)
-    person.errors.empty?
+    person.set_child_ids(relation_ids(:child))
   end
 
   def set_consorts(person)
-    @person.consort_ids = relation_ids(:spouse)
+    person.consort_ids = relation_ids(:spouse)
     person.errors.empty?
   end
 end

@@ -38,12 +38,19 @@ class Marriage < ApplicationRecord
     end
   end
 
+  def spouse_is_ancestor_or_descendant
+    family = Family.new(self.person)
+    family.ancestors.any? {|anc| anc.id == self.consort.id} ||
+    family.descendants.any? {|desc|desc.id == self.consort.id}
+  end
+
   def spouse_not_ancestor_or_descendant
-    p self.consort.id
-    p "Hello!"
-    p Family.new(self.person).ancestors.map(&:id)
-    if Family.new(self.person).ancestors.any? {|anc| anc.id == self.consort.id}
+    p "Hello"
+    if spouse_is_ancestor_or_descendant
+      p "Hello #{self.person.name}"
+      self.errors.add(:spouse, "can't be an ancestor or descendant")
       self.person.errors.add(:spouse, "can't be an ancestor or descendant")
+      self.consort.errors.add(:spouse, "can't be an ancestor or descendant")
       throw :abort
     end
   end

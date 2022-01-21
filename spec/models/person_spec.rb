@@ -57,4 +57,52 @@ RSpec.describe Person, type: :model do
       expect(person.set_child_ids([child.id])).to be(false)
     end
   end
+
+  describe "set_consort_ids" do
+    it "creates  new marriage records for a single id included" do
+      husband = people(:black_prince)
+      wife = people(:joan_of_kent)
+      husband.set_consort_ids([wife.id])
+      expect(Marriage.where(person_id: husband.id, consort_id: wife.id)[0]).to be_truthy
+    end
+
+    it "creates new marriage records for multiple ids included" do
+      husband = people(:black_prince)
+      wife1 = people(:joan_of_kent)
+      wife2 = people(:unconnected_female)
+      husband.set_consort_ids([wife1.id, wife2.id])
+      expect(Marriage.where(person_id: husband.id, consort_id: wife1.id)[0]).to be_truthy
+      expect(Marriage.where(person_id: husband.id, consort_id: wife2.id)[0]).to be_truthy
+    end
+
+    it "does not create new marriage records for ids corresponding existing records" do
+      husband = people(:edward_iv)
+      wife = people(:elizabeth_woodville)
+      husband.set_consort_ids([wife.id])
+      expect(Marriage.where(person_id: husband.id, consort_id: wife.id).length).to eq(1)
+    end
+
+    it "deletes marriage records with ids not in the list" do
+      husband = people(:edward_iv)
+      new_wife = people(:unconnected_female)
+      old_wife = people(:elizabeth_woodville)
+      husband.set_consort_ids([new_wife.id])
+      expect(Marriage.where(person_id: husband.id, consort_id: old_wife.id).length).to eq(0) 
+    end
+
+    it "deletes all marriage records when passed an empty array" do
+      husband = people(:edward_iv)
+      husband.set_consort_ids([])
+      expect(Marriage.where(person_id: husband.id).length).to eq(0) 
+    end
+
+    it "Adds marriage validation errors to the person" do
+      husband = people(:edward_iv)
+      ancestor = people(:philippa)
+      
+      #expect(husband.set_consort_ids([ancestor.id])).to be(false)
+      husband.set_consort_ids([ancestor.id])
+      expect(Marriage.where(person_id: husband.id, consort_id: ancestor.id).length).to eq(0) 
+    end
+  end
 end

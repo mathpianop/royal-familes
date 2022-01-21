@@ -1,4 +1,4 @@
-
+0. Add marriage validation tests
 1. Make magnifying glass AND ENTER!!! select the first option
 2. Style autocomplete results better?? Definitely fix non-ellipsis
 

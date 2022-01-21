@@ -51,5 +51,16 @@ class Person < ApplicationRecord
     self.errors.messages.empty?
   end
 
+  def set_consort_ids(ids)
+    #Create Marriage records for each consort id if not already present
+    marriages = ids.map do |id| 
+      Marriage.where(person_id: self.id, consort_id: id).first_or_create
+    end
+    #Delete existing Marriage records if they have consort ids not on the list
+    Marriage.where(person_id: self.id).where.not(consort_id: ids).destroy_all
+    marriages.each {|marriage| marriage.errors[:spouse].each {|error| self.errors.add(:spouse, error)}}
+    self.errors.messages.empty?
+  end
+
   
 end

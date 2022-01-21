@@ -104,8 +104,9 @@ class PeopleController < ApplicationController
     person.set_child_ids(relation_ids(:child))
   end
 
+
+
   def set_consorts(person)
-    person.consort_ids = relation_ids(:spouse)
-    person.errors.empty?
+    person.set_consort_ids(relation_ids(:spouse))
   end
 end

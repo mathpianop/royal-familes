@@ -1,5 +1,6 @@
 import { searchPeople, setPersonInfo, clearPersonInfo } from "../helpers/autocompleteHelper";
 import {manageDynamicRelationForm} from "../helpers/manageDynamicRelationForm"
+import { makeDateGuesses } from "../helpers/makeDateGuesses";
 
 const fatherSearch = document.getElementById("father-search");
 const fatherIdField = document.getElementById("person_father_id")
@@ -37,3 +38,6 @@ const oppositeSex = function(sex) {
 const spouseSex = oppositeSex(document.getElementById("spouse-fields").dataset.personSex);
 manageDynamicRelationForm("spouse", "Search for spouses", spouseSex);
 manageDynamicRelationForm("child", "Search for children");
+
+makeDateGuesses();
+

@@ -6,4 +6,5 @@
   1. Add account-specific trees?
   2. Add email confirmation
 
-- Find historical db api
+- Update README to include the Wikipedia thing
+- Deal with Charles Martel, Elizabeth II

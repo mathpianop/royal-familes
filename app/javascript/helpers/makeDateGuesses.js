@@ -1,5 +1,6 @@
-import getBirthdate from "./getWikipediaBirthdate";
+import getBirthdate from "./getWikipediaDates";
 import formatDate from "./formatDate";
+import getWikipediaDates from "./getWikipediaDates";
 
 const makeDateGuesses = function() {
   const nameField = document.getElementById("person_name");
@@ -14,22 +15,27 @@ const makeDateGuesses = function() {
   })
 }
 
+const applyGuessToDateField = function(dateType, guess) {
+  const field = document.getElementById(`person_${dateType}_date`);
+  if (guess) {
+    try {
+      field.value = formatDate(guess);
+    } catch (error) {
+      if (error instanceof RangeError) {
+        console.log(`Cannot format date guess: ${guess}`)
+      } else {
+        throw error
+      }
+    }
+  }
+}
+
 const applyGuesses = function(name, title) {
   const birthdateField = document.getElementById("person_birth_date");
 
-  getBirthdate(name, title).then(guess => {
-    if (guess) {
-      try {
-        birthdateField.value = formatDate(guess);
-      } catch (error) {
-        if (error instanceof RangeError) {
-          console.log(`Cannot format date guess: ${guess}`)
-        } else {
-          throw error
-        }
-      }
-      
-    }
+  getWikipediaDates(name, title).then(dates => {
+    applyGuessToDateField("birth", dates.getDate("birth"));
+    applyGuessToDateField("death", dates.getDate("death"));
   })
 }
 

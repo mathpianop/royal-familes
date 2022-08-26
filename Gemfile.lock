@@ -148,8 +148,6 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
-    mediawiki-butt (4.0.1)
-      patron (~> 0.13)
     method_source (1.0.0)
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
@@ -189,7 +187,6 @@ GEM
       shellany (~> 0.0)
     orm_adapter (0.5.0)
     os (1.1.4)
-    patron (0.13.3)
     pg (1.2.3)
     pg_search (2.3.5)
       activerecord (>= 5.2)
@@ -318,7 +315,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wikipedia-client (1.5.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -334,7 +330,6 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  mediawiki-butt
   neo4j
   neo4j-rake_tasks (~> 0.7.19)
   pg (~> 1.1)
@@ -352,7 +347,6 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-  wikipedia-client (~> 1.5)
 
 RUBY VERSION
    ruby 3.0.0p0
